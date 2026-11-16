@@ -23,6 +23,10 @@
 				"type": "InvalidConfigurationError",
 				"message": "[403] {{body.code}}: {{body.message}}"
 			},
+			"410": {
+				"type": "InvalidConfigurationError",
+				"message": "[410] {{body.code}}: {{body.message}}"
+			},
 			"429": {
 				"type": "RateLimitError",
 				"message": "[429] {{body.code}}: {{body.message}}"

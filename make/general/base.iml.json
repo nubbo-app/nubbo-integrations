@@ -23,7 +23,7 @@
 				"message": "[409] {{body.code}}: {{body.message}}"
 			},
 			"410": {
-				"type": "InvalidAccessTokenError",
+				"type": "InvalidConfigurationError",
 				"message": "[410] {{body.code}}: {{body.message}}"
 			},
 			"422": {

@@ -6,7 +6,7 @@ The source of the Nubbo app for [Make](https://www.make.com). It runs on the Nub
 
 | Component | Items |
 |---|---|
-| Connection | `nubbo`: an API key (`nbk_…`) and an environment (Production `api.nubbo.app`, or Development `dev.api.nubbo.app` as an advanced option). Verified with `GET /v1/me`; the connection shows the space and the key name. |
+| Connection | `nubbo`: an API key (`nbk_…`) and an environment (Production `api.nubbo.app`, or Development `dev.api.nubbo.app` as an advanced option, for testing only: it must be removed before the public review). Verified with `GET /v1/me`; the connection shows the space and the key name. |
 | Triggers (polling) | Watch New Files, Watch New File Request Uploads, Watch New Activity |
 | Files and folders | List Files in a Folder, Search Files, Get a File or Folder, Create a Folder, Rename a File or Folder, Move Files and Folders, Get an Operation, Get a Download Link, Add a Label to a File, Remove a Label from a File |
 | Uploads and downloads | Upload a File, Download a File, Start an Upload, Sign Upload Parts, Complete an Upload, Abort a Multipart Upload |
@@ -41,10 +41,10 @@ assets/icon-512.png     app icon to upload in the app settings
 - `X-Nubbo-Flow: make:{{scenario.id}}` gives each scenario its own position and once-a-minute floor when several scenarios share a key and filter.
 - Every item carries `madeByThisKey` (true when the action was made with the key of this connection). Add a filter on it to ignore the scenario's own uploads; the trigger never hides items itself, because a hidden item would stop the cursor.
 - The «Choose where to start» list reads `GET /v1/activity`, not the trigger, so opening it does not take the poll slot.
-- Upload a File sends files up to 5 GB in one presigned PUT (Make's own file size limit is lower). For multipart uploads use Start an Upload, Sign Upload Parts and Complete an Upload.
+- Upload a File always gets one presigned PUT: `/v1` answers multipart only when the file is above 5 GB (`singleMax`) or when `multipart: true` is sent, which the module never sends, and Make's largest file size (1000 MB on Enterprise plans) is far below 5 GB. For multipart uploads from other tools use Start an Upload, Sign Upload Parts and Complete an Upload.
 - Update modules send only the fields that are filled in. **Fields to clear** empties the chosen fields (null, an empty list or an empty text, as the API documents).
 - Writes do not send `Idempotency-Key`, because Make offers no value that stays the same across its retries. Make an API Call can send one.
-- Errors map to Make error types: 400, 404, 409, 422 `DataError`; 401, 410 `InvalidAccessTokenError`; 403 `InvalidConfigurationError`; 429 `RateLimitError`. Messages show the Nubbo code, for example `[404] API_FILE_NOT_FOUND: …`.
+- Errors map to Make error types: 400, 404, 409, 422 `DataError`; 401 `InvalidAccessTokenError` (missing, wrong, revoked or expired key); 403 and 410 `InvalidConfigurationError` (plan, read-only key, suspended or read-only team, and `ACCOUNT_SCHEDULED_FOR_DELETION`, the only 410 of `/v1`, for a key whose owner account is in its deletion grace period: reconnecting does not help); 429 `RateLimitError`. Messages show the Nubbo code, for example `[404] API_FILE_NOT_FOUND: …`.
 
 ## Deploy to Make
 
@@ -85,7 +85,7 @@ The API answers on `dev.api.nubbo.app` until the Teams activation. Use a dev acc
 The API reaches production with the Teams activation. Until then, keep the app private: publishing cannot be undone, and published components cannot be deleted.
 
 1. Create a production connection (Environment: Production) and run scenarios A to D again on `api.nubbo.app`.
-2. Decide whether the Development environment option stays; if not, remove it from `connections/nubbo/nubbo.params.iml.json` and deploy before publishing.
+2. Remove the Development environment option before requesting the public review: delete the `baseUrl` parameter's Development entry in `connections/nubbo/nubbo.params.iml.json` (keep the parameter with only Production), deploy, and check that a connection still verifies. It stays in the app until then, for the dev tests.
 3. Remove any test modules or connections made in the Make web editor.
 4. Click **Publish**. Make shows the invite link: open it with another Make organization and check that the app installs and a connection works.
 5. On the **Modules** tab, make every module visible.
@@ -97,5 +97,5 @@ After approval, Make gives the app a development version: deploy changes there f
 
 - Polling only: Nubbo sends no webhooks, so there are no instant triggers. The shortest interval is one minute.
 - The first poll after turning a scenario on reads at most the latest 50 items.
-- Upload a File does one presigned PUT; files above Make's file size limit need the multipart modules and another tool to send the parts.
+- Upload a File does one presigned PUT, which covers every file Make can hold. Files above 5 GB need the multipart modules and another tool to send the parts.
 - Embed `config` takes a collection (for example the output of Parse JSON); anything left out keeps the default of the kind.

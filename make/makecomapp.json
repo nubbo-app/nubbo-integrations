@@ -228,7 +228,7 @@
 			},
 			"uploadFile": {
 				"label": "Upload a File",
-				"description": "Uploads a file straight to the storage provider of a bucket. Files up to 5 GB.",
+				"description": "Uploads a file straight to the storage provider of a bucket, in one request.",
 				"moduleType": "action",
 				"actionCrud": "create",
 				"connection": "nubbo",
