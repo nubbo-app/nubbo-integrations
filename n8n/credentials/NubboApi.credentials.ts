@@ -28,13 +28,23 @@ export class NubboApi implements ICredentialType {
 				'An API key from Settings › API (Pro) or Team › API (Teams) in Nubbo. It is shown once, when you create it.',
 		},
 		{
-			displayName: 'Base URL',
+			displayName: 'Environment',
 			name: 'baseUrl',
-			type: 'string',
-			required: true,
+			type: 'options',
+			options: [
+				{
+					name: 'Production',
+					value: 'https://api.nubbo.app',
+					description: 'Nubbo at nubbo.app',
+				},
+				{
+					name: 'Development (Testing Only)',
+					value: 'https://dev.api.nubbo.app',
+					description: 'The Nubbo test environment; not for real workflows',
+				},
+			],
 			default: 'https://api.nubbo.app',
-			description:
-				'The address of the Nubbo API. Leave it as it is unless Nubbo tells you otherwise.',
+			description: 'The Nubbo API to connect to. Use Production.',
 		},
 	];
 
@@ -49,7 +59,7 @@ export class NubboApi implements ICredentialType {
 
 	test: ICredentialTestRequest = {
 		request: {
-			baseURL: '={{$credentials.baseUrl.replace(/\\/+$/, "")}}',
+			baseURL: '={{$credentials.baseUrl}}',
 			url: '/v1/me',
 			method: 'GET',
 		},
