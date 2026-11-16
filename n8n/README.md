@@ -18,8 +18,10 @@ In a self-hosted n8n, open **Settings › Community nodes**, choose **Install** 
 The nodes use a **Nubbo API** credential:
 
 1. In Nubbo, create an API key in **Settings › API** (Pro) or **Team › API** (owners and admins of a team). The key is shown once, when you create it.
-2. In n8n, create a **Nubbo API** credential and paste the key. Leave **Base URL** as `https://api.nubbo.app`.
+2. In n8n, create a **Nubbo API** credential and paste the key. Leave **Environment** on **Production**.
 3. Save. n8n tests the key with `GET /v1/me`.
+
+**Development** points at the Nubbo test environment (`dev.api.nubbo.app`) and is only for testing the node. It is removed from the credential before the package is submitted for n8n verification.
 
 A key belongs to one space, reaches the whole space or chosen buckets and projects, and reads only or reads and writes. Create the key with the reach and access your workflow needs. The API comes with the Pro and Teams plans.
 
@@ -66,7 +68,7 @@ The trigger polls Nubbo once a minute or less often, as you set it in the node. 
 
 **Fetch Test Event** in the editor shows the latest matching event and does not move the position of the active workflow.
 
-Polling does not use API requests. Each delivered event counts once against the trigger events of the plan.
+Polling does not use API requests. Each delivered event counts once against the trigger events of the plan. When the space has used its monthly trigger events, polls fail with `API_QUOTA_EXCEEDED` until the quota resets at the start of the next period; nothing is lost, and the events are delivered once polling works again.
 
 ## Limits and retries
 
