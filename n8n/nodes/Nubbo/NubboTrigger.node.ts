@@ -29,7 +29,7 @@ const TRIGGER_PATHS: Record<string, string> = {
 
 interface TriggerPage {
 	data: IDataObject[];
-	nextCursor: string;
+	nextCursor: string | null;
 	hasMore: boolean;
 	truncated: boolean;
 }
@@ -257,7 +257,7 @@ export class NubboTrigger implements INodeType {
 
 		if (!state.cursor || state.filter !== filter) {
 			const seed = await fetchPage();
-			if (typeof seed === 'string') return null;
+			if (typeof seed === 'string' || !seed.nextCursor) return null;
 			state.cursor = seed.nextCursor;
 			state.filter = filter;
 			return null;
@@ -269,7 +269,7 @@ export class NubboTrigger implements INodeType {
 			return null;
 		}
 		if (typeof page === 'string') return null;
-		state.cursor = page.nextCursor;
+		if (page.nextCursor) state.cursor = page.nextCursor;
 		return await itemsOf(page.data);
 	}
 }
