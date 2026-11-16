@@ -182,7 +182,7 @@ const inboxOptions: INodeProperties[] = [
 		name: 'allowedFileTypes',
 		type: 'string',
 		default: '',
-		placeholder: 'pdf, jpg',
+		placeholder: '.pdf, .jpg',
 		description: 'File extensions accepted, separated by commas; empty accepts every type',
 	},
 	{

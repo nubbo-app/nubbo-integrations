@@ -1,3 +1,5 @@
+import { createHash } from 'crypto';
+
 import type {
 	IBinaryData,
 	IDataObject,
@@ -182,10 +184,7 @@ export async function uploadFile(this: IExecuteFunctions, itemIndex: number): Pr
 			this,
 			'POST',
 			`/v1/buckets/${encodePath(bucketId)}/uploads`,
-			{
-				body,
-				idempotencyKey: idempotencyKeyOf.call(this, itemIndex, 'upload'),
-			},
+			{ body },
 		)) as UploadStart;
 	} catch (error) {
 		throw toNodeApiError.call(this, error, itemIndex);
@@ -206,16 +205,24 @@ export async function uploadFile(this: IExecuteFunctions, itemIndex: number): Pr
 			this,
 			'POST',
 			`/v1/uploads/${encodePath(start.uploadId)}/complete`,
-			{ idempotencyKey: idempotencyKeyOf.call(this, itemIndex, 'complete') },
+			{
+				idempotencyKey: idempotencyKeyOf.call(
+					this,
+					itemIndex,
+					`complete:${createHash('sha256').update(start.uploadId).digest('hex').slice(0, 16)}`,
+				),
+			},
 		)) as IDataObject;
 	} catch (error) {
-		await nubboRawRequest
-			.call(this, 'DELETE', `/v1/uploads/${encodePath(start.uploadId)}`)
-			.catch((abortError: unknown) => {
-				this.logger.warn('Nubbo: the unfinished upload could not be aborted', {
-					error: (abortError as Error).message,
+		if (start.multipart) {
+			await nubboRawRequest
+				.call(this, 'DELETE', `/v1/uploads/${encodePath(start.uploadId)}`)
+				.catch((abortError: unknown) => {
+					this.logger.warn('Nubbo: the unfinished multipart upload could not be aborted', {
+						error: (abortError as Error).message,
+					});
 				});
-			});
+		}
 		throw error instanceof NodeApiError ? error : toNodeApiError.call(this, error, itemIndex);
 	}
 }
@@ -258,9 +265,15 @@ export async function downloadFile(
 	}
 	const fileName = (options.fileName as string) || fileNameOfUrl(url);
 	const mimeType = response.headers['content-type'] || undefined;
+	const length = Number(response.headers['content-length']);
 	const binary = await this.helpers.prepareBinaryData(response.body, fileName, mimeType);
 	return {
-		json: { fileId, fileName: binary.fileName, mimeType: binary.mimeType, size: binary.fileSize },
+		json: {
+			fileId,
+			fileName: binary.fileName,
+			mimeType: binary.mimeType,
+			size: Number.isFinite(length) ? length : null,
+		},
 		binary: { ...(item.binary ?? {}), [binaryPropertyName]: binary },
 		pairedItem: { item: itemIndex },
 	};

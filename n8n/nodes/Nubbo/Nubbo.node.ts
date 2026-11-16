@@ -75,6 +75,12 @@ const bodyOf = (fields: IDataObject, lists: string[] = []): IDataObject => {
 		body[key] = lists.includes(key) ? listOf(value) : value;
 	}
 	for (const key of (fields.clearFields as string[] | undefined) ?? []) body[key] = null;
+	if (Array.isArray(body.allowedFileTypes)) {
+		body.allowedFileTypes = (body.allowedFileTypes as string[]).map((type) => {
+			const extension = type.toLowerCase();
+			return extension.startsWith('.') ? extension : `.${extension}`;
+		});
+	}
 	return body;
 };
 

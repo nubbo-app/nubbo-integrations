@@ -53,5 +53,29 @@ export class NubboApi implements ICredentialType {
 			url: '/v1/me',
 			method: 'GET',
 		},
+		rules: [
+			{
+				type: 'responseCode',
+				properties: {
+					value: 401,
+					message: 'The API key is not valid, or it was revoked or has expired',
+				},
+			},
+			{
+				type: 'responseCode',
+				properties: {
+					value: 403,
+					message:
+						'This key cannot use the API now: the API comes with Pro and Teams, and the space must be active',
+				},
+			},
+			{
+				type: 'responseCode',
+				properties: {
+					value: 410,
+					message: 'The Nubbo account that owns this space is scheduled for deletion',
+				},
+			},
+		],
 	};
 }
