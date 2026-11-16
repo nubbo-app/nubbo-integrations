@@ -236,19 +236,23 @@ export class NubboTrigger implements INodeType {
 			}
 		};
 
-		const itemsOf = async (data: IDataObject[]): Promise<INodeExecutionData[][] | null> => {
+		const itemsOf = async (
+			data: IDataObject[],
+			limit?: number,
+		): Promise<INodeExecutionData[][] | null> => {
 			let kept = data;
 			if (ignoreOwnChanges && data.some((item) => apiKeyIdOf(item))) {
 				const me = await nubboApiRequest.call(this, 'GET', '/v1/me');
 				const ownKeyId = (me.key as IDataObject | undefined)?.id;
 				kept = data.filter((item) => apiKeyIdOf(item) !== ownKeyId);
 			}
+			if (limit !== undefined) kept = kept.slice(0, limit);
 			return kept.length > 0 ? [this.helpers.returnJsonArray(kept)] : null;
 		};
 
 		if (manual) {
 			const page = (await fetchPage()) as TriggerPage;
-			return await itemsOf(page.data.slice(0, 1));
+			return await itemsOf(page.data, 1);
 		}
 
 		if (!state.cursor || state.filter !== filter) {

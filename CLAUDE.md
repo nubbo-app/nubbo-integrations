@@ -1,10 +1,10 @@
 # nubbo-integrations — Claude guide
 
-> General rules (git, branches, SDD, Trello) live in `../CLAUDE.md` of the Nubbo workspace. This repo is public: commits, PRs, README and code never carry internal paths, card numbers, decision codes, personal names or AI attribution.
+> This repo is public. Commits, PRs, README and code carry no internal paths, issue or decision references, personal names or AI attribution.
 
 ## What lives here
 
-Official integrations built on the public Nubbo API (`/v1`, reference at `https://api.nubbo.app/v1/docs`, source of truth `openapi/v1.json` in nubbo-backend).
+Official integrations built on the public Nubbo API (`/v1`). The reference is `https://api.nubbo.app/v1/docs` and the OpenAPI document `https://api.nubbo.app/v1/openapi.json`.
 
 | Folder | Integration | Published as |
 | --- | --- | --- |

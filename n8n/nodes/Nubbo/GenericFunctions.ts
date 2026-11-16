@@ -180,7 +180,7 @@ export function idempotencyKeyOf(this: IExecuteFunctions, itemIndex: number, ste
 		'n8n',
 		this.getExecutionId(),
 		this.getNode().id,
-		this.getExecuteData().runIndex ?? 0,
+		this.getWorkflowDataProxy(itemIndex).$thisRunIndex,
 		itemIndex,
 		step,
 	]
