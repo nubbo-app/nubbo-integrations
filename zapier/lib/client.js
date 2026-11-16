@@ -43,6 +43,21 @@ const bodyOf = (response) => {
   }
 };
 
+const secondsOf = (value, now) => {
+  const text = String(value ?? '').trim();
+  if (!text) return undefined;
+  if (/^\d+$/.test(text)) return Number(text);
+  const date = Date.parse(text);
+  return Number.isNaN(date) ? undefined : Math.ceil((date - now) / 1000);
+};
+
+const retryAfterOf = (response, now = Date.now()) => {
+  const seconds =
+    secondsOf(response.getHeader('retry-after'), now) ??
+    secondsOf(response.getHeader('x-ratelimit-reset'), now);
+  return seconds !== undefined && seconds > 0 ? seconds : DEFAULT_RETRY_AFTER_SECONDS;
+};
+
 const errorOf = (z, response) => {
   const body = bodyOf(response);
   const code = typeof body.code === 'string' ? body.code : `HTTP_${response.status}`;
@@ -53,11 +68,7 @@ const errorOf = (z, response) => {
   const text = requestId ? `${message} (${code}, request ${requestId})` : `${message} (${code})`;
   if (response.status === 401) return new z.errors.ExpiredAuthError(text);
   if (response.status === 429 && THROTTLE_CODES.includes(code)) {
-    const retryAfter = Number.parseInt(response.getHeader('retry-after'), 10);
-    return new z.errors.ThrottledError(
-      text,
-      Number.isFinite(retryAfter) && retryAfter > 0 ? retryAfter : DEFAULT_RETRY_AFTER_SECONDS,
-    );
+    return new z.errors.ThrottledError(text, retryAfterOf(response));
   }
   return new z.errors.Error(text, code, response.status);
 };
@@ -85,28 +96,14 @@ const nubboRequest = async (
   return bodyOf(response);
 };
 
-const canonical = (value) => {
-  if (Array.isArray(value)) return value.map(canonical);
-  if (value && typeof value === 'object') {
-    return Object.fromEntries(
-      Object.keys(value)
-        .sort()
-        .map((name) => [name, canonical(value[name])]),
-    );
-  }
-  return value;
-};
-
-const idempotencyKeyOf = (z, bundle, action, ...parts) =>
-  `zapier-${z.hash(
+const idempotencyKeyOf = (z, bundle, action, ...parts) => {
+  const guard = String(bundle.inputData?.duplicateGuard ?? '').trim();
+  if (!guard) return undefined;
+  return `zapier-${z.hash(
     'sha256',
-    JSON.stringify([
-      bundle.meta?.zap?.id ?? null,
-      action,
-      canonical(bundle.inputData ?? {}),
-      ...parts,
-    ]),
+    JSON.stringify([bundle.meta?.zap?.id ?? null, action, guard, ...parts]),
   )}`;
+};
 
 const flowOf = (bundle) => {
   const zapId = bundle.meta?.zap?.id;
@@ -161,5 +158,6 @@ module.exports = {
   listPage,
   nubboRequest,
   queryOf,
+  retryAfterOf,
   sameName,
 };

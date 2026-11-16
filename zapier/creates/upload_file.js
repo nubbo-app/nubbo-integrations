@@ -1,10 +1,24 @@
 'use strict';
 
 const { idPath, idempotencyKeyOf, nubboRequest } = require('../lib/client');
-const { bucketField, conflictChoices, conflictField, folderPathOf } = require('../lib/fields');
+const {
+  bucketField,
+  conflictChoices,
+  conflictField,
+  duplicateGuardField,
+  folderPathOf,
+} = require('../lib/fields');
 const { FILE_SAMPLE } = require('./files');
 
 const DEFAULT_CONTENT_TYPE = 'application/octet-stream';
+const MAX_UPLOAD_BYTES = 100 * 1024 * 1024;
+
+const tooLarge = (z) =>
+  new z.errors.Error(
+    'Zapier uploads files up to 100 MB; upload larger files in Nubbo or from your own code.',
+    'ZAPIER_FILE_TOO_LARGE',
+    413,
+  );
 
 const nameFromResponse = (response, url) => {
   const disposition = response.getHeader('content-disposition') ?? '';
@@ -22,11 +36,16 @@ const nameFromResponse = (response, url) => {
 const contentOf = async (z, value) => {
   const source = String(value ?? '');
   if (!/^https?:\/\//i.test(source)) {
-    return { buffer: Buffer.from(source, 'utf8'), name: '', contentType: 'text/plain' };
+    const buffer = Buffer.from(source, 'utf8');
+    if (buffer.length > MAX_UPLOAD_BYTES) throw tooLarge(z);
+    return { buffer, name: '', contentType: 'text/plain' };
   }
   const response = await z.request({ url: source, raw: true });
+  if (Number(response.getHeader('content-length')) > MAX_UPLOAD_BYTES) throw tooLarge(z);
+  const buffer = await response.buffer();
+  if (buffer.length > MAX_UPLOAD_BYTES) throw tooLarge(z);
   return {
-    buffer: await response.buffer(),
+    buffer,
     name: nameFromResponse(response, source),
     contentType: (response.getHeader('content-type') ?? '').split(';')[0].trim(),
   };
@@ -53,25 +72,8 @@ const perform = async (z, bundle) => {
       contentType: type,
       conflict,
     },
-    idempotencyKey: idempotencyKeyOf(
-      z,
-      bundle,
-      'upload_file',
-      'start',
-      z.hash('sha256', content.buffer.toString('base64')),
-    ),
+    idempotencyKey: idempotencyKeyOf(z, bundle, 'upload_file', 'start'),
   });
-  if (upload.multipart) {
-    await nubboRequest(z, bundle, {
-      method: 'DELETE',
-      path: `/v1/uploads/${idPath(upload.uploadId)}`,
-    });
-    throw new z.errors.Error(
-      'This file is too large to upload from Zapier; upload it in Nubbo or from your own code.',
-      'ZAPIER_FILE_TOO_LARGE',
-      413,
-    );
-  }
   const sent = await z.request({
     method: upload.method || 'PUT',
     url: upload.url,
@@ -110,7 +112,8 @@ module.exports = {
         label: 'File',
         type: 'file',
         required: true,
-        helpText: 'The file from an earlier step. Plain text is uploaded as a text file.',
+        helpText:
+          'The file from an earlier step, up to 100 MB. Plain text is uploaded as a text file.',
       },
       {
         key: 'folder',
@@ -133,6 +136,7 @@ module.exports = {
         'rename',
         'What to do when the folder already has a file with this name.',
       ),
+      duplicateGuardField,
     ],
     perform,
     sample: FILE_SAMPLE,

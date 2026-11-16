@@ -12,6 +12,7 @@ const {
   idempotencyKeyOf,
   nubboRequest,
   queryOf,
+  retryAfterOf,
 } = require('../lib/client');
 
 const fakeZ = (responses = []) => ({
@@ -46,18 +47,43 @@ test('query values drop empties and join lists', () => {
   assert.deepEqual(queryOf({ a: '', b: null, c: ['X', 'Y'], d: 0, e: [] }), { c: 'X,Y', d: '0' });
 });
 
-test('idempotency keys are stable for the same input and differ per call', () => {
+test('idempotency keys follow the duplicate guard only', () => {
   const z = fakeZ();
-  const reordered = { ...bundle, inputData: { a: [2, 3], b: 1 } };
+  const guarded = (inputData, zapId = '7') => ({
+    ...bundle,
+    inputData,
+    meta: { zap: { id: zapId } },
+  });
+  assert.equal(idempotencyKeyOf(z, guarded({ name: 'a' }), 'create_link'), undefined);
+  const first = idempotencyKeyOf(
+    z,
+    guarded({ duplicateGuard: 'item-1', name: 'a' }),
+    'create_link',
+  );
+  assert.match(first, /^zapier-[0-9a-f]{64}$/);
   assert.equal(
-    idempotencyKeyOf(z, bundle, 'create_link'),
-    idempotencyKeyOf(z, reordered, 'create_link'),
+    idempotencyKeyOf(z, guarded({ duplicateGuard: 'item-1', name: 'b' }), 'create_link'),
+    first,
+  );
+  assert.notEqual(idempotencyKeyOf(z, guarded({ duplicateGuard: 'item-2' }), 'create_link'), first);
+  assert.notEqual(
+    idempotencyKeyOf(z, guarded({ duplicateGuard: 'item-1' }, '8'), 'create_link'),
+    first,
   );
   assert.notEqual(
-    idempotencyKeyOf(z, bundle, 'upload_file', 'start'),
-    idempotencyKeyOf(z, bundle, 'upload_file', 'complete', 'u1'),
+    idempotencyKeyOf(z, guarded({ duplicateGuard: 'item-1' }), 'upload_file', 'start'),
+    idempotencyKeyOf(z, guarded({ duplicateGuard: 'item-1' }), 'upload_file', 'complete', 'u1'),
   );
-  assert.match(idempotencyKeyOf(z, bundle, 'create_link'), /^zapier-[0-9a-f]{64}$/);
+});
+
+test('Retry-After is read as seconds or as an HTTP date', () => {
+  const now = Date.parse('2026-11-16T10:00:00Z');
+  const response = (headers) => ({ getHeader: (name) => headers[name] });
+  assert.equal(retryAfterOf(response({ 'retry-after': '17' }), now), 17);
+  assert.equal(retryAfterOf(response({ 'retry-after': 'Mon, 16 Nov 2026 10:00:42 GMT' }), now), 42);
+  assert.equal(retryAfterOf(response({ 'x-ratelimit-reset': '30' }), now), 30);
+  assert.equal(retryAfterOf(response({ 'retry-after': 'Mon, 16 Nov 2026 09:00:00 GMT' }), now), 60);
+  assert.equal(retryAfterOf(response({}), now), 60);
 });
 
 test('each Zap polls as its own flow, and samples apart from live polls', () => {

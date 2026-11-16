@@ -55,7 +55,6 @@ const labelIdField = {
 
 const createFolder = createAction({
   key: 'create_folder',
-  idempotent: true,
   noun: 'Folder',
   label: 'Create Folder',
   description: 'Creates a folder in a bucket, with any missing parent folders.',

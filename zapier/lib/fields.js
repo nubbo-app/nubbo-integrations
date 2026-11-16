@@ -91,8 +91,16 @@ const folderPathOf = (value) => {
   return path && !path.endsWith('/') ? `${path}/` : path;
 };
 
+const duplicateGuardField = {
+  key: 'duplicateGuard',
+  label: 'Duplicate Guard',
+  helpText:
+    'Optional. Map a value that is unique to each run, such as the ID of the trigger item. If Zapier repeats this step for the same run within 24 hours, Nubbo returns what it created the first time instead of creating it again. Leave empty to create every time.',
+};
+
 module.exports = {
   booleanOf,
+  duplicateGuardField,
   bucketField,
   compact,
   conflictChoices,

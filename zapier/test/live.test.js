@@ -28,6 +28,11 @@ let server;
 
 before(async () => {
   server = http.createServer((request, response) => {
+    if (request.url === '/big') {
+      response.writeHead(200, { 'Content-Type': 'video/mp4', 'Content-Length': 200 * 1024 * 1024 });
+      response.write(Buffer.alloc(1024));
+      return;
+    }
     response.writeHead(200, {
       'Content-Type': 'text/plain',
       'Content-Disposition': 'attachment; filename="from-url.txt"',
@@ -37,7 +42,10 @@ before(async () => {
   await new Promise((resolve) => server.listen(0, '127.0.0.1', resolve));
 });
 
-after(() => server.close());
+after(() => {
+  server.closeAllConnections();
+  server.close();
+});
 
 test('the connection shows the space and the key', { skip }, async () => {
   const me = await appTester(App.authentication.test, bundleOf());
@@ -72,6 +80,20 @@ test('upload from a URL goes straight to the provider', { skip }, async () => {
   assert.equal(file.name, 'from-url.txt');
   assert.equal(file.size, content.length);
   state.fileId = file.id;
+});
+
+test('files above 100 MB fail before downloading', { skip }, async () => {
+  await assert.rejects(
+    appTester(
+      App.creates.upload_file.operation.perform,
+      bundleOf({
+        bucketId: state.bucketId,
+        file: `http://127.0.0.1:${server.address().port}/big`,
+        folder,
+      }),
+    ),
+    /ZAPIER_FILE_TOO_LARGE/,
+  );
 });
 
 test('plain text uploads as a text file', { skip }, async () => {
@@ -117,6 +139,19 @@ test('share links: create, find and pause', { skip }, async () => {
     bundleOf({ fileId: state.fileId, maxDownloads: '5', accessPhrase: 'open-sesame' }),
   );
   assert.equal(link.hasPassword, true);
+  const guarded = bundleOf({ fileId: state.fileId, duplicateGuard: `item-${run}` });
+  const first = await appTester(App.creates.create_link.operation.perform, guarded);
+  const retried = await appTester(App.creates.create_link.operation.perform, guarded);
+  assert.equal(retried.id, first.id, 'a retry of the same run replays the first link');
+  const nextRun = await appTester(
+    App.creates.create_link.operation.perform,
+    bundleOf({ fileId: state.fileId, duplicateGuard: `item-${run}-2` }),
+  );
+  assert.notEqual(nextRun.id, first.id, 'another run creates its own link');
+  const unguarded = bundleOf({ fileId: state.fileId });
+  const one = await appTester(App.creates.create_link.operation.perform, unguarded);
+  const two = await appTester(App.creates.create_link.operation.perform, unguarded);
+  assert.notEqual(two.id, one.id, 'without a guard every run creates');
   const found = await appTester(
     App.searches.find_link.operation.perform,
     bundleOf({ fileId: state.fileId }),
@@ -136,8 +171,6 @@ test('labels: find or create, then label a file', { skip }, async () => {
     [],
   );
   const label = await appTester(App.creates.create_label.operation.perform, bundleOf({ name }));
-  const replayed = await appTester(App.creates.create_label.operation.perform, bundleOf({ name }));
-  assert.equal(replayed.id, label.id, 'a retried create replays the first answer');
   const found = await appTester(
     App.searches.find_label.operation.perform,
     bundleOf({ name: name.toUpperCase() }),

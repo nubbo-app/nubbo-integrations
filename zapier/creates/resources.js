@@ -364,7 +364,6 @@ const updateGallery = createAction({
 
 const createLabel = createAction({
   key: 'create_label',
-  idempotent: true,
   noun: 'Label',
   label: 'Create Label',
   description: 'Creates a label. Needs a key that reads and writes the whole space.',
