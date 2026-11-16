@@ -1,0 +1,16 @@
+[
+	{
+		"name": "fileId",
+		"required": true,
+		"type": "text",
+		"label": "File or folder ID",
+		"help": "The ID of the file or folder, from a search, a list or a trigger."
+	},
+	{
+		"name": "labelId",
+		"required": true,
+		"type": "select",
+		"label": "Label",
+		"options": "rpc://listLabels"
+	}
+]

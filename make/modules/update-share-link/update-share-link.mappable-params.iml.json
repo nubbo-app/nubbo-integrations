@@ -1,0 +1,54 @@
+[
+	{
+		"name": "linkId",
+		"required": true,
+		"type": "select",
+		"label": "Share link",
+		"options": "rpc://listLinks"
+	},
+	{
+		"name": "active",
+		"type": "boolean",
+		"label": "Active",
+		"help": "false pauses the link"
+	},
+	{
+		"name": "password",
+		"type": "password",
+		"label": "Password",
+		"help": "null removes the password"
+	},
+	{
+		"name": "expiresAt",
+		"type": "date",
+		"label": "Expires at",
+		"help": "null removes the expiry"
+	},
+	{
+		"name": "maxDownloads",
+		"type": "uinteger",
+		"label": "Maximum downloads",
+		"help": "null removes the limit"
+	},
+	{
+		"name": "clear",
+		"type": "select",
+		"label": "Fields to clear",
+		"multiple": true,
+		"options": [
+			{
+				"label": "Password",
+				"value": "password"
+			},
+			{
+				"label": "Expires at",
+				"value": "expiresAt"
+			},
+			{
+				"label": "Maximum downloads",
+				"value": "maxDownloads"
+			}
+		],
+		"help": "The fields to empty. A field left blank above keeps its current value."
+	}
+]

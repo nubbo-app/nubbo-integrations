@@ -1,0 +1,87 @@
+[
+	{
+		"name": "kind",
+		"type": "select",
+		"label": "Kind",
+		"options": [
+			{
+				"label": "Inbox",
+				"value": "inbox"
+			},
+			{
+				"label": "Explorer",
+				"value": "explorer"
+			},
+			{
+				"label": "Shared",
+				"value": "shared"
+			}
+		],
+		"required": true
+	},
+	{
+		"name": "inboxId",
+		"type": "select",
+		"label": "File request",
+		"options": "rpc://listInboxes",
+		"help": "Inbox embeds: the file request"
+	},
+	{
+		"name": "linkId",
+		"type": "select",
+		"label": "Share link",
+		"options": "rpc://listLinks",
+		"help": "Shared embeds: the share link"
+	},
+	{
+		"name": "bucketId",
+		"type": "select",
+		"label": "Bucket",
+		"options": "rpc://listBuckets",
+		"help": "Explorer embeds: the bucket"
+	},
+	{
+		"name": "path",
+		"type": "text",
+		"label": "Path",
+		"help": "Explorer embeds: the folder shown. Leave it empty for the whole bucket."
+	},
+	{
+		"name": "name",
+		"type": "text",
+		"label": "Name"
+	},
+	{
+		"name": "allowedDomains",
+		"type": "array",
+		"label": "Allowed sites",
+		"spec": {
+			"type": "text",
+			"label": "Allowed site"
+		},
+		"help": "Sites allowed to show the embed; empty allows any site"
+	},
+	{
+		"name": "expiresAt",
+		"type": "date",
+		"label": "Expires at"
+	},
+	{
+		"name": "password",
+		"type": "password",
+		"label": "Password",
+		"help": "Explorer embeds only; null removes the password"
+	},
+	{
+		"name": "paused",
+		"type": "boolean",
+		"label": "Paused",
+		"help": "true pauses the embed"
+	},
+	{
+		"name": "config",
+		"type": "any",
+		"label": "Configuration",
+		"help": "The look and behaviour of the embed, as the builder in Nubbo saves it. Optional: anything left out keeps the default of the kind, and a partial object is merged over it."
+	}
+]

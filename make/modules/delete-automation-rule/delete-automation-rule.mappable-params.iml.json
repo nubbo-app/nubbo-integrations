@@ -1,0 +1,9 @@
+[
+	{
+		"name": "ruleId",
+		"required": true,
+		"type": "select",
+		"label": "Automation rule",
+		"options": "rpc://listAutomations"
+	}
+]

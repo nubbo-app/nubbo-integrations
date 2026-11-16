@@ -1,0 +1,26 @@
+[
+	{
+		"name": "name",
+		"type": "text",
+		"label": "Name",
+		"required": true
+	},
+	{
+		"name": "color",
+		"type": "text",
+		"label": "Color",
+		"help": "Hex colour; a palette colour is picked when it is left out"
+	},
+	{
+		"name": "description",
+		"type": "text",
+		"label": "Description"
+	},
+	{
+		"name": "groupId",
+		"type": "select",
+		"label": "Label group",
+		"options": "rpc://listLabelGroups",
+		"help": "A label group of the space (GET /v1/label-groups)"
+	}
+]

@@ -1,0 +1,37 @@
+[
+	{
+		"name": "id",
+		"label": "ID",
+		"type": "text"
+	},
+	{
+		"name": "name",
+		"label": "Name",
+		"type": "text"
+	},
+	{
+		"name": "provider",
+		"label": "Provider",
+		"type": "text"
+	},
+	{
+		"name": "region",
+		"label": "Region",
+		"type": "text"
+	},
+	{
+		"name": "encrypted",
+		"label": "Encrypted",
+		"type": "boolean"
+	},
+	{
+		"name": "wholeBucket",
+		"label": "Whole bucket",
+		"type": "boolean"
+	},
+	{
+		"name": "blocked",
+		"label": "Blocked",
+		"type": "boolean"
+	}
+]

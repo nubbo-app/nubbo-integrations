@@ -1,0 +1,46 @@
+[
+	{
+		"url": "/files/{{parameters.fileId}}",
+		"method": "GET",
+		"headers": {
+			"Authorization": "Bearer {{connection.apiKey}}"
+		},
+		"response": {
+			"temp": {
+				"file": "{{body}}"
+			}
+		}
+	},
+	{
+		"url": "/files/{{parameters.fileId}}/download-link",
+		"method": "POST",
+		"headers": {
+			"Authorization": "Bearer {{connection.apiKey}}"
+		},
+		"body": {
+			"expiresIn": 300
+		},
+		"response": {
+			"temp": {
+				"url": "{{body.url}}"
+			}
+		}
+	},
+	{
+		"url": "{{temp.url}}",
+		"encodeUrl": false,
+		"method": "GET",
+		"response": {
+			"type": "binary",
+			"output": {
+				"fileName": "{{temp.file.name}}",
+				"data": "{{body}}",
+				"id": "{{temp.file.id}}",
+				"bucketId": "{{temp.file.bucketId}}",
+				"path": "{{temp.file.path}}",
+				"size": "{{temp.file.size}}",
+				"mimeType": "{{temp.file.mimeType}}"
+			}
+		}
+	}
+]

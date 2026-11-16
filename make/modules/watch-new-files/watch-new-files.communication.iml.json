@@ -1,0 +1,27 @@
+{
+	"url": "/triggers/new-files",
+	"method": "GET",
+	"headers": {
+		"Authorization": "Bearer {{connection.apiKey}}",
+		"X-Nubbo-Flow": "make:{{scenario.id}}"
+	},
+	"qs": {
+		"bucketId": "{{ifempty(parameters.bucketId, undefined)}}",
+		"prefix": "{{ifempty(parameters.prefix, undefined)}}",
+		"since": "{{if(contains(ifempty(data.lastId, emptystring), '|'), last(split(data.lastId, '|')), undefined)}}"
+	},
+	"response": {
+		"iterate": "{{body.data}}",
+		"output": {
+			"{{...}}": "{{item}}",
+			"madeByThisKey": "{{item.actor.apiKey.id == connection.keyId}}"
+		},
+		"limit": 100,
+		"trigger": {
+			"type": "date",
+			"order": "unordered",
+			"id": "{{item.id}}|{{body.nextCursor}}",
+			"date": "{{if(contains(ifempty(data.lastId, emptystring), '|'), now, item.occurredAt)}}"
+		}
+	}
+}

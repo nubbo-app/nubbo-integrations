@@ -1,0 +1,13 @@
+{
+	"url": "/labels/{{parameters.labelId}}/merge",
+	"method": "POST",
+	"headers": {
+		"Authorization": "Bearer {{connection.apiKey}}"
+	},
+	"body": {
+		"intoId": "{{ifempty(parameters.intoId, undefined)}}"
+	},
+	"response": {
+		"output": "{{body}}"
+	}
+}

@@ -1,0 +1,32 @@
+[
+	{
+		"name": "status",
+		"type": "text",
+		"label": "Status"
+	},
+	{
+		"name": "moved",
+		"type": "number",
+		"label": "Moved"
+	},
+	{
+		"name": "skipped",
+		"type": "number",
+		"label": "Skipped"
+	},
+	{
+		"name": "failed",
+		"type": "number",
+		"label": "Failed"
+	},
+	{
+		"name": "failedCodes",
+		"type": "any",
+		"label": "Failed codes"
+	},
+	{
+		"name": "operationId",
+		"type": "text",
+		"label": "Operation ID"
+	}
+]

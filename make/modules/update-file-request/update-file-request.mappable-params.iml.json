@@ -1,0 +1,117 @@
+[
+	{
+		"name": "inboxId",
+		"required": true,
+		"type": "select",
+		"label": "File request",
+		"options": "rpc://listInboxes"
+	},
+	{
+		"name": "name",
+		"type": "text",
+		"label": "Name"
+	},
+	{
+		"name": "description",
+		"type": "text",
+		"label": "Description"
+	},
+	{
+		"name": "path",
+		"type": "text",
+		"label": "Path",
+		"help": "The folder uploads land in; empty for the root of the bucket"
+	},
+	{
+		"name": "password",
+		"type": "password",
+		"label": "Password",
+		"help": "null removes the password"
+	},
+	{
+		"name": "expiresAt",
+		"type": "date",
+		"label": "Expires at"
+	},
+	{
+		"name": "maxFileSize",
+		"type": "uinteger",
+		"label": "Maximum file size (bytes)",
+		"help": "Bytes per file; null removes the limit"
+	},
+	{
+		"name": "allowedFileTypes",
+		"type": "array",
+		"label": "Allowed file extensions",
+		"spec": {
+			"type": "text",
+			"label": "Allowed file extension"
+		},
+		"help": "File extensions accepted; empty accepts every type"
+	},
+	{
+		"name": "maxUploads",
+		"type": "uinteger",
+		"label": "Maximum uploads",
+		"help": "null removes the limit"
+	},
+	{
+		"name": "visitorIdentity",
+		"type": "select",
+		"label": "Ask senders who they are",
+		"options": [
+			{
+				"label": "Required",
+				"value": "required"
+			},
+			{
+				"label": "Optional",
+				"value": "optional"
+			},
+			{
+				"label": "None",
+				"value": "none"
+			}
+		],
+		"help": "Ask senders for their name and email: required, optional or none"
+	},
+	{
+		"name": "active",
+		"type": "boolean",
+		"label": "Active",
+		"help": "false closes the inbox; true reopens it"
+	},
+	{
+		"name": "clear",
+		"type": "select",
+		"label": "Fields to clear",
+		"multiple": true,
+		"options": [
+			{
+				"label": "Description",
+				"value": "description"
+			},
+			{
+				"label": "Password",
+				"value": "password"
+			},
+			{
+				"label": "Expires at",
+				"value": "expiresAt"
+			},
+			{
+				"label": "Maximum file size (bytes)",
+				"value": "maxFileSize"
+			},
+			{
+				"label": "Allowed file extensions",
+				"value": "allowedFileTypes"
+			},
+			{
+				"label": "Maximum uploads",
+				"value": "maxUploads"
+			}
+		],
+		"help": "The fields to empty. A field left blank above keeps its current value."
+	}
+]

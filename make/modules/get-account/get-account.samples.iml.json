@@ -1,0 +1,38 @@
+{
+	"workspace": {
+		"id": "0193a1b2-c3d4-7e5f-8a9b-0c1d2e3f4a5b",
+		"name": "Estudio Norte",
+		"kind": "TEAM"
+	},
+	"plan": "PRO",
+	"key": {
+		"id": "0193a1b2-c3d4-7e5f-8a9b-0c1d2e3f4a5d",
+		"name": "Invoices to Drive",
+		"prefix": "nbk_3jKF3m",
+		"access": "WRITE",
+		"allResources": false,
+		"reach": [
+			{
+				"kind": "bucket",
+				"id": "0193a1b2-c3d4-7e5f-8a9b-0c1d2e3f4a5c",
+				"name": "Clientes"
+			}
+		],
+		"expiresAt": "2027-11-13T18:07:24.249Z"
+	},
+	"quota": {
+		"periodStart": "2026-11-03T00:00:00.000Z",
+		"periodEnd": "2026-12-03T00:00:00.000Z",
+		"requests": {
+			"used": 1250,
+			"limit": 50000,
+			"remaining": 48750
+		},
+		"events": {
+			"used": 1250,
+			"limit": 50000,
+			"remaining": 48750
+		},
+		"ratePerMinute": 60
+	}
+}

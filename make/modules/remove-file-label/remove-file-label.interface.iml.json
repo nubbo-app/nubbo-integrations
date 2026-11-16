@@ -1,0 +1,15 @@
+[
+	{
+		"name": "fileId",
+		"label": "File or folder ID",
+		"type": "text"
+	},
+	{
+		"name": "labelIds",
+		"label": "Labels",
+		"type": "array",
+		"spec": {
+			"type": "text"
+		}
+	}
+]

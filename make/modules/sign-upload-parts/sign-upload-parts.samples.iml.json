@@ -1,0 +1,10 @@
+{
+	"uploadId": "dXBsb2FkLXRva2Vu",
+	"parts": [
+		{
+			"partNumber": 1,
+			"url": "https://facturas.example.com/video.mp4?partNumber=1&uploadId=…&X-Amz-Signature=…"
+		}
+	],
+	"expiresAt": "2026-11-13T19:00:00.000Z"
+}

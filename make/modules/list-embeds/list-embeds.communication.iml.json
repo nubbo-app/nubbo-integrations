@@ -1,0 +1,26 @@
+{
+	"url": "/embeds",
+	"method": "GET",
+	"headers": {
+		"Authorization": "Bearer {{connection.apiKey}}"
+	},
+	"qs": {
+		"kind": "{{ifempty(parameters.kind, undefined)}}",
+		"status": "{{ifempty(parameters.status, undefined)}}",
+		"limit": 100
+	},
+	"response": {
+		"iterate": "{{body.data}}",
+		"output": "{{item}}",
+		"limit": "{{parameters.limit}}"
+	},
+	"pagination": {
+		"qs": {
+			"kind": "{{ifempty(parameters.kind, undefined)}}",
+			"status": "{{ifempty(parameters.status, undefined)}}",
+			"limit": 100,
+			"cursor": "{{body.nextCursor}}"
+		},
+		"condition": "{{body.nextCursor}}"
+	}
+}

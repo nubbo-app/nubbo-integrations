@@ -1,0 +1,9 @@
+[
+	{
+		"name": "fileId",
+		"type": "text",
+		"label": "File ID",
+		"required": true,
+		"help": "The ID of the file, from a search, a list or a trigger."
+	}
+]

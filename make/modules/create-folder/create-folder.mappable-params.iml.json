@@ -1,0 +1,36 @@
+[
+	{
+		"name": "bucketId",
+		"required": true,
+		"type": "select",
+		"label": "Bucket",
+		"options": "rpc://listBuckets"
+	},
+	{
+		"name": "path",
+		"type": "text",
+		"label": "Path",
+		"required": true,
+		"help": "The folder to create; missing parent folders are created with it"
+	},
+	{
+		"name": "conflict",
+		"type": "select",
+		"label": "If the name is taken",
+		"options": [
+			{
+				"label": "Fail",
+				"value": "fail"
+			},
+			{
+				"label": "Rename",
+				"value": "rename"
+			},
+			{
+				"label": "Skip",
+				"value": "skip"
+			}
+		],
+		"help": "When the folder exists: fail answers API_NAME_TAKEN, rename creates «name (1)», skip returns the existing folder (also from the trash, with trashedAt set)"
+	}
+]

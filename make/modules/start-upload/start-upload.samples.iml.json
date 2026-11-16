@@ -1,0 +1,11 @@
+{
+	"uploadId": "dXBsb2FkLXRva2Vu",
+	"bucketId": "0193a1b2-c3d4-7e5f-8a9b-0c1d2e3f4a60",
+	"path": "invoices/2026/11/invoice-0042.pdf",
+	"multipart": false,
+	"method": "PUT",
+	"url": "https://facturas.example.com/invoices/2026/11/invoice-0042.pdf?X-Amz-Signature=…",
+	"partSize": 16777216,
+	"totalParts": 640,
+	"expiresAt": "2026-11-13T19:00:00.000Z"
+}

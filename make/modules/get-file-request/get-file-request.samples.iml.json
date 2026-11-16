@@ -1,0 +1,22 @@
+{
+	"id": "0193a1b2-c3d4-7e5f-8a9b-0c1d2e3f4a90",
+	"encrypted": false,
+	"bucketAvailable": true,
+	"name": "Invoices from Acme",
+	"description": "Send this month’s invoices here",
+	"bucketId": "0193a1b2-c3d4-7e5f-8a9b-0c1d2e3f4a60",
+	"path": "inbox/acme/",
+	"url": "https://app.nubbo.app/r/Yh7Lm2",
+	"status": "active",
+	"hasPassword": false,
+	"maxFileSize": 104857600,
+	"allowedFileTypes": [
+		"pdf"
+	],
+	"maxUploads": null,
+	"uploadCount": 3,
+	"visitorIdentity": "none",
+	"expiresAt": null,
+	"createdAt": "2026-11-14T09:00:00.000Z",
+	"updatedAt": "2026-11-14T09:00:00.000Z"
+}

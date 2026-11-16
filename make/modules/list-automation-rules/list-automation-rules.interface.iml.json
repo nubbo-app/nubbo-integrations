@@ -1,0 +1,111 @@
+[
+	{
+		"name": "id",
+		"label": "ID",
+		"type": "text"
+	},
+	{
+		"name": "name",
+		"label": "Name",
+		"type": "text"
+	},
+	{
+		"name": "isActive",
+		"label": "Active",
+		"type": "boolean"
+	},
+	{
+		"name": "pausedReason",
+		"label": "Paused reason",
+		"type": "text"
+	},
+	{
+		"name": "trigger",
+		"label": "Trigger",
+		"type": "text"
+	},
+	{
+		"name": "action",
+		"label": "Action",
+		"type": "text"
+	},
+	{
+		"name": "bucketId",
+		"label": "Bucket ID",
+		"type": "text"
+	},
+	{
+		"name": "folderPrefix",
+		"label": "Folder",
+		"type": "text"
+	},
+	{
+		"name": "fileRequestId",
+		"label": "File request ID",
+		"type": "text"
+	},
+	{
+		"name": "destinationFolder",
+		"label": "Destination folder",
+		"type": "text"
+	},
+	{
+		"name": "routeConfig",
+		"label": "Route config",
+		"type": "collection",
+		"spec": [
+			{
+				"name": "categories",
+				"label": "Categories",
+				"type": "array",
+				"spec": [
+					{
+						"name": "name",
+						"label": "Name",
+						"type": "text"
+					},
+					{
+						"name": "folder",
+						"label": "Folder",
+						"type": "text"
+					}
+				]
+			},
+			{
+				"name": "fallbackFolder",
+				"label": "Fallback folder",
+				"type": "text"
+			},
+			{
+				"name": "rename",
+				"label": "Rename",
+				"type": "boolean"
+			},
+			{
+				"name": "tag",
+				"label": "Tag",
+				"type": "boolean"
+			}
+		]
+	},
+	{
+		"name": "usesAi",
+		"label": "Uses ai",
+		"type": "boolean"
+	},
+	{
+		"name": "apiKeyId",
+		"label": "API key ID",
+		"type": "text"
+	},
+	{
+		"name": "lastRunAt",
+		"label": "Last run at",
+		"type": "date"
+	},
+	{
+		"name": "createdAt",
+		"label": "Created at",
+		"type": "date"
+	}
+]

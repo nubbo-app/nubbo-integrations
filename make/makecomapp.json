@@ -1,0 +1,1127 @@
+{
+	"fileVersion": 1,
+	"generalCodeFiles": {
+		"base": "general/base.iml.json",
+		"common": null,
+		"readme": "general/readme.md",
+		"groups": "modules/groups.json"
+	},
+	"components": {
+		"connection": {
+			"nubbo": {
+				"label": "Nubbo",
+				"connectionType": "basic",
+				"codeFiles": {
+					"communication": "connections/nubbo/nubbo.communication.iml.json",
+					"params": "connections/nubbo/nubbo.params.iml.json",
+					"common": null
+				}
+			}
+		},
+		"webhook": {},
+		"module": {
+			"watchNewFiles": {
+				"label": "Watch New Files",
+				"description": "Triggers when a file is uploaded to Nubbo, through the app, a file request, an embed or the API.",
+				"moduleType": "trigger",
+				"connection": "nubbo",
+				"altConnection": null,
+				"codeFiles": {
+					"communication": "modules/watch-new-files/watch-new-files.communication.iml.json",
+					"epoch": "modules/watch-new-files/watch-new-files.epoch.iml.json",
+					"staticParams": "modules/watch-new-files/watch-new-files.static-params.iml.json",
+					"mappableParams": "modules/watch-new-files/watch-new-files.mappable-params.iml.json",
+					"interface": "modules/watch-new-files/watch-new-files.interface.iml.json",
+					"samples": "modules/watch-new-files/watch-new-files.samples.iml.json",
+					"scope": "modules/watch-new-files/watch-new-files.scope.iml.json"
+				}
+			},
+			"watchNewInboxUploads": {
+				"label": "Watch New File Request Uploads",
+				"description": "Triggers when someone uploads a file through a file request.",
+				"moduleType": "trigger",
+				"connection": "nubbo",
+				"altConnection": null,
+				"codeFiles": {
+					"communication": "modules/watch-new-inbox-uploads/watch-new-inbox-uploads.communication.iml.json",
+					"epoch": "modules/watch-new-inbox-uploads/watch-new-inbox-uploads.epoch.iml.json",
+					"staticParams": "modules/watch-new-inbox-uploads/watch-new-inbox-uploads.static-params.iml.json",
+					"mappableParams": "modules/watch-new-inbox-uploads/watch-new-inbox-uploads.mappable-params.iml.json",
+					"interface": "modules/watch-new-inbox-uploads/watch-new-inbox-uploads.interface.iml.json",
+					"samples": "modules/watch-new-inbox-uploads/watch-new-inbox-uploads.samples.iml.json",
+					"scope": "modules/watch-new-inbox-uploads/watch-new-inbox-uploads.scope.iml.json"
+				}
+			},
+			"watchNewActivity": {
+				"label": "Watch New Activity",
+				"description": "Triggers when something happens in the space: files, folders, trash, labels, share links, file requests, galleries, embeds and automation rules.",
+				"moduleType": "trigger",
+				"connection": "nubbo",
+				"altConnection": null,
+				"codeFiles": {
+					"communication": "modules/watch-new-activity/watch-new-activity.communication.iml.json",
+					"epoch": "modules/watch-new-activity/watch-new-activity.epoch.iml.json",
+					"staticParams": "modules/watch-new-activity/watch-new-activity.static-params.iml.json",
+					"mappableParams": "modules/watch-new-activity/watch-new-activity.mappable-params.iml.json",
+					"interface": "modules/watch-new-activity/watch-new-activity.interface.iml.json",
+					"samples": "modules/watch-new-activity/watch-new-activity.samples.iml.json",
+					"scope": "modules/watch-new-activity/watch-new-activity.scope.iml.json"
+				}
+			},
+			"listFiles": {
+				"label": "List Files in a Folder",
+				"description": "Lists the files and folders in a folder of a bucket.",
+				"moduleType": "search",
+				"connection": "nubbo",
+				"altConnection": null,
+				"codeFiles": {
+					"communication": "modules/list-files/list-files.communication.iml.json",
+					"staticParams": "modules/list-files/list-files.static-params.iml.json",
+					"mappableParams": "modules/list-files/list-files.mappable-params.iml.json",
+					"interface": "modules/list-files/list-files.interface.iml.json",
+					"samples": "modules/list-files/list-files.samples.iml.json",
+					"scope": "modules/list-files/list-files.scope.iml.json"
+				}
+			},
+			"searchFiles": {
+				"label": "Search Files",
+				"description": "Searches files and folders by name, kind, extension, labels, size and date.",
+				"moduleType": "search",
+				"connection": "nubbo",
+				"altConnection": null,
+				"codeFiles": {
+					"communication": "modules/search-files/search-files.communication.iml.json",
+					"staticParams": "modules/search-files/search-files.static-params.iml.json",
+					"mappableParams": "modules/search-files/search-files.mappable-params.iml.json",
+					"interface": "modules/search-files/search-files.interface.iml.json",
+					"samples": "modules/search-files/search-files.samples.iml.json",
+					"scope": "modules/search-files/search-files.scope.iml.json"
+				}
+			},
+			"getFile": {
+				"label": "Get a File or Folder",
+				"description": "Gets the details of a file or a folder.",
+				"moduleType": "action",
+				"actionCrud": "read",
+				"connection": "nubbo",
+				"altConnection": null,
+				"codeFiles": {
+					"communication": "modules/get-file/get-file.communication.iml.json",
+					"staticParams": "modules/get-file/get-file.static-params.iml.json",
+					"mappableParams": "modules/get-file/get-file.mappable-params.iml.json",
+					"interface": "modules/get-file/get-file.interface.iml.json",
+					"samples": "modules/get-file/get-file.samples.iml.json",
+					"scope": "modules/get-file/get-file.scope.iml.json"
+				}
+			},
+			"createFolder": {
+				"label": "Create a Folder",
+				"description": "Creates a folder, and any missing parent folders.",
+				"moduleType": "action",
+				"actionCrud": "create",
+				"connection": "nubbo",
+				"altConnection": null,
+				"codeFiles": {
+					"communication": "modules/create-folder/create-folder.communication.iml.json",
+					"staticParams": "modules/create-folder/create-folder.static-params.iml.json",
+					"mappableParams": "modules/create-folder/create-folder.mappable-params.iml.json",
+					"interface": "modules/create-folder/create-folder.interface.iml.json",
+					"samples": "modules/create-folder/create-folder.samples.iml.json",
+					"scope": "modules/create-folder/create-folder.scope.iml.json"
+				}
+			},
+			"renameFile": {
+				"label": "Rename a File or Folder",
+				"description": "Renames a file or a folder. A large folder rename runs in the background and returns an operation.",
+				"moduleType": "action",
+				"actionCrud": "update",
+				"connection": "nubbo",
+				"altConnection": null,
+				"codeFiles": {
+					"communication": "modules/rename-file/rename-file.communication.iml.json",
+					"staticParams": "modules/rename-file/rename-file.static-params.iml.json",
+					"mappableParams": "modules/rename-file/rename-file.mappable-params.iml.json",
+					"interface": "modules/rename-file/rename-file.interface.iml.json",
+					"samples": "modules/rename-file/rename-file.samples.iml.json",
+					"scope": "modules/rename-file/rename-file.scope.iml.json"
+				}
+			},
+			"moveFiles": {
+				"label": "Move Files and Folders",
+				"description": "Moves files and folders to a folder, in the same bucket or another one. Large moves run in the background and return an operation.",
+				"moduleType": "action",
+				"actionCrud": "update",
+				"connection": "nubbo",
+				"altConnection": null,
+				"codeFiles": {
+					"communication": "modules/move-files/move-files.communication.iml.json",
+					"staticParams": "modules/move-files/move-files.static-params.iml.json",
+					"mappableParams": "modules/move-files/move-files.mappable-params.iml.json",
+					"interface": "modules/move-files/move-files.interface.iml.json",
+					"samples": "modules/move-files/move-files.samples.iml.json",
+					"scope": "modules/move-files/move-files.scope.iml.json"
+				}
+			},
+			"getOperation": {
+				"label": "Get an Operation",
+				"description": "Gets the progress of a move or a rename that runs in the background.",
+				"moduleType": "action",
+				"actionCrud": "read",
+				"connection": "nubbo",
+				"altConnection": null,
+				"codeFiles": {
+					"communication": "modules/get-operation/get-operation.communication.iml.json",
+					"staticParams": "modules/get-operation/get-operation.static-params.iml.json",
+					"mappableParams": "modules/get-operation/get-operation.mappable-params.iml.json",
+					"interface": "modules/get-operation/get-operation.interface.iml.json",
+					"samples": "modules/get-operation/get-operation.samples.iml.json",
+					"scope": "modules/get-operation/get-operation.scope.iml.json"
+				}
+			},
+			"getDownloadLink": {
+				"label": "Get a Download Link",
+				"description": "Creates a temporary link that downloads a file straight from the storage provider.",
+				"moduleType": "action",
+				"actionCrud": "read",
+				"connection": "nubbo",
+				"altConnection": null,
+				"codeFiles": {
+					"communication": "modules/get-download-link/get-download-link.communication.iml.json",
+					"staticParams": "modules/get-download-link/get-download-link.static-params.iml.json",
+					"mappableParams": "modules/get-download-link/get-download-link.mappable-params.iml.json",
+					"interface": "modules/get-download-link/get-download-link.interface.iml.json",
+					"samples": "modules/get-download-link/get-download-link.samples.iml.json",
+					"scope": "modules/get-download-link/get-download-link.scope.iml.json"
+				}
+			},
+			"addFileLabel": {
+				"label": "Add a Label to a File",
+				"description": "Adds a label to a file or a folder.",
+				"moduleType": "action",
+				"actionCrud": "update",
+				"connection": "nubbo",
+				"altConnection": null,
+				"codeFiles": {
+					"communication": "modules/add-file-label/add-file-label.communication.iml.json",
+					"staticParams": "modules/add-file-label/add-file-label.static-params.iml.json",
+					"mappableParams": "modules/add-file-label/add-file-label.mappable-params.iml.json",
+					"interface": "modules/add-file-label/add-file-label.interface.iml.json",
+					"samples": "modules/add-file-label/add-file-label.samples.iml.json",
+					"scope": "modules/add-file-label/add-file-label.scope.iml.json"
+				}
+			},
+			"removeFileLabel": {
+				"label": "Remove a Label from a File",
+				"description": "Removes a label from a file or a folder.",
+				"moduleType": "action",
+				"actionCrud": "update",
+				"connection": "nubbo",
+				"altConnection": null,
+				"codeFiles": {
+					"communication": "modules/remove-file-label/remove-file-label.communication.iml.json",
+					"staticParams": "modules/remove-file-label/remove-file-label.static-params.iml.json",
+					"mappableParams": "modules/remove-file-label/remove-file-label.mappable-params.iml.json",
+					"interface": "modules/remove-file-label/remove-file-label.interface.iml.json",
+					"samples": "modules/remove-file-label/remove-file-label.samples.iml.json",
+					"scope": "modules/remove-file-label/remove-file-label.scope.iml.json"
+				}
+			},
+			"uploadFile": {
+				"label": "Upload a File",
+				"description": "Uploads a file straight to the storage provider of a bucket. Files up to 5 GB.",
+				"moduleType": "action",
+				"actionCrud": "create",
+				"connection": "nubbo",
+				"altConnection": null,
+				"codeFiles": {
+					"communication": "modules/upload-file/upload-file.communication.iml.json",
+					"staticParams": "modules/upload-file/upload-file.static-params.iml.json",
+					"mappableParams": "modules/upload-file/upload-file.mappable-params.iml.json",
+					"interface": "modules/upload-file/upload-file.interface.iml.json",
+					"samples": "modules/upload-file/upload-file.samples.iml.json",
+					"scope": "modules/upload-file/upload-file.scope.iml.json"
+				}
+			},
+			"downloadFile": {
+				"label": "Download a File",
+				"description": "Downloads a file straight from the storage provider of its bucket.",
+				"moduleType": "action",
+				"actionCrud": "read",
+				"connection": "nubbo",
+				"altConnection": null,
+				"codeFiles": {
+					"communication": "modules/download-file/download-file.communication.iml.json",
+					"staticParams": "modules/download-file/download-file.static-params.iml.json",
+					"mappableParams": "modules/download-file/download-file.mappable-params.iml.json",
+					"interface": "modules/download-file/download-file.interface.iml.json",
+					"samples": "modules/download-file/download-file.samples.iml.json",
+					"scope": "modules/download-file/download-file.scope.iml.json"
+				}
+			},
+			"startUpload": {
+				"label": "Start an Upload",
+				"description": "Starts an upload and returns the presigned URL, or the part size and count of a multipart upload. Send the bytes yourself, then complete it.",
+				"moduleType": "action",
+				"actionCrud": "create",
+				"connection": "nubbo",
+				"altConnection": null,
+				"codeFiles": {
+					"communication": "modules/start-upload/start-upload.communication.iml.json",
+					"staticParams": "modules/start-upload/start-upload.static-params.iml.json",
+					"mappableParams": "modules/start-upload/start-upload.mappable-params.iml.json",
+					"interface": "modules/start-upload/start-upload.interface.iml.json",
+					"samples": "modules/start-upload/start-upload.samples.iml.json",
+					"scope": "modules/start-upload/start-upload.scope.iml.json"
+				}
+			},
+			"signUploadParts": {
+				"label": "Sign Upload Parts",
+				"description": "Returns presigned URLs for parts of a multipart upload.",
+				"moduleType": "action",
+				"actionCrud": "create",
+				"connection": "nubbo",
+				"altConnection": null,
+				"codeFiles": {
+					"communication": "modules/sign-upload-parts/sign-upload-parts.communication.iml.json",
+					"staticParams": "modules/sign-upload-parts/sign-upload-parts.static-params.iml.json",
+					"mappableParams": "modules/sign-upload-parts/sign-upload-parts.mappable-params.iml.json",
+					"interface": "modules/sign-upload-parts/sign-upload-parts.interface.iml.json",
+					"samples": "modules/sign-upload-parts/sign-upload-parts.samples.iml.json",
+					"scope": "modules/sign-upload-parts/sign-upload-parts.scope.iml.json"
+				}
+			},
+			"completeUpload": {
+				"label": "Complete an Upload",
+				"description": "Completes an upload once its bytes are at the provider, and returns the file.",
+				"moduleType": "action",
+				"actionCrud": "create",
+				"connection": "nubbo",
+				"altConnection": null,
+				"codeFiles": {
+					"communication": "modules/complete-upload/complete-upload.communication.iml.json",
+					"staticParams": "modules/complete-upload/complete-upload.static-params.iml.json",
+					"mappableParams": "modules/complete-upload/complete-upload.mappable-params.iml.json",
+					"interface": "modules/complete-upload/complete-upload.interface.iml.json",
+					"samples": "modules/complete-upload/complete-upload.samples.iml.json",
+					"scope": "modules/complete-upload/complete-upload.scope.iml.json"
+				}
+			},
+			"abortUpload": {
+				"label": "Abort a Multipart Upload",
+				"description": "Aborts a multipart upload and frees its parts at the provider.",
+				"moduleType": "action",
+				"actionCrud": "delete",
+				"connection": "nubbo",
+				"altConnection": null,
+				"codeFiles": {
+					"communication": "modules/abort-upload/abort-upload.communication.iml.json",
+					"staticParams": "modules/abort-upload/abort-upload.static-params.iml.json",
+					"mappableParams": "modules/abort-upload/abort-upload.mappable-params.iml.json",
+					"interface": "modules/abort-upload/abort-upload.interface.iml.json",
+					"samples": "modules/abort-upload/abort-upload.samples.iml.json",
+					"scope": "modules/abort-upload/abort-upload.scope.iml.json"
+				}
+			},
+			"trashFiles": {
+				"label": "Move Files to the Trash",
+				"description": "Moves files and folders to the trash.",
+				"moduleType": "action",
+				"actionCrud": "delete",
+				"connection": "nubbo",
+				"altConnection": null,
+				"codeFiles": {
+					"communication": "modules/trash-files/trash-files.communication.iml.json",
+					"staticParams": "modules/trash-files/trash-files.static-params.iml.json",
+					"mappableParams": "modules/trash-files/trash-files.mappable-params.iml.json",
+					"interface": "modules/trash-files/trash-files.interface.iml.json",
+					"samples": "modules/trash-files/trash-files.samples.iml.json",
+					"scope": "modules/trash-files/trash-files.scope.iml.json"
+				}
+			},
+			"restoreFiles": {
+				"label": "Restore Files from the Trash",
+				"description": "Restores files and folders from the trash.",
+				"moduleType": "action",
+				"actionCrud": "update",
+				"connection": "nubbo",
+				"altConnection": null,
+				"codeFiles": {
+					"communication": "modules/restore-files/restore-files.communication.iml.json",
+					"staticParams": "modules/restore-files/restore-files.static-params.iml.json",
+					"mappableParams": "modules/restore-files/restore-files.mappable-params.iml.json",
+					"interface": "modules/restore-files/restore-files.interface.iml.json",
+					"samples": "modules/restore-files/restore-files.samples.iml.json",
+					"scope": "modules/restore-files/restore-files.scope.iml.json"
+				}
+			},
+			"listTrash": {
+				"label": "List the Trash",
+				"description": "Lists the files and folders in the trash.",
+				"moduleType": "search",
+				"connection": "nubbo",
+				"altConnection": null,
+				"codeFiles": {
+					"communication": "modules/list-trash/list-trash.communication.iml.json",
+					"staticParams": "modules/list-trash/list-trash.static-params.iml.json",
+					"mappableParams": "modules/list-trash/list-trash.mappable-params.iml.json",
+					"interface": "modules/list-trash/list-trash.interface.iml.json",
+					"samples": "modules/list-trash/list-trash.samples.iml.json",
+					"scope": "modules/list-trash/list-trash.scope.iml.json"
+				}
+			},
+			"listLabels": {
+				"label": "List Labels",
+				"description": "Lists the labels of the space.",
+				"moduleType": "search",
+				"connection": "nubbo",
+				"altConnection": null,
+				"codeFiles": {
+					"communication": "modules/list-labels/list-labels.communication.iml.json",
+					"staticParams": "modules/list-labels/list-labels.static-params.iml.json",
+					"mappableParams": "modules/list-labels/list-labels.mappable-params.iml.json",
+					"interface": "modules/list-labels/list-labels.interface.iml.json",
+					"samples": "modules/list-labels/list-labels.samples.iml.json",
+					"scope": "modules/list-labels/list-labels.scope.iml.json"
+				}
+			},
+			"createLabel": {
+				"label": "Create a Label",
+				"description": "Creates a label. Needs a key that reaches the whole space with read and write access.",
+				"moduleType": "action",
+				"actionCrud": "create",
+				"connection": "nubbo",
+				"altConnection": null,
+				"codeFiles": {
+					"communication": "modules/create-label/create-label.communication.iml.json",
+					"staticParams": "modules/create-label/create-label.static-params.iml.json",
+					"mappableParams": "modules/create-label/create-label.mappable-params.iml.json",
+					"interface": "modules/create-label/create-label.interface.iml.json",
+					"samples": "modules/create-label/create-label.samples.iml.json",
+					"scope": "modules/create-label/create-label.scope.iml.json"
+				}
+			},
+			"updateLabel": {
+				"label": "Update a Label",
+				"description": "Changes the name, color, description or group of a label.",
+				"moduleType": "action",
+				"actionCrud": "update",
+				"connection": "nubbo",
+				"altConnection": null,
+				"codeFiles": {
+					"communication": "modules/update-label/update-label.communication.iml.json",
+					"staticParams": "modules/update-label/update-label.static-params.iml.json",
+					"mappableParams": "modules/update-label/update-label.mappable-params.iml.json",
+					"interface": "modules/update-label/update-label.interface.iml.json",
+					"samples": "modules/update-label/update-label.samples.iml.json",
+					"scope": "modules/update-label/update-label.scope.iml.json"
+				}
+			},
+			"mergeLabels": {
+				"label": "Merge Labels",
+				"description": "Merges a label into another one: its files get the other label, and it is deleted.",
+				"moduleType": "action",
+				"actionCrud": "update",
+				"connection": "nubbo",
+				"altConnection": null,
+				"codeFiles": {
+					"communication": "modules/merge-labels/merge-labels.communication.iml.json",
+					"staticParams": "modules/merge-labels/merge-labels.static-params.iml.json",
+					"mappableParams": "modules/merge-labels/merge-labels.mappable-params.iml.json",
+					"interface": "modules/merge-labels/merge-labels.interface.iml.json",
+					"samples": "modules/merge-labels/merge-labels.samples.iml.json",
+					"scope": "modules/merge-labels/merge-labels.scope.iml.json"
+				}
+			},
+			"deleteLabel": {
+				"label": "Delete a Label",
+				"description": "Deletes a label and takes it off every file.",
+				"moduleType": "action",
+				"actionCrud": "delete",
+				"connection": "nubbo",
+				"altConnection": null,
+				"codeFiles": {
+					"communication": "modules/delete-label/delete-label.communication.iml.json",
+					"staticParams": "modules/delete-label/delete-label.static-params.iml.json",
+					"mappableParams": "modules/delete-label/delete-label.mappable-params.iml.json",
+					"interface": "modules/delete-label/delete-label.interface.iml.json",
+					"samples": "modules/delete-label/delete-label.samples.iml.json",
+					"scope": "modules/delete-label/delete-label.scope.iml.json"
+				}
+			},
+			"listLabelGroups": {
+				"label": "List Label Groups",
+				"description": "Lists the label groups of the space.",
+				"moduleType": "search",
+				"connection": "nubbo",
+				"altConnection": null,
+				"codeFiles": {
+					"communication": "modules/list-label-groups/list-label-groups.communication.iml.json",
+					"staticParams": "modules/list-label-groups/list-label-groups.static-params.iml.json",
+					"mappableParams": "modules/list-label-groups/list-label-groups.mappable-params.iml.json",
+					"interface": "modules/list-label-groups/list-label-groups.interface.iml.json",
+					"samples": "modules/list-label-groups/list-label-groups.samples.iml.json",
+					"scope": "modules/list-label-groups/list-label-groups.scope.iml.json"
+				}
+			},
+			"listProjects": {
+				"label": "List Projects",
+				"description": "Lists the projects the key reaches.",
+				"moduleType": "search",
+				"connection": "nubbo",
+				"altConnection": null,
+				"codeFiles": {
+					"communication": "modules/list-projects/list-projects.communication.iml.json",
+					"staticParams": "modules/list-projects/list-projects.static-params.iml.json",
+					"mappableParams": "modules/list-projects/list-projects.mappable-params.iml.json",
+					"interface": "modules/list-projects/list-projects.interface.iml.json",
+					"samples": "modules/list-projects/list-projects.samples.iml.json",
+					"scope": "modules/list-projects/list-projects.scope.iml.json"
+				}
+			},
+			"getProject": {
+				"label": "Get a Project",
+				"description": "Gets a project with its folders and resource counts.",
+				"moduleType": "action",
+				"actionCrud": "read",
+				"connection": "nubbo",
+				"altConnection": null,
+				"codeFiles": {
+					"communication": "modules/get-project/get-project.communication.iml.json",
+					"staticParams": "modules/get-project/get-project.static-params.iml.json",
+					"mappableParams": "modules/get-project/get-project.mappable-params.iml.json",
+					"interface": "modules/get-project/get-project.interface.iml.json",
+					"samples": "modules/get-project/get-project.samples.iml.json",
+					"scope": "modules/get-project/get-project.scope.iml.json"
+				}
+			},
+			"addProjectItems": {
+				"label": "Add Items to a Project",
+				"description": "Adds folders, share links, file requests, galleries, embeds and automation rules to a project.",
+				"moduleType": "action",
+				"actionCrud": "update",
+				"connection": "nubbo",
+				"altConnection": null,
+				"codeFiles": {
+					"communication": "modules/add-project-items/add-project-items.communication.iml.json",
+					"staticParams": "modules/add-project-items/add-project-items.static-params.iml.json",
+					"mappableParams": "modules/add-project-items/add-project-items.mappable-params.iml.json",
+					"interface": "modules/add-project-items/add-project-items.interface.iml.json",
+					"samples": "modules/add-project-items/add-project-items.samples.iml.json",
+					"scope": "modules/add-project-items/add-project-items.scope.iml.json"
+				}
+			},
+			"removeProjectItems": {
+				"label": "Remove Items from a Project",
+				"description": "Removes folders and resources from a project.",
+				"moduleType": "action",
+				"actionCrud": "update",
+				"connection": "nubbo",
+				"altConnection": null,
+				"codeFiles": {
+					"communication": "modules/remove-project-items/remove-project-items.communication.iml.json",
+					"staticParams": "modules/remove-project-items/remove-project-items.static-params.iml.json",
+					"mappableParams": "modules/remove-project-items/remove-project-items.mappable-params.iml.json",
+					"interface": "modules/remove-project-items/remove-project-items.interface.iml.json",
+					"samples": "modules/remove-project-items/remove-project-items.samples.iml.json",
+					"scope": "modules/remove-project-items/remove-project-items.scope.iml.json"
+				}
+			},
+			"listShareLinks": {
+				"label": "List Share Links",
+				"description": "Lists the share links the key reaches.",
+				"moduleType": "search",
+				"connection": "nubbo",
+				"altConnection": null,
+				"codeFiles": {
+					"communication": "modules/list-share-links/list-share-links.communication.iml.json",
+					"staticParams": "modules/list-share-links/list-share-links.static-params.iml.json",
+					"mappableParams": "modules/list-share-links/list-share-links.mappable-params.iml.json",
+					"interface": "modules/list-share-links/list-share-links.interface.iml.json",
+					"samples": "modules/list-share-links/list-share-links.samples.iml.json",
+					"scope": "modules/list-share-links/list-share-links.scope.iml.json"
+				}
+			},
+			"createShareLink": {
+				"label": "Create a Share Link",
+				"description": "Creates a share link.",
+				"moduleType": "action",
+				"actionCrud": "create",
+				"connection": "nubbo",
+				"altConnection": null,
+				"codeFiles": {
+					"communication": "modules/create-share-link/create-share-link.communication.iml.json",
+					"staticParams": "modules/create-share-link/create-share-link.static-params.iml.json",
+					"mappableParams": "modules/create-share-link/create-share-link.mappable-params.iml.json",
+					"interface": "modules/create-share-link/create-share-link.interface.iml.json",
+					"samples": "modules/create-share-link/create-share-link.samples.iml.json",
+					"scope": "modules/create-share-link/create-share-link.scope.iml.json"
+				}
+			},
+			"getShareLink": {
+				"label": "Get a Share Link",
+				"description": "Gets a share link.",
+				"moduleType": "action",
+				"actionCrud": "read",
+				"connection": "nubbo",
+				"altConnection": null,
+				"codeFiles": {
+					"communication": "modules/get-share-link/get-share-link.communication.iml.json",
+					"staticParams": "modules/get-share-link/get-share-link.static-params.iml.json",
+					"mappableParams": "modules/get-share-link/get-share-link.mappable-params.iml.json",
+					"interface": "modules/get-share-link/get-share-link.interface.iml.json",
+					"samples": "modules/get-share-link/get-share-link.samples.iml.json",
+					"scope": "modules/get-share-link/get-share-link.scope.iml.json"
+				}
+			},
+			"updateShareLink": {
+				"label": "Update a Share Link",
+				"description": "Changes a share link.",
+				"moduleType": "action",
+				"actionCrud": "update",
+				"connection": "nubbo",
+				"altConnection": null,
+				"codeFiles": {
+					"communication": "modules/update-share-link/update-share-link.communication.iml.json",
+					"staticParams": "modules/update-share-link/update-share-link.static-params.iml.json",
+					"mappableParams": "modules/update-share-link/update-share-link.mappable-params.iml.json",
+					"interface": "modules/update-share-link/update-share-link.interface.iml.json",
+					"samples": "modules/update-share-link/update-share-link.samples.iml.json",
+					"scope": "modules/update-share-link/update-share-link.scope.iml.json"
+				}
+			},
+			"deleteShareLink": {
+				"label": "Delete a Share Link",
+				"description": "Deletes a share link.",
+				"moduleType": "action",
+				"actionCrud": "delete",
+				"connection": "nubbo",
+				"altConnection": null,
+				"codeFiles": {
+					"communication": "modules/delete-share-link/delete-share-link.communication.iml.json",
+					"staticParams": "modules/delete-share-link/delete-share-link.static-params.iml.json",
+					"mappableParams": "modules/delete-share-link/delete-share-link.mappable-params.iml.json",
+					"interface": "modules/delete-share-link/delete-share-link.interface.iml.json",
+					"samples": "modules/delete-share-link/delete-share-link.samples.iml.json",
+					"scope": "modules/delete-share-link/delete-share-link.scope.iml.json"
+				}
+			},
+			"listInboxUploads": {
+				"label": "List File Request Uploads",
+				"description": "Lists the files a file request received.",
+				"moduleType": "search",
+				"connection": "nubbo",
+				"altConnection": null,
+				"codeFiles": {
+					"communication": "modules/list-inbox-uploads/list-inbox-uploads.communication.iml.json",
+					"staticParams": "modules/list-inbox-uploads/list-inbox-uploads.static-params.iml.json",
+					"mappableParams": "modules/list-inbox-uploads/list-inbox-uploads.mappable-params.iml.json",
+					"interface": "modules/list-inbox-uploads/list-inbox-uploads.interface.iml.json",
+					"samples": "modules/list-inbox-uploads/list-inbox-uploads.samples.iml.json",
+					"scope": "modules/list-inbox-uploads/list-inbox-uploads.scope.iml.json"
+				}
+			},
+			"listFileRequests": {
+				"label": "List File Requests",
+				"description": "Lists the file requests the key reaches.",
+				"moduleType": "search",
+				"connection": "nubbo",
+				"altConnection": null,
+				"codeFiles": {
+					"communication": "modules/list-file-requests/list-file-requests.communication.iml.json",
+					"staticParams": "modules/list-file-requests/list-file-requests.static-params.iml.json",
+					"mappableParams": "modules/list-file-requests/list-file-requests.mappable-params.iml.json",
+					"interface": "modules/list-file-requests/list-file-requests.interface.iml.json",
+					"samples": "modules/list-file-requests/list-file-requests.samples.iml.json",
+					"scope": "modules/list-file-requests/list-file-requests.scope.iml.json"
+				}
+			},
+			"createFileRequest": {
+				"label": "Create a File Request",
+				"description": "Creates a file request.",
+				"moduleType": "action",
+				"actionCrud": "create",
+				"connection": "nubbo",
+				"altConnection": null,
+				"codeFiles": {
+					"communication": "modules/create-file-request/create-file-request.communication.iml.json",
+					"staticParams": "modules/create-file-request/create-file-request.static-params.iml.json",
+					"mappableParams": "modules/create-file-request/create-file-request.mappable-params.iml.json",
+					"interface": "modules/create-file-request/create-file-request.interface.iml.json",
+					"samples": "modules/create-file-request/create-file-request.samples.iml.json",
+					"scope": "modules/create-file-request/create-file-request.scope.iml.json"
+				}
+			},
+			"getFileRequest": {
+				"label": "Get a File Request",
+				"description": "Gets a file request.",
+				"moduleType": "action",
+				"actionCrud": "read",
+				"connection": "nubbo",
+				"altConnection": null,
+				"codeFiles": {
+					"communication": "modules/get-file-request/get-file-request.communication.iml.json",
+					"staticParams": "modules/get-file-request/get-file-request.static-params.iml.json",
+					"mappableParams": "modules/get-file-request/get-file-request.mappable-params.iml.json",
+					"interface": "modules/get-file-request/get-file-request.interface.iml.json",
+					"samples": "modules/get-file-request/get-file-request.samples.iml.json",
+					"scope": "modules/get-file-request/get-file-request.scope.iml.json"
+				}
+			},
+			"updateFileRequest": {
+				"label": "Update a File Request",
+				"description": "Changes a file request.",
+				"moduleType": "action",
+				"actionCrud": "update",
+				"connection": "nubbo",
+				"altConnection": null,
+				"codeFiles": {
+					"communication": "modules/update-file-request/update-file-request.communication.iml.json",
+					"staticParams": "modules/update-file-request/update-file-request.static-params.iml.json",
+					"mappableParams": "modules/update-file-request/update-file-request.mappable-params.iml.json",
+					"interface": "modules/update-file-request/update-file-request.interface.iml.json",
+					"samples": "modules/update-file-request/update-file-request.samples.iml.json",
+					"scope": "modules/update-file-request/update-file-request.scope.iml.json"
+				}
+			},
+			"deleteFileRequest": {
+				"label": "Delete a File Request",
+				"description": "Deletes a file request.",
+				"moduleType": "action",
+				"actionCrud": "delete",
+				"connection": "nubbo",
+				"altConnection": null,
+				"codeFiles": {
+					"communication": "modules/delete-file-request/delete-file-request.communication.iml.json",
+					"staticParams": "modules/delete-file-request/delete-file-request.static-params.iml.json",
+					"mappableParams": "modules/delete-file-request/delete-file-request.mappable-params.iml.json",
+					"interface": "modules/delete-file-request/delete-file-request.interface.iml.json",
+					"samples": "modules/delete-file-request/delete-file-request.samples.iml.json",
+					"scope": "modules/delete-file-request/delete-file-request.scope.iml.json"
+				}
+			},
+			"listGalleries": {
+				"label": "List Galleries",
+				"description": "Lists the galleries the key reaches.",
+				"moduleType": "search",
+				"connection": "nubbo",
+				"altConnection": null,
+				"codeFiles": {
+					"communication": "modules/list-galleries/list-galleries.communication.iml.json",
+					"staticParams": "modules/list-galleries/list-galleries.static-params.iml.json",
+					"mappableParams": "modules/list-galleries/list-galleries.mappable-params.iml.json",
+					"interface": "modules/list-galleries/list-galleries.interface.iml.json",
+					"samples": "modules/list-galleries/list-galleries.samples.iml.json",
+					"scope": "modules/list-galleries/list-galleries.scope.iml.json"
+				}
+			},
+			"createGallery": {
+				"label": "Create a Gallery",
+				"description": "Creates a gallery.",
+				"moduleType": "action",
+				"actionCrud": "create",
+				"connection": "nubbo",
+				"altConnection": null,
+				"codeFiles": {
+					"communication": "modules/create-gallery/create-gallery.communication.iml.json",
+					"staticParams": "modules/create-gallery/create-gallery.static-params.iml.json",
+					"mappableParams": "modules/create-gallery/create-gallery.mappable-params.iml.json",
+					"interface": "modules/create-gallery/create-gallery.interface.iml.json",
+					"samples": "modules/create-gallery/create-gallery.samples.iml.json",
+					"scope": "modules/create-gallery/create-gallery.scope.iml.json"
+				}
+			},
+			"getGallery": {
+				"label": "Get a Gallery",
+				"description": "Gets a gallery.",
+				"moduleType": "action",
+				"actionCrud": "read",
+				"connection": "nubbo",
+				"altConnection": null,
+				"codeFiles": {
+					"communication": "modules/get-gallery/get-gallery.communication.iml.json",
+					"staticParams": "modules/get-gallery/get-gallery.static-params.iml.json",
+					"mappableParams": "modules/get-gallery/get-gallery.mappable-params.iml.json",
+					"interface": "modules/get-gallery/get-gallery.interface.iml.json",
+					"samples": "modules/get-gallery/get-gallery.samples.iml.json",
+					"scope": "modules/get-gallery/get-gallery.scope.iml.json"
+				}
+			},
+			"updateGallery": {
+				"label": "Update a Gallery",
+				"description": "Changes a gallery.",
+				"moduleType": "action",
+				"actionCrud": "update",
+				"connection": "nubbo",
+				"altConnection": null,
+				"codeFiles": {
+					"communication": "modules/update-gallery/update-gallery.communication.iml.json",
+					"staticParams": "modules/update-gallery/update-gallery.static-params.iml.json",
+					"mappableParams": "modules/update-gallery/update-gallery.mappable-params.iml.json",
+					"interface": "modules/update-gallery/update-gallery.interface.iml.json",
+					"samples": "modules/update-gallery/update-gallery.samples.iml.json",
+					"scope": "modules/update-gallery/update-gallery.scope.iml.json"
+				}
+			},
+			"deleteGallery": {
+				"label": "Delete a Gallery",
+				"description": "Deletes a gallery.",
+				"moduleType": "action",
+				"actionCrud": "delete",
+				"connection": "nubbo",
+				"altConnection": null,
+				"codeFiles": {
+					"communication": "modules/delete-gallery/delete-gallery.communication.iml.json",
+					"staticParams": "modules/delete-gallery/delete-gallery.static-params.iml.json",
+					"mappableParams": "modules/delete-gallery/delete-gallery.mappable-params.iml.json",
+					"interface": "modules/delete-gallery/delete-gallery.interface.iml.json",
+					"samples": "modules/delete-gallery/delete-gallery.samples.iml.json",
+					"scope": "modules/delete-gallery/delete-gallery.scope.iml.json"
+				}
+			},
+			"listEmbeds": {
+				"label": "List Embeds",
+				"description": "Lists the embeds the key reaches.",
+				"moduleType": "search",
+				"connection": "nubbo",
+				"altConnection": null,
+				"codeFiles": {
+					"communication": "modules/list-embeds/list-embeds.communication.iml.json",
+					"staticParams": "modules/list-embeds/list-embeds.static-params.iml.json",
+					"mappableParams": "modules/list-embeds/list-embeds.mappable-params.iml.json",
+					"interface": "modules/list-embeds/list-embeds.interface.iml.json",
+					"samples": "modules/list-embeds/list-embeds.samples.iml.json",
+					"scope": "modules/list-embeds/list-embeds.scope.iml.json"
+				}
+			},
+			"createEmbed": {
+				"label": "Create an Embed",
+				"description": "Creates an embed.",
+				"moduleType": "action",
+				"actionCrud": "create",
+				"connection": "nubbo",
+				"altConnection": null,
+				"codeFiles": {
+					"communication": "modules/create-embed/create-embed.communication.iml.json",
+					"staticParams": "modules/create-embed/create-embed.static-params.iml.json",
+					"mappableParams": "modules/create-embed/create-embed.mappable-params.iml.json",
+					"interface": "modules/create-embed/create-embed.interface.iml.json",
+					"samples": "modules/create-embed/create-embed.samples.iml.json",
+					"scope": "modules/create-embed/create-embed.scope.iml.json"
+				}
+			},
+			"getEmbed": {
+				"label": "Get an Embed",
+				"description": "Gets an embed.",
+				"moduleType": "action",
+				"actionCrud": "read",
+				"connection": "nubbo",
+				"altConnection": null,
+				"codeFiles": {
+					"communication": "modules/get-embed/get-embed.communication.iml.json",
+					"staticParams": "modules/get-embed/get-embed.static-params.iml.json",
+					"mappableParams": "modules/get-embed/get-embed.mappable-params.iml.json",
+					"interface": "modules/get-embed/get-embed.interface.iml.json",
+					"samples": "modules/get-embed/get-embed.samples.iml.json",
+					"scope": "modules/get-embed/get-embed.scope.iml.json"
+				}
+			},
+			"updateEmbed": {
+				"label": "Update an Embed",
+				"description": "Changes an embed.",
+				"moduleType": "action",
+				"actionCrud": "update",
+				"connection": "nubbo",
+				"altConnection": null,
+				"codeFiles": {
+					"communication": "modules/update-embed/update-embed.communication.iml.json",
+					"staticParams": "modules/update-embed/update-embed.static-params.iml.json",
+					"mappableParams": "modules/update-embed/update-embed.mappable-params.iml.json",
+					"interface": "modules/update-embed/update-embed.interface.iml.json",
+					"samples": "modules/update-embed/update-embed.samples.iml.json",
+					"scope": "modules/update-embed/update-embed.scope.iml.json"
+				}
+			},
+			"deleteEmbed": {
+				"label": "Delete an Embed",
+				"description": "Deletes an embed.",
+				"moduleType": "action",
+				"actionCrud": "delete",
+				"connection": "nubbo",
+				"altConnection": null,
+				"codeFiles": {
+					"communication": "modules/delete-embed/delete-embed.communication.iml.json",
+					"staticParams": "modules/delete-embed/delete-embed.static-params.iml.json",
+					"mappableParams": "modules/delete-embed/delete-embed.mappable-params.iml.json",
+					"interface": "modules/delete-embed/delete-embed.interface.iml.json",
+					"samples": "modules/delete-embed/delete-embed.samples.iml.json",
+					"scope": "modules/delete-embed/delete-embed.scope.iml.json"
+				}
+			},
+			"pauseAutomationRule": {
+				"label": "Pause an Automation Rule",
+				"description": "Pauses an automation rule.",
+				"moduleType": "action",
+				"actionCrud": "update",
+				"connection": "nubbo",
+				"altConnection": null,
+				"codeFiles": {
+					"communication": "modules/pause-automation-rule/pause-automation-rule.communication.iml.json",
+					"staticParams": "modules/pause-automation-rule/pause-automation-rule.static-params.iml.json",
+					"mappableParams": "modules/pause-automation-rule/pause-automation-rule.mappable-params.iml.json",
+					"interface": "modules/pause-automation-rule/pause-automation-rule.interface.iml.json",
+					"samples": "modules/pause-automation-rule/pause-automation-rule.samples.iml.json",
+					"scope": "modules/pause-automation-rule/pause-automation-rule.scope.iml.json"
+				}
+			},
+			"resumeAutomationRule": {
+				"label": "Resume an Automation Rule",
+				"description": "Resumes a paused automation rule.",
+				"moduleType": "action",
+				"actionCrud": "update",
+				"connection": "nubbo",
+				"altConnection": null,
+				"codeFiles": {
+					"communication": "modules/resume-automation-rule/resume-automation-rule.communication.iml.json",
+					"staticParams": "modules/resume-automation-rule/resume-automation-rule.static-params.iml.json",
+					"mappableParams": "modules/resume-automation-rule/resume-automation-rule.mappable-params.iml.json",
+					"interface": "modules/resume-automation-rule/resume-automation-rule.interface.iml.json",
+					"samples": "modules/resume-automation-rule/resume-automation-rule.samples.iml.json",
+					"scope": "modules/resume-automation-rule/resume-automation-rule.scope.iml.json"
+				}
+			},
+			"listAutomationRules": {
+				"label": "List Automation Rules",
+				"description": "Lists the automation rules the key reaches.",
+				"moduleType": "search",
+				"connection": "nubbo",
+				"altConnection": null,
+				"codeFiles": {
+					"communication": "modules/list-automation-rules/list-automation-rules.communication.iml.json",
+					"staticParams": "modules/list-automation-rules/list-automation-rules.static-params.iml.json",
+					"mappableParams": "modules/list-automation-rules/list-automation-rules.mappable-params.iml.json",
+					"interface": "modules/list-automation-rules/list-automation-rules.interface.iml.json",
+					"samples": "modules/list-automation-rules/list-automation-rules.samples.iml.json",
+					"scope": "modules/list-automation-rules/list-automation-rules.scope.iml.json"
+				}
+			},
+			"createAutomationRule": {
+				"label": "Create an Automation Rule",
+				"description": "Creates an automation rule.",
+				"moduleType": "action",
+				"actionCrud": "create",
+				"connection": "nubbo",
+				"altConnection": null,
+				"codeFiles": {
+					"communication": "modules/create-automation-rule/create-automation-rule.communication.iml.json",
+					"staticParams": "modules/create-automation-rule/create-automation-rule.static-params.iml.json",
+					"mappableParams": "modules/create-automation-rule/create-automation-rule.mappable-params.iml.json",
+					"interface": "modules/create-automation-rule/create-automation-rule.interface.iml.json",
+					"samples": "modules/create-automation-rule/create-automation-rule.samples.iml.json",
+					"scope": "modules/create-automation-rule/create-automation-rule.scope.iml.json"
+				}
+			},
+			"getAutomationRule": {
+				"label": "Get an Automation Rule",
+				"description": "Gets an automation rule.",
+				"moduleType": "action",
+				"actionCrud": "read",
+				"connection": "nubbo",
+				"altConnection": null,
+				"codeFiles": {
+					"communication": "modules/get-automation-rule/get-automation-rule.communication.iml.json",
+					"staticParams": "modules/get-automation-rule/get-automation-rule.static-params.iml.json",
+					"mappableParams": "modules/get-automation-rule/get-automation-rule.mappable-params.iml.json",
+					"interface": "modules/get-automation-rule/get-automation-rule.interface.iml.json",
+					"samples": "modules/get-automation-rule/get-automation-rule.samples.iml.json",
+					"scope": "modules/get-automation-rule/get-automation-rule.scope.iml.json"
+				}
+			},
+			"updateAutomationRule": {
+				"label": "Update an Automation Rule",
+				"description": "Changes an automation rule.",
+				"moduleType": "action",
+				"actionCrud": "update",
+				"connection": "nubbo",
+				"altConnection": null,
+				"codeFiles": {
+					"communication": "modules/update-automation-rule/update-automation-rule.communication.iml.json",
+					"staticParams": "modules/update-automation-rule/update-automation-rule.static-params.iml.json",
+					"mappableParams": "modules/update-automation-rule/update-automation-rule.mappable-params.iml.json",
+					"interface": "modules/update-automation-rule/update-automation-rule.interface.iml.json",
+					"samples": "modules/update-automation-rule/update-automation-rule.samples.iml.json",
+					"scope": "modules/update-automation-rule/update-automation-rule.scope.iml.json"
+				}
+			},
+			"deleteAutomationRule": {
+				"label": "Delete an Automation Rule",
+				"description": "Deletes an automation rule.",
+				"moduleType": "action",
+				"actionCrud": "delete",
+				"connection": "nubbo",
+				"altConnection": null,
+				"codeFiles": {
+					"communication": "modules/delete-automation-rule/delete-automation-rule.communication.iml.json",
+					"staticParams": "modules/delete-automation-rule/delete-automation-rule.static-params.iml.json",
+					"mappableParams": "modules/delete-automation-rule/delete-automation-rule.mappable-params.iml.json",
+					"interface": "modules/delete-automation-rule/delete-automation-rule.interface.iml.json",
+					"samples": "modules/delete-automation-rule/delete-automation-rule.samples.iml.json",
+					"scope": "modules/delete-automation-rule/delete-automation-rule.scope.iml.json"
+				}
+			},
+			"listActivity": {
+				"label": "List Activity",
+				"description": "Lists the activity of the space, newest first.",
+				"moduleType": "search",
+				"connection": "nubbo",
+				"altConnection": null,
+				"codeFiles": {
+					"communication": "modules/list-activity/list-activity.communication.iml.json",
+					"staticParams": "modules/list-activity/list-activity.static-params.iml.json",
+					"mappableParams": "modules/list-activity/list-activity.mappable-params.iml.json",
+					"interface": "modules/list-activity/list-activity.interface.iml.json",
+					"samples": "modules/list-activity/list-activity.samples.iml.json",
+					"scope": "modules/list-activity/list-activity.scope.iml.json"
+				}
+			},
+			"getAccount": {
+				"label": "Get the API Key and Quota",
+				"description": "Gets the space, plan, key and monthly quota of this connection. It does not count as a request.",
+				"moduleType": "action",
+				"actionCrud": "read",
+				"connection": "nubbo",
+				"altConnection": null,
+				"codeFiles": {
+					"communication": "modules/get-account/get-account.communication.iml.json",
+					"staticParams": "modules/get-account/get-account.static-params.iml.json",
+					"mappableParams": "modules/get-account/get-account.mappable-params.iml.json",
+					"interface": "modules/get-account/get-account.interface.iml.json",
+					"samples": "modules/get-account/get-account.samples.iml.json",
+					"scope": "modules/get-account/get-account.scope.iml.json"
+				}
+			},
+			"listBuckets": {
+				"label": "List Buckets",
+				"description": "Lists the buckets the key reaches.",
+				"moduleType": "search",
+				"connection": "nubbo",
+				"altConnection": null,
+				"codeFiles": {
+					"communication": "modules/list-buckets/list-buckets.communication.iml.json",
+					"staticParams": "modules/list-buckets/list-buckets.static-params.iml.json",
+					"mappableParams": "modules/list-buckets/list-buckets.mappable-params.iml.json",
+					"interface": "modules/list-buckets/list-buckets.interface.iml.json",
+					"samples": "modules/list-buckets/list-buckets.samples.iml.json",
+					"scope": "modules/list-buckets/list-buckets.scope.iml.json"
+				}
+			},
+			"makeApiCall": {
+				"label": "Make an API Call",
+				"description": "Performs an authorized call to any endpoint of the Nubbo API.",
+				"moduleType": "universal",
+				"connection": "nubbo",
+				"altConnection": null,
+				"codeFiles": {
+					"communication": "modules/make-api-call/make-api-call.communication.iml.json",
+					"staticParams": "modules/make-api-call/make-api-call.static-params.iml.json",
+					"mappableParams": "modules/make-api-call/make-api-call.mappable-params.iml.json",
+					"interface": "modules/make-api-call/make-api-call.interface.iml.json",
+					"samples": "modules/make-api-call/make-api-call.samples.iml.json",
+					"scope": "modules/make-api-call/make-api-call.scope.iml.json"
+				}
+			}
+		},
+		"rpc": {
+			"listBuckets": {
+				"label": "List buckets",
+				"connection": "nubbo",
+				"altConnection": null,
+				"codeFiles": {
+					"communication": "rpcs/list-buckets/list-buckets.communication.iml.json",
+					"params": "rpcs/list-buckets/list-buckets.params.iml.json"
+				}
+			},
+			"listInboxes": {
+				"label": "List file requests",
+				"connection": "nubbo",
+				"altConnection": null,
+				"codeFiles": {
+					"communication": "rpcs/list-inboxes/list-inboxes.communication.iml.json",
+					"params": "rpcs/list-inboxes/list-inboxes.params.iml.json"
+				}
+			},
+			"listLabels": {
+				"label": "List labels",
+				"connection": "nubbo",
+				"altConnection": null,
+				"codeFiles": {
+					"communication": "rpcs/list-labels/list-labels.communication.iml.json",
+					"params": "rpcs/list-labels/list-labels.params.iml.json"
+				}
+			},
+			"listLabelGroups": {
+				"label": "List label groups",
+				"connection": "nubbo",
+				"altConnection": null,
+				"codeFiles": {
+					"communication": "rpcs/list-label-groups/list-label-groups.communication.iml.json",
+					"params": "rpcs/list-label-groups/list-label-groups.params.iml.json"
+				}
+			},
+			"listProjects": {
+				"label": "List projects",
+				"connection": "nubbo",
+				"altConnection": null,
+				"codeFiles": {
+					"communication": "rpcs/list-projects/list-projects.communication.iml.json",
+					"params": "rpcs/list-projects/list-projects.params.iml.json"
+				}
+			},
+			"listLinks": {
+				"label": "List share links",
+				"connection": "nubbo",
+				"altConnection": null,
+				"codeFiles": {
+					"communication": "rpcs/list-links/list-links.communication.iml.json",
+					"params": "rpcs/list-links/list-links.params.iml.json"
+				}
+			},
+			"listGalleries": {
+				"label": "List galleries",
+				"connection": "nubbo",
+				"altConnection": null,
+				"codeFiles": {
+					"communication": "rpcs/list-galleries/list-galleries.communication.iml.json",
+					"params": "rpcs/list-galleries/list-galleries.params.iml.json"
+				}
+			},
+			"listEmbeds": {
+				"label": "List embeds",
+				"connection": "nubbo",
+				"altConnection": null,
+				"codeFiles": {
+					"communication": "rpcs/list-embeds/list-embeds.communication.iml.json",
+					"params": "rpcs/list-embeds/list-embeds.params.iml.json"
+				}
+			},
+			"listAutomations": {
+				"label": "List automation rules",
+				"connection": "nubbo",
+				"altConnection": null,
+				"codeFiles": {
+					"communication": "rpcs/list-automations/list-automations.communication.iml.json",
+					"params": "rpcs/list-automations/list-automations.params.iml.json"
+				}
+			}
+		},
+		"function": {}
+	},
+	"origins": [
+		{
+			"label": "Nubbo",
+			"baseUrl": "-FILL-ME- the API URL of the Make zone, for example https://eu2.make.com/api",
+			"appId": "-FILL-ME- the app ID that Make shows after you create the app",
+			"appVersion": 1,
+			"apikeyFile": ".secrets/apikey"
+		}
+	]
+}

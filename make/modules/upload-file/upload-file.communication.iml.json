@@ -1,0 +1,43 @@
+[
+	{
+		"url": "/buckets/{{parameters.bucketId}}/uploads",
+		"method": "POST",
+		"headers": {
+			"Authorization": "Bearer {{connection.apiKey}}"
+		},
+		"body": {
+			"path": "{{if(parameters.folder, replace(parameters.folder, '/^\\/+|\\/+$/g', emptystring) + '/', emptystring)}}{{parameters.fileName}}",
+			"size": "{{length(parameters.data)}}",
+			"contentType": "{{ifempty(parameters.contentType, undefined)}}",
+			"conflict": "{{ifempty(parameters.conflict, undefined)}}"
+		},
+		"response": {
+			"temp": {
+				"uploadId": "{{body.uploadId}}",
+				"url": "{{body.url}}",
+				"method": "{{body.method}}"
+			}
+		}
+	},
+	{
+		"url": "{{temp.url}}",
+		"encodeUrl": false,
+		"method": "{{temp.method}}",
+		"type": "binary",
+		"headers": {
+			"Content-Type": "{{ifempty(parameters.contentType, 'application/octet-stream')}}"
+		},
+		"body": "{{parameters.data}}"
+	},
+	{
+		"url": "/uploads/{{temp.uploadId}}/complete",
+		"method": "POST",
+		"headers": {
+			"Authorization": "Bearer {{connection.apiKey}}"
+		},
+		"body": {},
+		"response": {
+			"output": "{{body}}"
+		}
+	}
+]

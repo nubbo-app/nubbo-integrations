@@ -1,0 +1,14 @@
+{
+	"url": "/buckets/{{parameters.bucketId}}/folders",
+	"method": "POST",
+	"headers": {
+		"Authorization": "Bearer {{connection.apiKey}}"
+	},
+	"body": {
+		"path": "{{ifempty(parameters.path, undefined)}}",
+		"conflict": "{{ifempty(parameters.conflict, undefined)}}"
+	},
+	"response": {
+		"output": "{{body}}"
+	}
+}

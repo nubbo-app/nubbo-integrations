@@ -1,0 +1,38 @@
+{
+	"url": "{{parameters.baseUrl}}/v1/me",
+	"method": "GET",
+	"headers": {
+		"Authorization": "Bearer {{parameters.apiKey}}"
+	},
+	"response": {
+		"metadata": {
+			"type": "text",
+			"value": "{{body.workspace.name}} · {{body.key.name}}"
+		},
+		"data": {
+			"keyId": "{{body.key.id}}",
+			"workspaceId": "{{body.workspace.id}}",
+			"plan": "{{body.plan}}"
+		},
+		"error": {
+			"401": {
+				"type": "InvalidAccessTokenError",
+				"message": "[401] {{body.code}}: {{body.message}}. Check the API key, or create a new one in Nubbo."
+			},
+			"403": {
+				"type": "InvalidConfigurationError",
+				"message": "[403] {{body.code}}: {{body.message}}"
+			},
+			"429": {
+				"type": "RateLimitError",
+				"message": "[429] {{body.code}}: {{body.message}}"
+			},
+			"message": "[{{statusCode}}] {{ifempty(body.code, 'ERROR')}}: {{ifempty(body.message, 'Nubbo did not answer as expected.')}}"
+		}
+	},
+	"log": {
+		"sanitize": [
+			"request.headers.authorization"
+		]
+	}
+}

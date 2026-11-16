@@ -1,0 +1,15 @@
+{
+	"id": "0193a1b2-c3d4-7e5f-8a9b-0c1d2e3f4a70",
+	"kind": "move",
+	"status": "running",
+	"itemCount": 1200,
+	"failedCount": 0,
+	"failedCodes": {},
+	"error": {
+		"code": "API_KEY_REVOKED",
+		"message": "This API key was revoked"
+	},
+	"createdAt": "2026-11-13T18:00:00.000Z",
+	"startedAt": null,
+	"finishedAt": null
+}

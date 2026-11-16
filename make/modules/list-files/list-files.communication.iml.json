@@ -1,0 +1,30 @@
+{
+	"url": "/buckets/{{parameters.bucketId}}/files",
+	"method": "GET",
+	"headers": {
+		"Authorization": "Bearer {{connection.apiKey}}"
+	},
+	"qs": {
+		"prefix": "{{ifempty(parameters.prefix, undefined)}}",
+		"sort": "{{ifempty(parameters.sort, undefined)}}",
+		"order": "{{ifempty(parameters.order, undefined)}}",
+		"includeHidden": "{{parameters.includeHidden}}",
+		"limit": 100
+	},
+	"response": {
+		"iterate": "{{body.data}}",
+		"output": "{{item}}",
+		"limit": "{{parameters.limit}}"
+	},
+	"pagination": {
+		"qs": {
+			"prefix": "{{ifempty(parameters.prefix, undefined)}}",
+			"sort": "{{ifempty(parameters.sort, undefined)}}",
+			"order": "{{ifempty(parameters.order, undefined)}}",
+			"includeHidden": "{{parameters.includeHidden}}",
+			"limit": 100,
+			"cursor": "{{body.nextCursor}}"
+		},
+		"condition": "{{body.nextCursor}}"
+	}
+}

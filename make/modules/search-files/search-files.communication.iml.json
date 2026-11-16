@@ -1,0 +1,48 @@
+{
+	"url": "/files/search",
+	"method": "GET",
+	"headers": {
+		"Authorization": "Bearer {{connection.apiKey}}"
+	},
+	"qs": {
+		"q": "{{ifempty(parameters.q, undefined)}}",
+		"bucketId": "{{ifempty(parameters.bucketId, undefined)}}",
+		"prefix": "{{ifempty(parameters.prefix, undefined)}}",
+		"kind": "{{ifempty(join(ifempty(parameters.kind, emptyarray), ','), undefined)}}",
+		"extension": "{{ifempty(join(ifempty(parameters.extension, emptyarray), ','), undefined)}}",
+		"labelIds": "{{ifempty(join(ifempty(parameters.labelIds, emptyarray), ','), undefined)}}",
+		"sizeMin": "{{ifempty(parameters.sizeMin, undefined)}}",
+		"sizeMax": "{{ifempty(parameters.sizeMax, undefined)}}",
+		"modifiedFrom": "{{if(parameters.modifiedFrom, formatDate(parameters.modifiedFrom, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), undefined)}}",
+		"modifiedTo": "{{if(parameters.modifiedTo, formatDate(parameters.modifiedTo, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), undefined)}}",
+		"sort": "{{ifempty(parameters.sort, undefined)}}",
+		"order": "{{ifempty(parameters.order, undefined)}}",
+		"includeHidden": "{{parameters.includeHidden}}",
+		"limit": 100
+	},
+	"response": {
+		"iterate": "{{body.data}}",
+		"output": "{{item}}",
+		"limit": "{{parameters.limit}}"
+	},
+	"pagination": {
+		"qs": {
+			"q": "{{ifempty(parameters.q, undefined)}}",
+			"bucketId": "{{ifempty(parameters.bucketId, undefined)}}",
+			"prefix": "{{ifempty(parameters.prefix, undefined)}}",
+			"kind": "{{ifempty(join(ifempty(parameters.kind, emptyarray), ','), undefined)}}",
+			"extension": "{{ifempty(join(ifempty(parameters.extension, emptyarray), ','), undefined)}}",
+			"labelIds": "{{ifempty(join(ifempty(parameters.labelIds, emptyarray), ','), undefined)}}",
+			"sizeMin": "{{ifempty(parameters.sizeMin, undefined)}}",
+			"sizeMax": "{{ifempty(parameters.sizeMax, undefined)}}",
+			"modifiedFrom": "{{if(parameters.modifiedFrom, formatDate(parameters.modifiedFrom, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), undefined)}}",
+			"modifiedTo": "{{if(parameters.modifiedTo, formatDate(parameters.modifiedTo, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), undefined)}}",
+			"sort": "{{ifempty(parameters.sort, undefined)}}",
+			"order": "{{ifempty(parameters.order, undefined)}}",
+			"includeHidden": "{{parameters.includeHidden}}",
+			"limit": 100,
+			"cursor": "{{body.nextCursor}}"
+		},
+		"condition": "{{body.nextCursor}}"
+	}
+}

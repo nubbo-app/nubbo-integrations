@@ -1,0 +1,9 @@
+[
+	{
+		"name": "operationId",
+		"required": true,
+		"type": "text",
+		"label": "Operation ID",
+		"help": "The operation ID that a move or a rename returned."
+	}
+]

@@ -1,0 +1,26 @@
+{
+	"url": "/galleries",
+	"method": "GET",
+	"headers": {
+		"Authorization": "Bearer {{connection.apiKey}}"
+	},
+	"qs": {
+		"bucketId": "{{ifempty(parameters.bucketId, undefined)}}",
+		"status": "{{ifempty(parameters.status, undefined)}}",
+		"limit": 100
+	},
+	"response": {
+		"iterate": "{{body.data}}",
+		"output": "{{item}}",
+		"limit": "{{parameters.limit}}"
+	},
+	"pagination": {
+		"qs": {
+			"bucketId": "{{ifempty(parameters.bucketId, undefined)}}",
+			"status": "{{ifempty(parameters.status, undefined)}}",
+			"limit": 100,
+			"cursor": "{{body.nextCursor}}"
+		},
+		"condition": "{{body.nextCursor}}"
+	}
+}

@@ -1,0 +1,29 @@
+[
+	{
+		"name": "uploadId",
+		"label": "Upload ID",
+		"type": "text"
+	},
+	{
+		"name": "parts",
+		"label": "Parts",
+		"type": "array",
+		"spec": [
+			{
+				"name": "partNumber",
+				"label": "Part number",
+				"type": "number"
+			},
+			{
+				"name": "url",
+				"label": "Url",
+				"type": "text"
+			}
+		]
+	},
+	{
+		"name": "expiresAt",
+		"label": "Expires at",
+		"type": "date"
+	}
+]

@@ -1,0 +1,45 @@
+{
+	"baseUrl": "{{connection.baseUrl}}/v1",
+	"response": {
+		"error": {
+			"400": {
+				"type": "DataError",
+				"message": "[400] {{body.code}}: {{body.message}}"
+			},
+			"401": {
+				"type": "InvalidAccessTokenError",
+				"message": "[401] {{body.code}}: {{body.message}}"
+			},
+			"403": {
+				"type": "InvalidConfigurationError",
+				"message": "[403] {{body.code}}: {{body.message}}"
+			},
+			"404": {
+				"type": "DataError",
+				"message": "[404] {{body.code}}: {{body.message}}"
+			},
+			"409": {
+				"type": "DataError",
+				"message": "[409] {{body.code}}: {{body.message}}"
+			},
+			"410": {
+				"type": "InvalidAccessTokenError",
+				"message": "[410] {{body.code}}: {{body.message}}"
+			},
+			"422": {
+				"type": "DataError",
+				"message": "[422] {{body.code}}: {{body.message}}"
+			},
+			"429": {
+				"type": "RateLimitError",
+				"message": "[429] {{body.code}}: {{body.message}}. Retry after {{ifempty(headers.retry-after, 60)}} seconds."
+			},
+			"message": "[{{statusCode}}] {{ifempty(body.code, 'ERROR')}}: {{ifempty(body.message, 'Nubbo or the storage provider did not answer as expected.')}}"
+		}
+	},
+	"log": {
+		"sanitize": [
+			"request.headers.authorization"
+		]
+	}
+}

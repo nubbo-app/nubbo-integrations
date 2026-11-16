@@ -1,0 +1,70 @@
+[
+	{
+		"name": "fileId",
+		"type": "text",
+		"label": "File or folder ID",
+		"required": true,
+		"help": "The folder whose photos and videos the gallery shows"
+	},
+	{
+		"name": "title",
+		"type": "text",
+		"label": "Title",
+		"required": true
+	},
+	{
+		"name": "description",
+		"type": "text",
+		"label": "Description"
+	},
+	{
+		"name": "layout",
+		"type": "select",
+		"label": "Layout",
+		"options": [
+			{
+				"label": "Masonry",
+				"value": "masonry"
+			},
+			{
+				"label": "Grid",
+				"value": "grid"
+			},
+			{
+				"label": "Slideshow",
+				"value": "slideshow"
+			}
+		]
+	},
+	{
+		"name": "coverFileId",
+		"type": "text",
+		"label": "Cover file ID",
+		"help": "A file inside the gallery folder"
+	},
+	{
+		"name": "individualDownloads",
+		"type": "boolean",
+		"label": "Allow single downloads"
+	},
+	{
+		"name": "zipDownload",
+		"type": "boolean",
+		"label": "Allow ZIP download"
+	},
+	{
+		"name": "password",
+		"type": "password",
+		"label": "Password"
+	},
+	{
+		"name": "expiresAt",
+		"type": "date",
+		"label": "Expires at"
+	},
+	{
+		"name": "watermarkText",
+		"type": "text",
+		"label": "Watermark text"
+	}
+]

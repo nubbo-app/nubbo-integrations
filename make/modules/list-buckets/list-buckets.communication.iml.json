@@ -1,0 +1,22 @@
+{
+	"url": "/buckets",
+	"method": "GET",
+	"headers": {
+		"Authorization": "Bearer {{connection.apiKey}}"
+	},
+	"qs": {
+		"limit": 100
+	},
+	"response": {
+		"iterate": "{{body.data}}",
+		"output": "{{item}}",
+		"limit": "{{parameters.limit}}"
+	},
+	"pagination": {
+		"qs": {
+			"limit": 100,
+			"cursor": "{{body.nextCursor}}"
+		},
+		"condition": "{{body.nextCursor}}"
+	}
+}

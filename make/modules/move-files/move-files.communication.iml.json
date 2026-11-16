@@ -1,0 +1,18 @@
+{
+	"url": "/files/move",
+	"method": "POST",
+	"headers": {
+		"Authorization": "Bearer {{connection.apiKey}}"
+	},
+	"body": {
+		"fileIds": "{{parameters.fileIds}}",
+		"destination": {
+			"bucketId": "{{parameters.destinationBucketId}}",
+			"path": "{{ifempty(parameters.destinationPath, emptystring)}}"
+		},
+		"conflict": "{{ifempty(parameters.conflict, undefined)}}"
+	},
+	"response": {
+		"output": "{{body}}"
+	}
+}
