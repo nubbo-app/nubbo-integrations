@@ -1,0 +1,28 @@
+{
+  "name": "nubbo-zapier",
+  "version": "1.0.0",
+  "description": "Zapier integration for Nubbo, the multi-cloud manager for S3-compatible storage.",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "test": "node --test --test-concurrency=1 test/*.test.js",
+    "validate": "zapier-platform validate"
+  },
+  "author": "Nubbo <info@nubbo.app>",
+  "license": "MIT",
+  "homepage": "https://nubbo.app",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nubbo-app/nubbo-integrations.git",
+    "directory": "zapier"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "zapier-platform-core": "19.3.0"
+  },
+  "devDependencies": {
+    "zapier-platform-cli": "19.3.0"
+  }
+}
