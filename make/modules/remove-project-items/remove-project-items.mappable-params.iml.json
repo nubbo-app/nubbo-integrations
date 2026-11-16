@@ -1,0 +1,71 @@
+[
+	{
+		"name": "projectId",
+		"required": true,
+		"type": "select",
+		"label": "Project",
+		"options": "rpc://listProjects"
+	},
+	{
+		"name": "folders",
+		"type": "array",
+		"label": "Folders",
+		"spec": [
+			{
+				"name": "bucketId",
+				"type": "select",
+				"label": "Bucket",
+				"options": "rpc://listBuckets",
+				"required": true
+			},
+			{
+				"name": "path",
+				"type": "text",
+				"label": "Path",
+				"help": "A folder of the bucket; empty for the whole bucket"
+			}
+		]
+	},
+	{
+		"name": "resources",
+		"type": "array",
+		"label": "Resources",
+		"spec": [
+			{
+				"name": "kind",
+				"type": "select",
+				"label": "Kind",
+				"options": [
+					{
+						"label": "Link",
+						"value": "link"
+					},
+					{
+						"label": "Inbox",
+						"value": "inbox"
+					},
+					{
+						"label": "Gallery",
+						"value": "gallery"
+					},
+					{
+						"label": "Embed",
+						"value": "embed"
+					},
+					{
+						"label": "Automation",
+						"value": "automation"
+					}
+				],
+				"required": true
+			},
+			{
+				"name": "id",
+				"type": "text",
+				"label": "Id",
+				"required": true
+			}
+		],
+		"help": "Links, file requests (inbox), galleries, embeds and automation rules"
+	}
+]

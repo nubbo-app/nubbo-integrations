@@ -1,0 +1,9 @@
+[
+	{
+		"name": "embedId",
+		"required": true,
+		"type": "select",
+		"label": "Embed",
+		"options": "rpc://listEmbeds"
+	}
+]

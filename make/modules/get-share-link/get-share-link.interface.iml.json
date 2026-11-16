@@ -1,0 +1,87 @@
+[
+	{
+		"name": "id",
+		"label": "ID",
+		"type": "text"
+	},
+	{
+		"name": "encrypted",
+		"label": "Encrypted",
+		"type": "boolean"
+	},
+	{
+		"name": "bucketAvailable",
+		"label": "Bucket available",
+		"type": "boolean"
+	},
+	{
+		"name": "kind",
+		"label": "Kind",
+		"type": "text"
+	},
+	{
+		"name": "fileId",
+		"label": "File or folder ID",
+		"type": "text"
+	},
+	{
+		"name": "bucketId",
+		"label": "Bucket ID",
+		"type": "text"
+	},
+	{
+		"name": "path",
+		"label": "Path",
+		"type": "text"
+	},
+	{
+		"name": "name",
+		"label": "Name",
+		"type": "text"
+	},
+	{
+		"name": "url",
+		"label": "Url",
+		"type": "text"
+	},
+	{
+		"name": "status",
+		"label": "Status",
+		"type": "text"
+	},
+	{
+		"name": "hasPassword",
+		"label": "Has password",
+		"type": "boolean"
+	},
+	{
+		"name": "maxDownloads",
+		"label": "Maximum downloads",
+		"type": "number"
+	},
+	{
+		"name": "downloadCount",
+		"label": "Download count",
+		"type": "number"
+	},
+	{
+		"name": "viewCount",
+		"label": "View count",
+		"type": "number"
+	},
+	{
+		"name": "expiresAt",
+		"label": "Expires at",
+		"type": "date"
+	},
+	{
+		"name": "createdAt",
+		"label": "Created at",
+		"type": "date"
+	},
+	{
+		"name": "updatedAt",
+		"label": "Updated at",
+		"type": "date"
+	}
+]

@@ -1,0 +1,11 @@
+{
+	"url": "/automations/{{parameters.ruleId}}/resume",
+	"method": "POST",
+	"headers": {
+		"Authorization": "Bearer {{connection.apiKey}}"
+	},
+	"body": {},
+	"response": {
+		"output": "{{body}}"
+	}
+}

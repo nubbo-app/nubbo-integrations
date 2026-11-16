@@ -1,0 +1,15 @@
+[
+	{
+		"name": "bucketId",
+		"type": "select",
+		"label": "Bucket",
+		"options": "rpc://listBuckets",
+		"help": "Leave it empty to watch every bucket the key reaches."
+	},
+	{
+		"name": "prefix",
+		"type": "text",
+		"label": "Folder",
+		"help": "Only files under this folder, for example `invoices/`. Leave it empty to watch the whole bucket."
+	}
+]

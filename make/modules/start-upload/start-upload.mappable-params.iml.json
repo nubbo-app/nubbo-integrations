@@ -1,0 +1,54 @@
+[
+	{
+		"name": "bucketId",
+		"required": true,
+		"type": "select",
+		"label": "Bucket",
+		"options": "rpc://listBuckets"
+	},
+	{
+		"name": "path",
+		"type": "text",
+		"label": "Path",
+		"required": true,
+		"help": "Where the file goes in the bucket, with its name"
+	},
+	{
+		"name": "size",
+		"type": "uinteger",
+		"label": "Size (bytes)",
+		"required": true,
+		"help": "Bytes"
+	},
+	{
+		"name": "contentType",
+		"type": "text",
+		"label": "Content type"
+	},
+	{
+		"name": "conflict",
+		"type": "select",
+		"label": "If the name is taken",
+		"options": [
+			{
+				"label": "Fail",
+				"value": "fail"
+			},
+			{
+				"label": "Rename",
+				"value": "rename"
+			},
+			{
+				"label": "Replace",
+				"value": "replace"
+			}
+		],
+		"help": "When a file with this path exists: fail answers API_NAME_TAKEN, rename uploads as «name (1)», replace overwrites it at the provider as the Nubbo app does (the previous content is not kept by Nubbo and does not go to the trash; a bucket with versioning keeps it as an older version at the provider)"
+	},
+	{
+		"name": "multipart",
+		"type": "boolean",
+		"label": "Multipart upload",
+		"help": "Upload in parts even below 5 GB (from 5 MiB). Above 5 GB uploads are always multipart"
+	}
+]

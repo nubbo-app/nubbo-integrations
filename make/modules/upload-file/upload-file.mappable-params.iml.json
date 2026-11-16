@@ -1,0 +1,55 @@
+[
+	{
+		"name": "bucketId",
+		"type": "select",
+		"label": "Bucket",
+		"options": "rpc://listBuckets",
+		"required": true
+	},
+	{
+		"name": "folder",
+		"type": "text",
+		"label": "Folder",
+		"help": "For example `invoices/2026`. Missing folders are created. Leave it empty for the root of the bucket."
+	},
+	{
+		"name": "fileName",
+		"type": "filename",
+		"label": "File name",
+		"required": true,
+		"semantic": "file:name"
+	},
+	{
+		"name": "data",
+		"type": "buffer",
+		"label": "Data",
+		"required": true,
+		"semantic": "file:data"
+	},
+	{
+		"name": "conflict",
+		"type": "select",
+		"label": "If the name is taken",
+		"options": [
+			{
+				"label": "Fail",
+				"value": "fail"
+			},
+			{
+				"label": "Rename the new file",
+				"value": "rename"
+			},
+			{
+				"label": "Replace the existing file",
+				"value": "replace"
+			}
+		],
+		"default": "fail"
+	},
+	{
+		"name": "contentType",
+		"type": "text",
+		"label": "Content type",
+		"help": "For example `application/pdf`. Leave it empty and the provider stores a generic type."
+	}
+]

@@ -1,0 +1,9 @@
+[
+	{
+		"name": "linkId",
+		"required": true,
+		"type": "select",
+		"label": "Share link",
+		"options": "rpc://listLinks"
+	}
+]

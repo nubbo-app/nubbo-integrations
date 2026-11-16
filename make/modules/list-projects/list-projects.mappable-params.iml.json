@@ -1,0 +1,25 @@
+[
+	{
+		"name": "status",
+		"type": "select",
+		"label": "Status",
+		"options": [
+			{
+				"label": "Active",
+				"value": "active"
+			},
+			{
+				"label": "Archived",
+				"value": "archived"
+			}
+		]
+	},
+	{
+		"name": "limit",
+		"type": "uinteger",
+		"label": "Limit",
+		"default": 10,
+		"required": true,
+		"help": "The most results to return in one execution cycle."
+	}
+]

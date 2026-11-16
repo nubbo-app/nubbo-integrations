@@ -1,0 +1,9 @@
+[
+	{
+		"name": "labelId",
+		"required": true,
+		"type": "select",
+		"label": "Label",
+		"options": "rpc://listLabels"
+	}
+]

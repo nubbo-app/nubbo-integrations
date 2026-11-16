@@ -1,0 +1,17 @@
+[
+	{
+		"name": "inboxId",
+		"required": true,
+		"type": "select",
+		"label": "File request",
+		"options": "rpc://listInboxes"
+	},
+	{
+		"name": "limit",
+		"type": "uinteger",
+		"label": "Limit",
+		"default": 10,
+		"required": true,
+		"help": "The most results to return in one execution cycle."
+	}
+]

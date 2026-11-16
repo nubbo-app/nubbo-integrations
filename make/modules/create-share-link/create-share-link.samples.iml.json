@@ -1,0 +1,19 @@
+{
+	"id": "0193a1b2-c3d4-7e5f-8a9b-0c1d2e3f4a80",
+	"encrypted": false,
+	"bucketAvailable": true,
+	"kind": "file",
+	"fileId": "0193a1b2-c3d4-7e5f-8a9b-0c1d2e3f4a61",
+	"bucketId": "0193a1b2-c3d4-7e5f-8a9b-0c1d2e3f4a60",
+	"path": "invoices/2026/invoice-0042.pdf",
+	"name": "invoice-0042.pdf",
+	"url": "https://app.nubbo.app/s/Xk3pQ9",
+	"status": "active",
+	"hasPassword": false,
+	"maxDownloads": 10,
+	"downloadCount": 2,
+	"viewCount": 5,
+	"expiresAt": null,
+	"createdAt": "2026-11-14T09:00:00.000Z",
+	"updatedAt": "2026-11-14T09:00:00.000Z"
+}

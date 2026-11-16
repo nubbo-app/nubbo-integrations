@@ -1,0 +1,27 @@
+{
+	"id": "0193a1b2-c3d4-7e5f-8a9b-0c1d2e3f4ac0",
+	"name": "File invoices by month",
+	"isActive": true,
+	"pausedReason": null,
+	"trigger": "FOLDER_UPLOAD",
+	"action": "MOVE",
+	"bucketId": "0193a1b2-c3d4-7e5f-8a9b-0c1d2e3f4a61",
+	"folderPrefix": "inbox/",
+	"fileRequestId": null,
+	"destinationFolder": null,
+	"routeConfig": {
+		"categories": [
+			{
+				"name": "Invoices",
+				"folder": "invoices/"
+			}
+		],
+		"fallbackFolder": "other/",
+		"rename": false,
+		"tag": true
+	},
+	"usesAi": false,
+	"apiKeyId": null,
+	"lastRunAt": null,
+	"createdAt": "2026-11-14T09:00:00.000Z"
+}

@@ -1,0 +1,49 @@
+[
+	{
+		"name": "labelId",
+		"required": true,
+		"type": "select",
+		"label": "Label",
+		"options": "rpc://listLabels"
+	},
+	{
+		"name": "name",
+		"type": "text",
+		"label": "Name"
+	},
+	{
+		"name": "color",
+		"type": "text",
+		"label": "Color"
+	},
+	{
+		"name": "description",
+		"type": "text",
+		"label": "Description",
+		"help": "An empty string clears it"
+	},
+	{
+		"name": "groupId",
+		"type": "select",
+		"label": "Label group",
+		"options": "rpc://listLabelGroups",
+		"help": "A label group of the space, or null to take the label out of its group"
+	},
+	{
+		"name": "clear",
+		"type": "select",
+		"label": "Fields to clear",
+		"multiple": true,
+		"options": [
+			{
+				"label": "Description",
+				"value": "description"
+			},
+			{
+				"label": "Group ID",
+				"value": "groupId"
+			}
+		],
+		"help": "The fields to empty. A field left blank above keeps its current value."
+	}
+]

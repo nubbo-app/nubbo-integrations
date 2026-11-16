@@ -1,0 +1,9 @@
+[
+	{
+		"name": "inboxId",
+		"required": true,
+		"type": "select",
+		"label": "File request",
+		"options": "rpc://listInboxes"
+	}
+]

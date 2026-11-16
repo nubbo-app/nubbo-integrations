@@ -1,0 +1,28 @@
+{
+	"id": "0193a1b2-c3d4-7e5f-8a9b-0c1d2e3f4a90",
+	"occurredAt": "2026-03-14T10:15:00.000Z",
+	"type": "FILE_UPLOADED",
+	"actor": {
+		"kind": "person",
+		"apiKey": {
+			"id": "0193a1b2-c3d4-7e5f-8a9b-0c1d2e3f4a70",
+			"name": "n8n invoices"
+		}
+	},
+	"bucketId": "0193a1b2-c3d4-7e5f-8a9b-0c1d2e3f4a50",
+	"file": {
+		"id": "0193a1b2-c3d4-7e5f-8a9b-0c1d2e3f4a61",
+		"path": "invoices/2026/march.pdf",
+		"name": "march.pdf"
+	},
+	"resource": {
+		"type": "FILE_REQUEST",
+		"id": "0193a1b2-c3d4-7e5f-8a9b-0c1d2e3f4a80"
+	},
+	"encrypted": false,
+	"detail": {
+		"fileName": "march.pdf",
+		"size": 48213
+	},
+	"madeByThisKey": false
+}

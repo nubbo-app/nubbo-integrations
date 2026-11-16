@@ -1,0 +1,23 @@
+{
+	"id": "0193a1b2-c3d4-7e5f-8a9b-0c1d2e3f4aa0",
+	"encrypted": false,
+	"bucketAvailable": true,
+	"folderId": "0193a1b2-c3d4-7e5f-8a9b-0c1d2e3f4a61",
+	"bucketId": "0193a1b2-c3d4-7e5f-8a9b-0c1d2e3f4a60",
+	"path": "shoots/summer/",
+	"title": "Summer shoot",
+	"description": null,
+	"layout": "masonry",
+	"coverFileId": null,
+	"individualDownloads": true,
+	"zipDownload": true,
+	"watermarkText": null,
+	"url": "https://app.nubbo.app/g/Pq8Rt3",
+	"status": "active",
+	"hasPassword": false,
+	"viewCount": 12,
+	"downloadCount": 3,
+	"expiresAt": null,
+	"createdAt": "2026-11-14T09:00:00.000Z",
+	"updatedAt": "2026-11-14T09:00:00.000Z"
+}

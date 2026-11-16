@@ -1,0 +1,107 @@
+[
+	{
+		"name": "id",
+		"label": "ID",
+		"type": "text"
+	},
+	{
+		"name": "encrypted",
+		"label": "Encrypted",
+		"type": "boolean"
+	},
+	{
+		"name": "bucketAvailable",
+		"label": "Bucket available",
+		"type": "boolean"
+	},
+	{
+		"name": "folderId",
+		"label": "Folder ID",
+		"type": "text"
+	},
+	{
+		"name": "bucketId",
+		"label": "Bucket ID",
+		"type": "text"
+	},
+	{
+		"name": "path",
+		"label": "Path",
+		"type": "text"
+	},
+	{
+		"name": "title",
+		"label": "Title",
+		"type": "text"
+	},
+	{
+		"name": "description",
+		"label": "Description",
+		"type": "text"
+	},
+	{
+		"name": "layout",
+		"label": "Layout",
+		"type": "text"
+	},
+	{
+		"name": "coverFileId",
+		"label": "Cover file ID",
+		"type": "text"
+	},
+	{
+		"name": "individualDownloads",
+		"label": "Allow single downloads",
+		"type": "boolean"
+	},
+	{
+		"name": "zipDownload",
+		"label": "Allow ZIP download",
+		"type": "boolean"
+	},
+	{
+		"name": "watermarkText",
+		"label": "Watermark text",
+		"type": "text"
+	},
+	{
+		"name": "url",
+		"label": "Url",
+		"type": "text"
+	},
+	{
+		"name": "status",
+		"label": "Status",
+		"type": "text"
+	},
+	{
+		"name": "hasPassword",
+		"label": "Has password",
+		"type": "boolean"
+	},
+	{
+		"name": "viewCount",
+		"label": "View count",
+		"type": "number"
+	},
+	{
+		"name": "downloadCount",
+		"label": "Download count",
+		"type": "number"
+	},
+	{
+		"name": "expiresAt",
+		"label": "Expires at",
+		"type": "date"
+	},
+	{
+		"name": "createdAt",
+		"label": "Created at",
+		"type": "date"
+	},
+	{
+		"name": "updatedAt",
+		"label": "Updated at",
+		"type": "date"
+	}
+]

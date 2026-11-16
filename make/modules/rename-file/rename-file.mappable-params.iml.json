@@ -1,0 +1,32 @@
+[
+	{
+		"name": "fileId",
+		"required": true,
+		"type": "text",
+		"label": "File or folder ID",
+		"help": "The ID of the file or folder, from a search, a list or a trigger."
+	},
+	{
+		"name": "name",
+		"type": "text",
+		"label": "Name",
+		"required": true,
+		"help": "The new name, without a path; folders keep their place"
+	},
+	{
+		"name": "conflict",
+		"type": "select",
+		"label": "If the name is taken",
+		"options": [
+			{
+				"label": "Fail",
+				"value": "fail"
+			},
+			{
+				"label": "Rename",
+				"value": "rename"
+			}
+		],
+		"help": "When the name is taken: fail answers API_NAME_TAKEN, rename uses «name (1)»"
+	}
+]

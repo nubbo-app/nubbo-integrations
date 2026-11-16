@@ -1,0 +1,17 @@
+{
+	"url": "/buckets/{{parameters.bucketId}}/uploads",
+	"method": "POST",
+	"headers": {
+		"Authorization": "Bearer {{connection.apiKey}}"
+	},
+	"body": {
+		"path": "{{ifempty(parameters.path, undefined)}}",
+		"size": "{{ifempty(parameters.size, undefined)}}",
+		"contentType": "{{ifempty(parameters.contentType, undefined)}}",
+		"conflict": "{{ifempty(parameters.conflict, undefined)}}",
+		"multipart": "{{parameters.multipart}}"
+	},
+	"response": {
+		"output": "{{body}}"
+	}
+}

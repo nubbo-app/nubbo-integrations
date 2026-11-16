@@ -1,0 +1,13 @@
+{
+	"url": "/embeds/{{parameters.embedId}}",
+	"method": "DELETE",
+	"headers": {
+		"Authorization": "Bearer {{connection.apiKey}}"
+	},
+	"response": {
+		"output": {
+			"id": "{{parameters.embedId}}",
+			"deleted": true
+		}
+	}
+}

@@ -1,0 +1,197 @@
+[
+	{
+		"name": "ruleId",
+		"required": true,
+		"type": "select",
+		"label": "Automation rule",
+		"options": "rpc://listAutomations"
+	},
+	{
+		"name": "name",
+		"type": "text",
+		"label": "Name"
+	},
+	{
+		"name": "isActive",
+		"type": "boolean",
+		"label": "Active"
+	},
+	{
+		"name": "skipArrivals",
+		"type": "boolean",
+		"label": "Skip files that arrive while paused"
+	},
+	{
+		"name": "fileRequestId",
+		"type": "select",
+		"label": "File request",
+		"options": "rpc://listInboxes"
+	},
+	{
+		"name": "folderPrefix",
+		"type": "text",
+		"label": "Folder"
+	},
+	{
+		"name": "interval",
+		"type": "select",
+		"label": "Interval",
+		"options": [
+			{
+				"label": "Daily",
+				"value": "DAILY"
+			},
+			{
+				"label": "Weekly",
+				"value": "WEEKLY"
+			},
+			{
+				"label": "Monthly",
+				"value": "MONTHLY"
+			}
+		]
+	},
+	{
+		"name": "destinationFolder",
+		"type": "text",
+		"label": "Destination folder"
+	},
+	{
+		"name": "routeCategories",
+		"type": "array",
+		"label": "Route categories",
+		"spec": [
+			{
+				"name": "name",
+				"type": "text",
+				"label": "Name",
+				"required": true
+			},
+			{
+				"name": "folder",
+				"type": "text",
+				"label": "Folder",
+				"required": true
+			}
+		]
+	},
+	{
+		"name": "routeFallbackFolder",
+		"type": "text",
+		"label": "Fallback folder"
+	},
+	{
+		"name": "routeRename",
+		"type": "boolean",
+		"label": "Rename routed files"
+	},
+	{
+		"name": "routeTag",
+		"type": "boolean",
+		"label": "Label routed files"
+	},
+	{
+		"name": "trashOlderThanDays",
+		"type": "uinteger",
+		"label": "Trash files older than (days)"
+	},
+	{
+		"name": "compressDestinationFolder",
+		"type": "text",
+		"label": "ZIP destination folder"
+	},
+	{
+		"name": "namePattern",
+		"type": "text",
+		"label": "Name pattern"
+	},
+	{
+		"name": "prompt",
+		"type": "text",
+		"label": "Prompt"
+	},
+	{
+		"name": "promptOutput",
+		"type": "select",
+		"label": "Prompt output",
+		"options": [
+			{
+				"label": "Notify",
+				"value": "NOTIFY"
+			},
+			{
+				"label": "Document",
+				"value": "DOCUMENT"
+			}
+		]
+	},
+	{
+		"name": "copyDestBucketId",
+		"type": "select",
+		"label": "Destination bucket",
+		"options": "rpc://listBuckets"
+	},
+	{
+		"name": "copyDestinationFolder",
+		"type": "text",
+		"label": "Destination folder in the other bucket"
+	},
+	{
+		"name": "copyMode",
+		"type": "select",
+		"label": "Copy mode",
+		"options": [
+			{
+				"label": "Copy",
+				"value": "copy"
+			},
+			{
+				"label": "Move",
+				"value": "move"
+			}
+		]
+	},
+	{
+		"name": "mirrorTrashOrphans",
+		"type": "boolean",
+		"label": "Trash files removed from the source"
+	},
+	{
+		"name": "shareExpiresInDays",
+		"type": "uinteger",
+		"label": "Link expires in (days)"
+	},
+	{
+		"name": "sharePassword",
+		"type": "password",
+		"label": "Link password"
+	},
+	{
+		"name": "shareMaxDownloads",
+		"type": "uinteger",
+		"label": "Link maximum downloads"
+	},
+	{
+		"name": "thresholdGb",
+		"type": "uinteger",
+		"label": "Threshold (GB)"
+	},
+	{
+		"name": "inactivityDays",
+		"type": "uinteger",
+		"label": "Inactivity (days)"
+	},
+	{
+		"name": "clear",
+		"type": "select",
+		"label": "Fields to clear",
+		"multiple": true,
+		"options": [
+			{
+				"label": "Route categories",
+				"value": "routeCategories"
+			}
+		],
+		"help": "The fields to empty. A field left blank above keeps its current value."
+	}
+]

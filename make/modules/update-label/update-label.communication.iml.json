@@ -1,0 +1,16 @@
+{
+	"url": "/labels/{{parameters.labelId}}",
+	"method": "PATCH",
+	"headers": {
+		"Authorization": "Bearer {{connection.apiKey}}"
+	},
+	"body": {
+		"name": "{{ifempty(parameters.name, undefined)}}",
+		"color": "{{ifempty(parameters.color, undefined)}}",
+		"description": "{{if(contains(ifempty(parameters.clear, emptyarray), 'description'), emptystring, ifempty(parameters.description, undefined))}}",
+		"groupId": "{{if(contains(ifempty(parameters.clear, emptyarray), 'groupId'), null, ifempty(parameters.groupId, undefined))}}"
+	},
+	"response": {
+		"output": "{{body}}"
+	}
+}

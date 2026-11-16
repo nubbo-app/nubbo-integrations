@@ -1,0 +1,154 @@
+[
+	{
+		"name": "workspace",
+		"label": "Workspace",
+		"type": "collection",
+		"spec": [
+			{
+				"name": "id",
+				"label": "ID",
+				"type": "text"
+			},
+			{
+				"name": "name",
+				"label": "Name",
+				"type": "text"
+			},
+			{
+				"name": "kind",
+				"label": "Kind",
+				"type": "text"
+			}
+		]
+	},
+	{
+		"name": "plan",
+		"label": "Plan",
+		"type": "text"
+	},
+	{
+		"name": "key",
+		"label": "Key",
+		"type": "collection",
+		"spec": [
+			{
+				"name": "id",
+				"label": "ID",
+				"type": "text"
+			},
+			{
+				"name": "name",
+				"label": "Name",
+				"type": "text"
+			},
+			{
+				"name": "prefix",
+				"label": "Folder",
+				"type": "text"
+			},
+			{
+				"name": "access",
+				"label": "Access",
+				"type": "text"
+			},
+			{
+				"name": "allResources",
+				"label": "All resources",
+				"type": "boolean"
+			},
+			{
+				"name": "reach",
+				"label": "Reach",
+				"type": "array",
+				"spec": [
+					{
+						"name": "kind",
+						"label": "Kind",
+						"type": "text"
+					},
+					{
+						"name": "id",
+						"label": "ID",
+						"type": "text"
+					},
+					{
+						"name": "name",
+						"label": "Name",
+						"type": "text"
+					}
+				]
+			},
+			{
+				"name": "expiresAt",
+				"label": "Expires at",
+				"type": "date"
+			}
+		]
+	},
+	{
+		"name": "quota",
+		"label": "Quota",
+		"type": "collection",
+		"spec": [
+			{
+				"name": "periodStart",
+				"label": "Period start",
+				"type": "date"
+			},
+			{
+				"name": "periodEnd",
+				"label": "Period end",
+				"type": "date"
+			},
+			{
+				"name": "requests",
+				"label": "Requests",
+				"type": "collection",
+				"spec": [
+					{
+						"name": "used",
+						"label": "Used",
+						"type": "number"
+					},
+					{
+						"name": "limit",
+						"label": "Limit",
+						"type": "number"
+					},
+					{
+						"name": "remaining",
+						"label": "Remaining",
+						"type": "number"
+					}
+				]
+			},
+			{
+				"name": "events",
+				"label": "Events",
+				"type": "collection",
+				"spec": [
+					{
+						"name": "used",
+						"label": "Used",
+						"type": "number"
+					},
+					{
+						"name": "limit",
+						"label": "Limit",
+						"type": "number"
+					},
+					{
+						"name": "remaining",
+						"label": "Remaining",
+						"type": "number"
+					}
+				]
+			},
+			{
+				"name": "ratePerMinute",
+				"label": "Rate per minute",
+				"type": "number"
+			}
+		]
+	}
+]

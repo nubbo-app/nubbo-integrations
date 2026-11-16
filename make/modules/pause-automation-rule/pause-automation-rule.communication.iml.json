@@ -1,0 +1,11 @@
+{
+	"url": "/automations/{{parameters.ruleId}}/pause",
+	"method": "POST",
+	"headers": {
+		"Authorization": "Bearer {{connection.apiKey}}"
+	},
+	"body": {},
+	"response": {
+		"output": "{{body}}"
+	}
+}

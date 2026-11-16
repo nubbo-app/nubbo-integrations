@@ -1,0 +1,64 @@
+[
+	{
+		"name": "id",
+		"label": "ID",
+		"type": "text"
+	},
+	{
+		"name": "kind",
+		"label": "Kind",
+		"type": "text"
+	},
+	{
+		"name": "status",
+		"label": "Status",
+		"type": "text"
+	},
+	{
+		"name": "itemCount",
+		"label": "Item count",
+		"type": "number"
+	},
+	{
+		"name": "failedCount",
+		"label": "Failed count",
+		"type": "number"
+	},
+	{
+		"name": "failedCodes",
+		"label": "Failed codes",
+		"type": "any"
+	},
+	{
+		"name": "error",
+		"label": "Error",
+		"type": "collection",
+		"spec": [
+			{
+				"name": "code",
+				"label": "Code",
+				"type": "text"
+			},
+			{
+				"name": "message",
+				"label": "Message",
+				"type": "text"
+			}
+		]
+	},
+	{
+		"name": "createdAt",
+		"label": "Created at",
+		"type": "date"
+	},
+	{
+		"name": "startedAt",
+		"label": "Started at",
+		"type": "date"
+	},
+	{
+		"name": "finishedAt",
+		"label": "Finished at",
+		"type": "date"
+	}
+]

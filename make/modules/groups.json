@@ -1,0 +1,126 @@
+[
+	{
+		"label": "Files and folders",
+		"modules": [
+			"watchNewFiles",
+			"listFiles",
+			"searchFiles",
+			"getFile",
+			"createFolder",
+			"renameFile",
+			"moveFiles",
+			"getOperation",
+			"getDownloadLink",
+			"addFileLabel",
+			"removeFileLabel"
+		]
+	},
+	{
+		"label": "Uploads and downloads",
+		"modules": [
+			"uploadFile",
+			"downloadFile",
+			"startUpload",
+			"signUploadParts",
+			"completeUpload",
+			"abortUpload"
+		]
+	},
+	{
+		"label": "Trash",
+		"modules": [
+			"trashFiles",
+			"restoreFiles",
+			"listTrash"
+		]
+	},
+	{
+		"label": "Labels",
+		"modules": [
+			"listLabels",
+			"createLabel",
+			"updateLabel",
+			"mergeLabels",
+			"deleteLabel",
+			"listLabelGroups"
+		]
+	},
+	{
+		"label": "Projects",
+		"modules": [
+			"listProjects",
+			"getProject",
+			"addProjectItems",
+			"removeProjectItems"
+		]
+	},
+	{
+		"label": "Share links",
+		"modules": [
+			"listShareLinks",
+			"createShareLink",
+			"getShareLink",
+			"updateShareLink",
+			"deleteShareLink"
+		]
+	},
+	{
+		"label": "File requests",
+		"modules": [
+			"listFileRequests",
+			"createFileRequest",
+			"getFileRequest",
+			"updateFileRequest",
+			"deleteFileRequest",
+			"watchNewInboxUploads",
+			"listInboxUploads"
+		]
+	},
+	{
+		"label": "Galleries",
+		"modules": [
+			"listGalleries",
+			"createGallery",
+			"getGallery",
+			"updateGallery",
+			"deleteGallery"
+		]
+	},
+	{
+		"label": "Embeds",
+		"modules": [
+			"listEmbeds",
+			"createEmbed",
+			"getEmbed",
+			"updateEmbed",
+			"deleteEmbed"
+		]
+	},
+	{
+		"label": "Automation rules",
+		"modules": [
+			"listAutomationRules",
+			"createAutomationRule",
+			"getAutomationRule",
+			"updateAutomationRule",
+			"deleteAutomationRule",
+			"pauseAutomationRule",
+			"resumeAutomationRule"
+		]
+	},
+	{
+		"label": "Activity",
+		"modules": [
+			"watchNewActivity",
+			"listActivity"
+		]
+	},
+	{
+		"label": "Other",
+		"modules": [
+			"getAccount",
+			"listBuckets",
+			"makeApiCall"
+		]
+	}
+]

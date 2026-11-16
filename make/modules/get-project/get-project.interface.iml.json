@@ -1,0 +1,106 @@
+[
+	{
+		"name": "id",
+		"label": "ID",
+		"type": "text"
+	},
+	{
+		"name": "name",
+		"label": "Name",
+		"type": "text"
+	},
+	{
+		"name": "color",
+		"label": "Color",
+		"type": "text"
+	},
+	{
+		"name": "archived",
+		"label": "Archived",
+		"type": "boolean"
+	},
+	{
+		"name": "folderCount",
+		"label": "Folder count",
+		"type": "number"
+	},
+	{
+		"name": "createdAt",
+		"label": "Created at",
+		"type": "date"
+	},
+	{
+		"name": "lastActivityAt",
+		"label": "Last activity at",
+		"type": "date"
+	},
+	{
+		"name": "folders",
+		"label": "Folders",
+		"type": "array",
+		"spec": [
+			{
+				"name": "bucketId",
+				"label": "Bucket ID",
+				"type": "text"
+			},
+			{
+				"name": "encrypted",
+				"label": "Encrypted",
+				"type": "boolean"
+			},
+			{
+				"name": "path",
+				"label": "Path",
+				"type": "text"
+			},
+			{
+				"name": "wholeBucket",
+				"label": "Whole bucket",
+				"type": "boolean"
+			},
+			{
+				"name": "missing",
+				"label": "Missing",
+				"type": "boolean"
+			},
+			{
+				"name": "trashed",
+				"label": "Trashed",
+				"type": "boolean"
+			}
+		]
+	},
+	{
+		"name": "resourceCounts",
+		"label": "Resource counts",
+		"type": "collection",
+		"spec": [
+			{
+				"name": "links",
+				"label": "Links",
+				"type": "number"
+			},
+			{
+				"name": "inboxes",
+				"label": "Inboxes",
+				"type": "number"
+			},
+			{
+				"name": "galleries",
+				"label": "Galleries",
+				"type": "number"
+			},
+			{
+				"name": "embeds",
+				"label": "Embeds",
+				"type": "number"
+			},
+			{
+				"name": "automations",
+				"label": "Automations",
+				"type": "number"
+			}
+		]
+	}
+]

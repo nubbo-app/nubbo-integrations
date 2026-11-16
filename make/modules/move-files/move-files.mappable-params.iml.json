@@ -1,0 +1,45 @@
+[
+	{
+		"name": "fileIds",
+		"type": "array",
+		"label": "File and folder IDs",
+		"spec": {
+			"type": "text",
+			"label": "File and folder ID"
+		},
+		"required": true
+	},
+	{
+		"name": "destinationBucketId",
+		"type": "select",
+		"label": "Destination bucket",
+		"options": "rpc://listBuckets",
+		"required": true
+	},
+	{
+		"name": "destinationPath",
+		"type": "text",
+		"label": "Destination folder",
+		"help": "An existing folder, for example `archive/2026/`. Leave it empty for the root of the bucket. Create the folder first if it does not exist."
+	},
+	{
+		"name": "conflict",
+		"type": "select",
+		"label": "If the name is taken",
+		"options": [
+			{
+				"label": "Fail",
+				"value": "fail"
+			},
+			{
+				"label": "Rename",
+				"value": "rename"
+			},
+			{
+				"label": "Skip",
+				"value": "skip"
+			}
+		],
+		"help": "When an item with the same name is at the destination: fail answers API_NAME_TAKEN and moves nothing, rename moves it as «name (1)», skip leaves that item where it is"
+	}
+]

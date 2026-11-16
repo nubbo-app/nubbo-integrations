@@ -1,0 +1,32 @@
+[
+	{
+		"name": "done",
+		"label": "Done",
+		"type": "array",
+		"spec": {
+			"type": "text"
+		}
+	},
+	{
+		"name": "failed",
+		"label": "Failed",
+		"type": "array",
+		"spec": [
+			{
+				"name": "fileId",
+				"label": "File or folder ID",
+				"type": "text"
+			},
+			{
+				"name": "code",
+				"label": "Code",
+				"type": "text"
+			},
+			{
+				"name": "message",
+				"label": "Message",
+				"type": "text"
+			}
+		]
+	}
+]

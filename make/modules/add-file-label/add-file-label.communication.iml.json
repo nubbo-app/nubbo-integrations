@@ -1,0 +1,11 @@
+{
+	"url": "/files/{{parameters.fileId}}/labels/{{parameters.labelId}}",
+	"method": "POST",
+	"headers": {
+		"Authorization": "Bearer {{connection.apiKey}}"
+	},
+	"body": {},
+	"response": {
+		"output": "{{body}}"
+	}
+}

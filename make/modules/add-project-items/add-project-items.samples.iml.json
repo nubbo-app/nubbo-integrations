@@ -1,0 +1,26 @@
+{
+	"id": "0193a1b2-c3d4-7e5f-8a9b-0c1d2e3f4a63",
+	"name": "Marketing",
+	"color": "#6366f1",
+	"archived": false,
+	"folderCount": 3,
+	"createdAt": "2026-09-01T08:00:00.000Z",
+	"lastActivityAt": "2026-11-12T16:20:00.000Z",
+	"folders": [
+		{
+			"bucketId": "0193a1b2-c3d4-7e5f-8a9b-0c1d2e3f4a60",
+			"encrypted": false,
+			"path": "campaigns/2026/",
+			"wholeBucket": false,
+			"missing": false,
+			"trashed": false
+		}
+	],
+	"resourceCounts": {
+		"links": 4,
+		"inboxes": 1,
+		"galleries": 2,
+		"embeds": 0,
+		"automations": 1
+	}
+}

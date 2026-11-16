@@ -1,0 +1,17 @@
+[
+	{
+		"name": "fileId",
+		"label": "File or folder ID",
+		"type": "text"
+	},
+	{
+		"name": "url",
+		"label": "Url",
+		"type": "text"
+	},
+	{
+		"name": "expiresAt",
+		"label": "Expires at",
+		"type": "date"
+	}
+]

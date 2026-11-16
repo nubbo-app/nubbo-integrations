@@ -1,0 +1,18 @@
+{
+	"url": "/embeds/{{parameters.embedId}}",
+	"method": "PATCH",
+	"headers": {
+		"Authorization": "Bearer {{connection.apiKey}}"
+	},
+	"body": {
+		"name": "{{ifempty(parameters.name, undefined)}}",
+		"allowedDomains": "{{if(contains(ifempty(parameters.clear, emptyarray), 'allowedDomains'), emptyarray, ifempty(parameters.allowedDomains, undefined))}}",
+		"expiresAt": "{{if(contains(ifempty(parameters.clear, emptyarray), 'expiresAt'), null, if(parameters.expiresAt, formatDate(parameters.expiresAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), undefined))}}",
+		"password": "{{if(contains(ifempty(parameters.clear, emptyarray), 'password'), null, ifempty(parameters.password, undefined))}}",
+		"paused": "{{parameters.paused}}",
+		"config": "{{ifempty(parameters.config, undefined)}}"
+	},
+	"response": {
+		"output": "{{body}}"
+	}
+}

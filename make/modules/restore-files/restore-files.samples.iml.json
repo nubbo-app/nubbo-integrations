@@ -1,0 +1,12 @@
+{
+	"done": [
+		"0193a1b2-c3d4-7e5f-8a9b-0c1d2e3f4a61"
+	],
+	"failed": [
+		{
+			"fileId": "0193a1b2-c3d4-7e5f-8a9b-0c1d2e3f4a61",
+			"code": "TRASH_PARENT_TRASHED",
+			"message": "The folder that held this item is in the trash"
+		}
+	]
+}

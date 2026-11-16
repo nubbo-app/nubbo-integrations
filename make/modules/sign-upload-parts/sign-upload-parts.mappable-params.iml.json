@@ -1,0 +1,20 @@
+[
+	{
+		"name": "uploadId",
+		"required": true,
+		"type": "text",
+		"label": "Upload ID",
+		"help": "The upload ID that «Start an Upload» returned."
+	},
+	{
+		"name": "partNumbers",
+		"type": "array",
+		"label": "Part numbers",
+		"spec": {
+			"type": "uinteger",
+			"label": "Part number"
+		},
+		"required": true,
+		"help": "Part numbers to sign, from 1 to totalParts"
+	}
+]

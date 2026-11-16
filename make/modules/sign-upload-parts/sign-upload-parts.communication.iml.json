@@ -1,0 +1,13 @@
+{
+	"url": "/uploads/{{parameters.uploadId}}/parts",
+	"method": "POST",
+	"headers": {
+		"Authorization": "Bearer {{connection.apiKey}}"
+	},
+	"body": {
+		"partNumbers": "{{ifempty(parameters.partNumbers, undefined)}}"
+	},
+	"response": {
+		"output": "{{body}}"
+	}
+}

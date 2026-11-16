@@ -1,0 +1,95 @@
+[
+	{
+		"name": "id",
+		"label": "ID",
+		"type": "text"
+	},
+	{
+		"name": "encrypted",
+		"label": "Encrypted",
+		"type": "boolean"
+	},
+	{
+		"name": "bucketAvailable",
+		"label": "Bucket available",
+		"type": "boolean"
+	},
+	{
+		"name": "name",
+		"label": "Name",
+		"type": "text"
+	},
+	{
+		"name": "description",
+		"label": "Description",
+		"type": "text"
+	},
+	{
+		"name": "bucketId",
+		"label": "Bucket ID",
+		"type": "text"
+	},
+	{
+		"name": "path",
+		"label": "Path",
+		"type": "text"
+	},
+	{
+		"name": "url",
+		"label": "Url",
+		"type": "text"
+	},
+	{
+		"name": "status",
+		"label": "Status",
+		"type": "text"
+	},
+	{
+		"name": "hasPassword",
+		"label": "Has password",
+		"type": "boolean"
+	},
+	{
+		"name": "maxFileSize",
+		"label": "Maximum file size (bytes)",
+		"type": "number"
+	},
+	{
+		"name": "allowedFileTypes",
+		"label": "Allowed file extensions",
+		"type": "array",
+		"spec": {
+			"type": "text"
+		}
+	},
+	{
+		"name": "maxUploads",
+		"label": "Maximum uploads",
+		"type": "number"
+	},
+	{
+		"name": "uploadCount",
+		"label": "Upload count",
+		"type": "number"
+	},
+	{
+		"name": "visitorIdentity",
+		"label": "Ask senders who they are",
+		"type": "text"
+	},
+	{
+		"name": "expiresAt",
+		"label": "Expires at",
+		"type": "date"
+	},
+	{
+		"name": "createdAt",
+		"label": "Created at",
+		"type": "date"
+	},
+	{
+		"name": "updatedAt",
+		"label": "Updated at",
+		"type": "date"
+	}
+]
