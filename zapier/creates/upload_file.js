@@ -53,7 +53,13 @@ const perform = async (z, bundle) => {
       contentType: type,
       conflict,
     },
-    idempotencyKey: idempotencyKeyOf(z, bundle, 'upload_file', 'start', content.buffer.length),
+    idempotencyKey: idempotencyKeyOf(
+      z,
+      bundle,
+      'upload_file',
+      'start',
+      z.hash('sha256', content.buffer.toString('base64')),
+    ),
   });
   if (upload.multipart) {
     await nubboRequest(z, bundle, {

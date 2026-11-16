@@ -2,7 +2,17 @@
 
 const { idempotencyKeyOf, nubboRequest } = require('./client');
 
-const createAction = ({ key, noun, label, description, inputFields, sample, request, after }) => ({
+const createAction = ({
+  key,
+  noun,
+  label,
+  description,
+  inputFields,
+  sample,
+  request,
+  after,
+  idempotent = false,
+}) => ({
   key,
   noun,
   display: { label, description },
@@ -10,7 +20,6 @@ const createAction = ({ key, noun, label, description, inputFields, sample, requ
     inputFields,
     perform: async (z, bundle) => {
       const { method = 'POST', path, body } = request(bundle);
-      const idempotent = method === 'POST' || method === 'PATCH';
       const result = await nubboRequest(z, bundle, {
         method,
         path,

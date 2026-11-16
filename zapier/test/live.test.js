@@ -55,12 +55,12 @@ test('dropdowns list the buckets', { skip }, async () => {
   state.bucketId = buckets[0].id;
 });
 
-test('a folder create replays with the same input', { skip }, async () => {
-  const bundle = bundleOf({ bucketId: state.bucketId, path: folder, conflict: 'skip' });
-  const first = await appTester(App.creates.create_folder.operation.perform, bundle);
-  const second = await appTester(App.creates.create_folder.operation.perform, bundle);
-  assert.equal(first.kind, 'folder');
-  assert.equal(second.id, first.id);
+test('a folder is created', { skip }, async () => {
+  const created = await appTester(
+    App.creates.create_folder.operation.perform,
+    bundleOf({ bucketId: state.bucketId, path: folder }),
+  );
+  assert.equal(created.kind, 'folder');
 });
 
 test('upload from a URL goes straight to the provider', { skip }, async () => {
@@ -136,6 +136,8 @@ test('labels: find or create, then label a file', { skip }, async () => {
     [],
   );
   const label = await appTester(App.creates.create_label.operation.perform, bundleOf({ name }));
+  const replayed = await appTester(App.creates.create_label.operation.perform, bundleOf({ name }));
+  assert.equal(replayed.id, label.id, 'a retried create replays the first answer');
   const found = await appTester(
     App.searches.find_label.operation.perform,
     bundleOf({ name: name.toUpperCase() }),
@@ -189,6 +191,27 @@ test('rename, move, trash and restore', { skip }, async () => {
     bundleOf({ fileIds: [state.noteId] }),
   );
   assert.deepEqual(restored.done, [state.noteId]);
+});
+
+test('state changes run every time', { skip }, async () => {
+  const rule = await appTester(
+    App.creates.create_automation.operation.perform,
+    bundleOf({
+      name: `Zapier ${run}`,
+      trigger: 'FOLDER_UPLOAD',
+      bucketId: state.bucketId,
+      folderPrefix: folder,
+      action: 'HIDE',
+    }),
+  );
+  let current;
+  for (const ruleState of ['pause', 'resume', 'pause']) {
+    current = await appTester(
+      App.creates.set_automation_state.operation.perform,
+      bundleOf({ ruleId: rule.id, state: ruleState }),
+    );
+  }
+  assert.equal(current.isActive, false);
 });
 
 test('the new file trigger sees the upload and keeps the poll floor', { skip }, async () => {

@@ -157,6 +157,7 @@ const activeField = (noun) => ({
 
 const createLink = createAction({
   key: 'create_link',
+  idempotent: true,
   noun: 'Share Link',
   label: 'Create Share Link',
   description: 'Creates a share link for a file or folder.',
@@ -205,6 +206,7 @@ const updateLink = createAction({
 
 const createInbox = createAction({
   key: 'create_inbox',
+  idempotent: true,
   noun: 'File Request',
   label: 'Create File Request',
   description: 'Creates a file request: a public link where anyone can send files to a folder.',
@@ -286,6 +288,7 @@ const updateInbox = createAction({
 
 const createGallery = createAction({
   key: 'create_gallery',
+  idempotent: true,
   noun: 'Gallery',
   label: 'Create Gallery',
   description: 'Creates a public gallery of the photos and videos of a folder.',
@@ -361,6 +364,7 @@ const updateGallery = createAction({
 
 const createLabel = createAction({
   key: 'create_label',
+  idempotent: true,
   noun: 'Label',
   label: 'Create Label',
   description: 'Creates a label. Needs a key that reads and writes the whole space.',
@@ -386,6 +390,7 @@ const createLabel = createAction({
 
 const createEmbed = createAction({
   key: 'create_embed',
+  idempotent: true,
   noun: 'Embed',
   label: 'Create Embed',
   description: 'Creates an embed to show a file request, a share link or a folder on a website.',
@@ -444,6 +449,7 @@ const createEmbed = createAction({
 
 const createAutomation = createAction({
   key: 'create_automation',
+  idempotent: true,
   noun: 'Automation Rule',
   label: 'Create Automation Rule',
   description:
