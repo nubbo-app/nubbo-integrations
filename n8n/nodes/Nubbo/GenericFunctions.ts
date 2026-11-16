@@ -4,13 +4,13 @@ import type {
 	IHttpRequestMethods,
 	IHttpRequestOptions,
 	ILoadOptionsFunctions,
-	INodePropertyOptions,
+	INodeListSearchResult,
 	IPollFunctions,
 	JsonObject,
 } from 'n8n-workflow';
-import { NodeApiError, sleep } from 'n8n-workflow';
+import { NodeApiError, NodeOperationError, sleep } from 'n8n-workflow';
 
-type NubboContext = IExecuteFunctions | ILoadOptionsFunctions | IPollFunctions;
+export type NubboContext = IExecuteFunctions | ILoadOptionsFunctions | IPollFunctions;
 
 export interface NubboRequestOptions {
 	qs?: IDataObject;
@@ -41,6 +41,7 @@ const MAX_RETRIES = 3;
 const MAX_RETRY_AFTER_SECONDS = 60;
 const NO_RETRY_CODES = ['API_QUOTA_EXCEEDED', 'API_TRIGGER_TOO_FREQUENT', 'API_KEY_FAILURES'];
 export const PAGE_LIMIT = 100;
+const SEARCH_PAGE_LIMIT = 50;
 
 export class NubboRequestError extends Error {
 	constructor(
@@ -78,7 +79,7 @@ const errorBodyOf = (statusCode: number, body: unknown): NubboErrorBody => {
 
 export async function baseUrlOf(this: NubboContext): Promise<string> {
 	const credentials = await this.getCredentials<{ baseUrl: string }>('nubboApi');
-	return credentials.baseUrl.replace(/\/+$/, '');
+	return credentials.baseUrl.trim().replace(/\/+$/, '');
 }
 
 export async function nubboRawRequest(
@@ -108,7 +109,7 @@ export async function nubboRawRequest(
 			'nubboApi',
 			request,
 		)) as NubboFullResponse;
-		if (response.statusCode < 400) return response.body;
+		if (response.statusCode < 400) return response.body === '' ? undefined : response.body;
 		const body = errorBodyOf(response.statusCode, response.body);
 		const retryAfterHeader = headerOf(response.headers, 'retry-after');
 		const retryAfter = retryAfterHeader ? Number(retryAfterHeader) : undefined;
@@ -136,7 +137,8 @@ export function toNodeApiError(this: NubboContext, error: unknown, itemIndex?: n
 			itemIndex,
 		});
 	}
-	return error as Error;
+	if (error instanceof NodeApiError || error instanceof NodeOperationError) return error;
+	return new NodeApiError(this.getNode(), error as JsonObject, { itemIndex });
 }
 
 export async function nubboApiRequest(
@@ -173,15 +175,40 @@ export async function nubboApiRequestAllItems(
 
 export const encodePath = (value: string): string => encodeURIComponent(value.trim());
 
-export async function loadOptionsOf(
+export function idempotencyKeyOf(this: IExecuteFunctions, itemIndex: number, step = ''): string {
+	return [
+		'n8n',
+		this.getExecutionId(),
+		this.getNode().id,
+		this.getExecuteData().runIndex ?? 0,
+		itemIndex,
+		step,
+	]
+		.filter((part) => part !== '' && part !== undefined)
+		.join(':')
+		.replace(/[^\x21-\x7e]/g, '')
+		.slice(0, 255);
+}
+
+export async function searchListOf(
 	this: ILoadOptionsFunctions,
 	path: string,
 	nameOf: (item: IDataObject) => string,
+	filter?: string,
+	paginationToken?: string,
 	qs: IDataObject = {},
-): Promise<INodePropertyOptions[]> {
-	const items = await nubboApiRequestAllItems.call(this, path, qs, 1000);
-	return items
-		.filter((item) => !item.encrypted)
+): Promise<INodeListSearchResult> {
+	const page = (await nubboApiRequest.call(this, 'GET', path, {
+		qs: {
+			...qs,
+			limit: SEARCH_PAGE_LIMIT,
+			...(paginationToken ? { cursor: paginationToken } : {}),
+		},
+	})) as unknown as NubboPage;
+	const needle = filter?.trim().toLowerCase();
+	const results = page.data
+		.filter((item) => !item.encrypted && typeof item.id === 'string')
 		.map((item) => ({ name: nameOf(item), value: item.id as string }))
-		.sort((a, b) => a.name.localeCompare(b.name));
+		.filter((item) => !needle || item.name.toLowerCase().includes(needle));
+	return { results, paginationToken: page.nextCursor ?? undefined };
 }

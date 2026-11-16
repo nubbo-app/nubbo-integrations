@@ -11,10 +11,9 @@ export class NubboApi implements ICredentialType {
 
 	displayName = 'Nubbo API';
 
-	icon: Icon = 'file:../icons/nubbo.svg';
+	icon: Icon = { light: 'file:../icons/nubbo.svg', dark: 'file:../icons/nubbo.svg' };
 
-	documentationUrl =
-		'https://github.com/nubbo-app/nubbo-integrations/tree/main/n8n#credentials';
+	documentationUrl = 'https://github.com/nubbo-app/nubbo-integrations/tree/main/n8n#credentials';
 
 	properties: INodeProperties[] = [
 		{
@@ -34,7 +33,8 @@ export class NubboApi implements ICredentialType {
 			type: 'string',
 			required: true,
 			default: 'https://api.nubbo.app',
-			description: 'The address of the Nubbo API. Leave it as it is unless Nubbo tells you otherwise.',
+			description:
+				'The address of the Nubbo API. Leave it as it is unless Nubbo tells you otherwise.',
 		},
 	];
 
