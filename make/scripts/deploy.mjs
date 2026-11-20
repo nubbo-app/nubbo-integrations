@@ -7,8 +7,8 @@
 // The API token (scopes sdk-apps:read and sdk-apps:write) is read from origins[0].apikeyFile,
 // or from the file in MAKE_APIKEY_FILE. New components are written to origins[0].idMapping.
 
-import { readFileSync, writeFileSync } from 'node:fs';
-import { dirname, isAbsolute, join, resolve } from 'node:path';
+import { readFileSync, realpathSync, renameSync, writeFileSync } from 'node:fs';
+import { dirname, join, resolve, sep } from 'node:path';
 import { setTimeout as wait } from 'node:timers/promises';
 import { fileURLToPath } from 'node:url';
 
@@ -25,14 +25,45 @@ if (unknown.length || only.some((item) => !/^(connection|rpc|module):\w+$/.test(
 	console.error('Usage: node scripts/deploy.mjs [--dry-run] [--only connection|rpc|module:<id>]...');
 	process.exit(2);
 }
-if (!/^https:\/\/.+\/api$/.test(origin.baseUrl) || !/^[a-z][0-9a-z-]+[0-9a-z]$/.test(origin.appId)) {
-	console.error('Set origins[0].baseUrl and origins[0].appId in makecomapp.json first.');
+const baseUrl = URL.canParse(origin.baseUrl) ? new URL(origin.baseUrl) : null;
+if (
+	!baseUrl ||
+	baseUrl.protocol !== 'https:' ||
+	!/^[a-z0-9-]+\.make\.com$/.test(baseUrl.hostname) ||
+	baseUrl.username ||
+	baseUrl.password ||
+	baseUrl.port ||
+	baseUrl.search ||
+	baseUrl.hash ||
+	baseUrl.pathname !== '/api' ||
+	!/^[a-z][0-9a-z-]+[0-9a-z]$/.test(origin.appId)
+) {
+	console.error('Set origins[0].baseUrl (https://<zone>.make.com/api) and origins[0].appId in makecomapp.json first.');
+	process.exit(2);
+}
+const missing = only.filter((item) => !manifest.components[item.split(':')[0]]?.[item.split(':')[1]]);
+if (missing.length) {
+	console.error(`Not in makecomapp.json: ${missing.join(', ')}`);
+	process.exit(1);
+}
+
+function readToken() {
+	if (process.env.MAKE_APIKEY_FILE) return readFileSync(process.env.MAKE_APIKEY_FILE, 'utf8').trim();
+	const secrets = join(root, '.secrets');
+	try {
+		const file = realpathSync(resolve(root, origin.apikeyFile));
+		if (file.startsWith(realpathSync(secrets) + sep)) return readFileSync(file, 'utf8').trim();
+	} catch (error) {
+		if (error.code !== 'ENOENT') throw error;
+		console.error('The API token file is missing: save it in .secrets/ or name it in MAKE_APIKEY_FILE.');
+		process.exit(2);
+	}
+	console.error('origins[0].apikeyFile must be a file inside .secrets/.');
 	process.exit(2);
 }
 
-const apikeyFile = process.env.MAKE_APIKEY_FILE || origin.apikeyFile;
-const token = readFileSync(isAbsolute(apikeyFile) ? apikeyFile : join(root, apikeyFile), 'utf8').trim();
-const api = `${origin.baseUrl}/v2/sdk/apps`;
+const token = readToken();
+const api = `${baseUrl.origin}/api/v2/sdk/apps`;
 const versioned = `${origin.appId}/${origin.appVersion}`;
 
 const TYPES = ['connection', 'rpc', 'module'];
@@ -70,9 +101,11 @@ async function request(method, path, { body, mime } = {}) {
 				...(body === undefined ? {} : { 'Content-Type': mime ?? 'application/json' }),
 			},
 			body: body === undefined || mime ? body : JSON.stringify(body),
+			redirect: 'error',
 		});
 		const text = await response.text();
-		if ((response.status === 429 || response.status >= 500) && attempt < 8) {
+		const retryable = response.status === 429 || (response.status >= 500 && method !== 'POST');
+		if (retryable && attempt < 8) {
 			const retryAfter = Number(response.headers.get('retry-after'));
 			await wait(retryAfter > 0 ? retryAfter * 1000 : 5000 * attempt);
 			continue;
@@ -104,7 +137,8 @@ const remoteNameOf = (type, localId) => mapping(type).find((item) => item.local 
 
 function pair(type, local, remote) {
 	mapping(type).push({ local, remote });
-	writeFileSync(manifestPath, `${JSON.stringify(manifest, null, '\t')}\n`);
+	writeFileSync(`${manifestPath}.tmp`, `${JSON.stringify(manifest, null, '\t')}\n`);
+	renameSync(`${manifestPath}.tmp`, manifestPath);
 }
 
 function collectionPath(type) {
