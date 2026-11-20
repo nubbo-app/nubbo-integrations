@@ -37,14 +37,9 @@ export class NubboApi implements ICredentialType {
 					value: 'https://api.nubbo.app',
 					description: 'Nubbo at nubbo.app',
 				},
-				{
-					name: 'Development (Testing Only)',
-					value: 'https://dev.api.nubbo.app',
-					description: 'The Nubbo test environment; not for real workflows',
-				},
 			],
 			default: 'https://api.nubbo.app',
-			description: 'The Nubbo API to connect to. Use Production.',
+			description: 'The Nubbo API to connect to',
 		},
 	];
 

@@ -30,5 +30,5 @@ Each integration is its own package with its own lockfile; there is no root pack
 - POST and PATCH calls that create or change something send an `Idempotency-Key` from the execution, node, run and item. The upload start sends none (it creates nothing visible and a replay after an abort would return a dead upload); `complete` carries one bound to the upload id.
 - The trigger keeps `cursor` and a filter fingerprint in the node's static data, seeds without emitting on the first poll and after a filter change, sends `X-Nubbo-Flow: <workflow id>:<node id>` on every poll (`:test` added for manual tests, which never touch the stored cursor), returns nothing on `API_TRIGGER_TOO_FREQUENT` and re-seeds on `API_CURSOR_INVALID`.
 - When the API adds or changes a route, update the description, the router and the README table in the same PR.
-- Before the n8n verification request, remove the Development option from `credentials/NubboApi.credentials.ts` (keep Production only) and release again.
+- The credential connects to production (`https://api.nubbo.app`) only; do not add other environments to `credentials/NubboApi.credentials.ts`.
 - Release: bump `version` in `n8n/package.json` and `CHANGELOG.md`, merge to `main`, then run the publish workflow with the version as input.
