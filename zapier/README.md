@@ -1,5 +1,7 @@
 # Nubbo for Zapier
 
+One workspace for all your S3 storage. Automate it from Zapier.
+
 The Zapier integration for [Nubbo](https://nubbo.app). It connects with a Nubbo API key and works through the public API (`/v1`, reference at `https://api.nubbo.app/v1/docs`). Built with the Zapier Platform CLI (`zapier-platform-core` 19, JavaScript).
 
 The API, and so this integration, comes with the Pro and Teams plans.
@@ -78,7 +80,7 @@ These steps need the Zapier developer account on info@nubbo.app. Run them from `
    npx zapier-platform validate
    ```
 
-4. In the Zapier developer platform, fill in the listing (logo, description, homepage `https://nubbo.app`, category chosen at register), and add an admin with an @nubbo.app email.
+4. In the Zapier developer platform, fill in the listing (logo, homepage `https://nubbo.app`, category chosen at register), and add an admin with an @nubbo.app email. Description: `One workspace for all your S3 storage. Automate it from Zapier.`
 
 5. When the API is live in production, push a version for production, remove the develop base URL and promote it:
 
