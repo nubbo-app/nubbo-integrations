@@ -30,6 +30,7 @@ modules/<id>/           communication, epoch (triggers), static and mappable par
 modules/groups.json     module groups in the Make module picker
 rpcs/<id>/              dynamic options for select fields
 assets/icon-512.png     app icon to upload in the app settings
+scripts/deploy.mjs      deploys the source to Make through its API
 ```
 
 ## How it works
@@ -59,9 +60,11 @@ The app needs a Make account for Nubbo (info@nubbo.app) with access to Custom ap
 2. Upload `assets/icon-512.png` as the app icon.
 3. Note the zone in the address bar (for example `eu2.make.com`). In `makecomapp.json`, set `origins[0].baseUrl` to `https://<zone>.make.com/api` and `origins[0].appId` to the app ID Make shows (the name with its suffix).
 4. In Make, open your profile, **API access**, and create a token with the scopes `sdk-apps:read` and `sdk-apps:write`. Save it in `make/.secrets/apikey` (the folder is ignored by git; never commit it).
-5. In VS Code, install the **Make Apps Editor** extension (`Integromat.apps-sdk`) and open the `make/` folder.
-6. Right-click `makecomapp.json` and select **Deploy to Make**. When the extension asks how to pair the components, choose **Create as new remote component (and Apply for all unmapped)**. The extension writes the pairing into `origins[0].idMapping`; commit that change so later deploys update the same components.
-7. Later changes: edit the files, then **Deploy to Make** again (on the whole `makecomapp.json`, or on one component folder).
+5. From `make/`, compare the source with Make: `node scripts/deploy.mjs --dry-run`. It lists what would be created or changed and writes nothing.
+6. Deploy: `node scripts/deploy.mjs`. It creates the components that are missing, updates the rest and writes the pairing of each new component into `origins[0].idMapping`; commit that change so later deploys update the same components. It needs Node 20 or later and no packages. It never publishes the app.
+7. Later changes: edit the files, then run the script again. `--only module:<id>` (also `rpc:<id>` and `connection:<id>`, repeatable) deploys one component.
+
+The app in `makecomapp.json` is `nubbo-fepsab` on `eu1.make.com`, already paired. The **Make Apps Editor** extension for VS Code (`Integromat.apps-sdk`) reads the same `makecomapp.json` and token file.
 
 ## Test on dev (before the Teams activation)
 
