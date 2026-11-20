@@ -1,7 +1,7 @@
 {
 	"name": "n8n-nodes-nubbo",
-	"version": "0.1.0",
-	"description": "n8n nodes for Nubbo, the multi-cloud manager for S3-compatible storage",
+	"version": "0.2.0",
+	"description": "One workspace for all your S3 storage. Automate it from n8n.",
 	"license": "MIT",
 	"homepage": "https://github.com/nubbo-app/nubbo-integrations/tree/main/n8n#readme",
 	"keywords": [

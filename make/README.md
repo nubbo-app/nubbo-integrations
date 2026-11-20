@@ -6,7 +6,7 @@ The source of the Nubbo app for [Make](https://www.make.com). It runs on the Nub
 
 | Component | Items |
 |---|---|
-| Connection | `nubbo`: an API key (`nbk_…`) and an environment (Production `api.nubbo.app`, or Development `dev.api.nubbo.app` as an advanced option, for testing only: it must be removed before the public review). Verified with `GET /v1/me`; the connection shows the space and the key name. |
+| Connection | `nubbo`: an API key (`nbk_…`) and an environment, as an advanced option with Production (`api.nubbo.app`) only. Verified with `GET /v1/me`; the connection shows the space and the key name. |
 | Triggers (polling) | Watch New Files, Watch New File Request Uploads, Watch New Activity |
 | Files and folders | List Files in a Folder, Search Files, Get a File or Folder, Create a Folder, Rename a File or Folder, Move Files and Folders, Get an Operation, Get a Download Link, Add a Label to a File, Remove a Label from a File |
 | Uploads and downloads | Upload a File, Download a File, Start an Upload, Sign Upload Parts, Complete an Upload, Abort a Multipart Upload |
@@ -66,11 +66,11 @@ The app needs a Make account for Nubbo (info@nubbo.app) with access to Custom ap
 
 The app in `makecomapp.json` is `nubbo-fepsab` on `eu1.make.com`, already paired. The **Make Apps Editor** extension for VS Code (`Integromat.apps-sdk`) reads the same `makecomapp.json` and token file.
 
-## Test on dev (before the Teams activation)
+## Test
 
-The API answers on `dev.api.nubbo.app` until the Teams activation. Use a dev account with Pro, and a key from **Settings › API** on `dev.app.nubbo.app`.
+Use a Nubbo account with Pro, and a key from **Settings › API** on `app.nubbo.app`.
 
-1. Create a connection: paste the key, open **Show advanced settings** and pick **Development**. The connection name shows `<space> · <key name>`. Try a wrong key once: it must fail with `API_KEY_INVALID`.
+1. Create a connection and paste the key. The connection name shows `<space> · <key name>`. Try a wrong key once: it must fail with `API_KEY_INVALID`.
 2. Scenario A (actions, one chain): Create a Folder > Upload a File (map a file from an HTTP «Get a file» module) > Get a File or Folder > Download a File > Get a Download Link > Rename a File or Folder > Create a Label > Add a Label to a File > Create a Share Link > Update a Share Link (clear the password) > Create a File Request > Create a Gallery > Create an Embed > Create an Automation Rule > Pause and Resume it > Move Files and Folders > Move Files to the Trash > Restore Files from the Trash > Delete modules for what was created > Make an API Call (`GET`, URL `buckets`).
 3. Scenario B (searches): List Buckets, List Files in a Folder, Search Files, List Share Links, List File Requests, List Galleries, List Embeds, List Automation Rules, List Labels, List Projects, List Activity, each with a limit above 100 on a folder with more than 100 files once, so the log shows a second page.
 4. Scenario C (triggers), one per trigger, scheduled every minute (or 15 minutes on a free Make plan):
@@ -83,16 +83,15 @@ The API answers on `dev.api.nubbo.app` until the Teams activation. Use a dev acc
    - **Run once** twice within a minute answers `API_TRIGGER_TOO_FREQUENT` as a rate limit error: that is expected.
 5. Scenario D (errors): Get a File or Folder with an ID that does not exist (`[404] API_FILE_NOT_FOUND`), and Create a Folder with a read-only key (`[403] API_KEY_READ_ONLY`).
 
-## Invite link and review (after the Teams activation)
+## Invite link and review
 
-The API reaches production with the Teams activation. Until then, keep the app private: publishing cannot be undone, and published components cannot be deleted.
+Publishing cannot be undone, and published components cannot be deleted, so the app stays private until the API answers in production.
 
-1. Create a production connection (Environment: Production) and run scenarios A to D again on `api.nubbo.app`.
-2. Remove the Development environment option before requesting the public review: delete the `baseUrl` parameter's Development entry in `connections/nubbo/nubbo.params.iml.json` (keep the parameter with only Production), deploy, and check that a connection still verifies. It stays in the app until then, for the dev tests.
-3. Remove any test modules or connections made in the Make web editor.
-4. Click **Publish**. Make shows the invite link: open it with another Make organization and check that the app installs and a connection works.
-5. On the **Modules** tab, make every module visible.
-6. Open **Review**, fill in the API documentation (`https://api.nubbo.app/v1/docs`), the help link (`https://nubbo.app`), the categories (File management, Cloud storage) and the links to scenarios A to D, then **Request review**. Answer Make's emails; after each fix deploy, run the scenarios again and reply.
+1. Deploy the connection (`node scripts/deploy.mjs --only connection:nubbo`), create a production connection and run scenarios A to D on `api.nubbo.app`.
+2. Remove any test modules or connections made in the Make web editor.
+3. Click **Publish**. Make shows the invite link: open it with another Make organization and check that the app installs and a connection works.
+4. On the **Modules** tab, make every module visible.
+5. Open **Review**, fill in the API documentation (`https://api.nubbo.app/v1/docs`), the help link (`https://nubbo.app`), the categories (File management, Cloud storage) and the links to scenarios A to D, then **Request review**. Answer Make's emails; after each fix deploy, run the scenarios again and reply.
 
 After approval, Make gives the app a development version: deploy changes there first, test, then promote.
 

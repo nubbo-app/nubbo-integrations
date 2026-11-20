@@ -1,7 +1,7 @@
 {
   "name": "nubbo-zapier",
   "version": "1.0.0",
-  "description": "Zapier integration for Nubbo, the multi-cloud manager for S3-compatible storage.",
+  "description": "Nubbo is a workspace for all your S3-compatible storage.",
   "private": true,
   "main": "index.js",
   "scripts": {

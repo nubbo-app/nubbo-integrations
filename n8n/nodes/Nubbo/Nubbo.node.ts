@@ -495,7 +495,7 @@ export class Nubbo implements INodeType {
 		group: ['transform'],
 		version: 1,
 		subtitle: '={{$parameter["operation"] + ": " + $parameter["resource"]}}',
-		description: 'Work with files, folders, links and more in your Nubbo workspace',
+		description: 'One workspace for all your S3 storage. Automate it from n8n.',
 		defaults: { name: 'Nubbo' },
 		usableAsTool: true,
 		inputs: [NodeConnectionTypes.Main],
