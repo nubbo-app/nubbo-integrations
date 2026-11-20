@@ -1,7 +1,7 @@
 {
   "name": "nubbo-zapier",
   "version": "1.0.0",
-  "description": "One workspace for all your S3 storage. Automate it from Zapier.",
+  "description": "Nubbo is a workspace for all your S3-compatible storage.",
   "private": true,
   "main": "index.js",
   "scripts": {
