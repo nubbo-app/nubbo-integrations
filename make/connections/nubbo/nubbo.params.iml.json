@@ -19,12 +19,8 @@
 			{
 				"label": "Production (api.nubbo.app)",
 				"value": "https://api.nubbo.app"
-			},
-			{
-				"label": "Development (dev.api.nubbo.app)",
-				"value": "https://dev.api.nubbo.app"
 			}
 		],
-		"help": "Leave Production unless Nubbo asked you to test on its development environment."
+		"help": "The Nubbo API the connection uses."
 	}
 ]
