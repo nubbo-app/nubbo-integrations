@@ -2,7 +2,7 @@
 
 One workspace for all your S3 storage. Automate it from n8n.
 
-n8n community nodes for [Nubbo](https://nubbo.app), the multi-cloud manager for S3-compatible storage. Work with the files, folders, share links, file requests, galleries, embeds, labels, projects and automation rules of your Nubbo workspace, and start workflows when something changes.
+n8n community nodes for [Nubbo](https://nubbo.app). Work with the files, folders, share links, file requests, galleries, embeds, labels, projects and automation rules of your Nubbo workspace, and start workflows when something changes.
 
 The package has two nodes:
 

@@ -1,4 +1,6 @@
-Nubbo is a multi-cloud manager for S3-compatible storage: AWS S3, Cloudflare R2, DigitalOcean Spaces, Wasabi, Backblaze B2 and any S3-compatible endpoint.
+One workspace for all your S3 storage. Automate it from Make.
+
+Nubbo works with AWS S3, Cloudflare R2, DigitalOcean Spaces, Wasabi, Backblaze B2 and any S3-compatible endpoint.
 
 With this app your scenarios can:
 

@@ -1,6 +1,6 @@
 # Nubbo integrations
 
-Official integrations for [Nubbo](https://nubbo.app), the multi-cloud manager for S3-compatible storage.
+Official integrations for [Nubbo](https://nubbo.app): one workspace for all your S3 storage.
 
 | Folder | Integration | Package |
 | --- | --- | --- |
