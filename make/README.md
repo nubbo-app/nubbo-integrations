@@ -54,7 +54,7 @@ The app needs a Make account for Nubbo (info@nubbo.app) with access to Custom ap
 1. In Make, open **Custom apps** and create an app:
    - Name: `nubbo` (Make adds a suffix if the name is taken; it becomes part of the app ID).
    - Label: `Nubbo`.
-   - Description: `Manage files, share links, file requests and galleries in Nubbo, and react to new files and activity.`
+   - Description: `One workspace for all your S3 storage. Automate it from Make.`
    - Theme: `#094ad7`.
    - Language: English. Audience: global.
 2. Upload `assets/icon-512.png` as the app icon.

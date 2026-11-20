@@ -9,6 +9,8 @@ Official integrations built on the public Nubbo API (`/v1`). The reference is `h
 | Folder | Integration | Published as |
 | --- | --- | --- |
 | `n8n/` | n8n community nodes «Nubbo» and «Nubbo Trigger» | npm `n8n-nodes-nubbo` |
+| `zapier/` | Zapier integration «Nubbo» (Zapier Platform CLI) | Zapier app `nubbo-zapier` |
+| `make/` | Make custom app «Nubbo» (Make Apps Editor local format) | Make app `nubbo-fepsab` |
 
 Each integration is its own package with its own lockfile; there is no root package.
 
