@@ -1118,10 +1118,316 @@
 	"origins": [
 		{
 			"label": "Nubbo",
-			"baseUrl": "-FILL-ME- the API URL of the Make zone, for example https://eu2.make.com/api",
-			"appId": "-FILL-ME- the app ID that Make shows after you create the app",
+			"baseUrl": "https://eu1.make.com/api",
+			"appId": "nubbo-fepsab",
 			"appVersion": 1,
-			"apikeyFile": ".secrets/apikey"
+			"apikeyFile": ".secrets/apikey",
+			"idMapping": {
+				"connection": [
+					{
+						"local": "nubbo",
+						"remote": "nubbo-fepsab"
+					}
+				],
+				"webhook": [],
+				"module": [
+					{
+						"local": "watchNewFiles",
+						"remote": "watchNewFiles"
+					},
+					{
+						"local": "watchNewInboxUploads",
+						"remote": "watchNewInboxUploads"
+					},
+					{
+						"local": "watchNewActivity",
+						"remote": "watchNewActivity"
+					},
+					{
+						"local": "listFiles",
+						"remote": "listFiles"
+					},
+					{
+						"local": "searchFiles",
+						"remote": "searchFiles"
+					},
+					{
+						"local": "getFile",
+						"remote": "getFile"
+					},
+					{
+						"local": "createFolder",
+						"remote": "createFolder"
+					},
+					{
+						"local": "renameFile",
+						"remote": "renameFile"
+					},
+					{
+						"local": "moveFiles",
+						"remote": "moveFiles"
+					},
+					{
+						"local": "getOperation",
+						"remote": "getOperation"
+					},
+					{
+						"local": "getDownloadLink",
+						"remote": "getDownloadLink"
+					},
+					{
+						"local": "addFileLabel",
+						"remote": "addFileLabel"
+					},
+					{
+						"local": "removeFileLabel",
+						"remote": "removeFileLabel"
+					},
+					{
+						"local": "uploadFile",
+						"remote": "uploadFile"
+					},
+					{
+						"local": "downloadFile",
+						"remote": "downloadFile"
+					},
+					{
+						"local": "startUpload",
+						"remote": "startUpload"
+					},
+					{
+						"local": "signUploadParts",
+						"remote": "signUploadParts"
+					},
+					{
+						"local": "completeUpload",
+						"remote": "completeUpload"
+					},
+					{
+						"local": "abortUpload",
+						"remote": "abortUpload"
+					},
+					{
+						"local": "trashFiles",
+						"remote": "trashFiles"
+					},
+					{
+						"local": "restoreFiles",
+						"remote": "restoreFiles"
+					},
+					{
+						"local": "listTrash",
+						"remote": "listTrash"
+					},
+					{
+						"local": "listLabels",
+						"remote": "listLabels"
+					},
+					{
+						"local": "createLabel",
+						"remote": "createLabel"
+					},
+					{
+						"local": "updateLabel",
+						"remote": "updateLabel"
+					},
+					{
+						"local": "mergeLabels",
+						"remote": "mergeLabels"
+					},
+					{
+						"local": "deleteLabel",
+						"remote": "deleteLabel"
+					},
+					{
+						"local": "listLabelGroups",
+						"remote": "listLabelGroups"
+					},
+					{
+						"local": "listProjects",
+						"remote": "listProjects"
+					},
+					{
+						"local": "getProject",
+						"remote": "getProject"
+					},
+					{
+						"local": "addProjectItems",
+						"remote": "addProjectItems"
+					},
+					{
+						"local": "removeProjectItems",
+						"remote": "removeProjectItems"
+					},
+					{
+						"local": "listShareLinks",
+						"remote": "listShareLinks"
+					},
+					{
+						"local": "createShareLink",
+						"remote": "createShareLink"
+					},
+					{
+						"local": "getShareLink",
+						"remote": "getShareLink"
+					},
+					{
+						"local": "updateShareLink",
+						"remote": "updateShareLink"
+					},
+					{
+						"local": "deleteShareLink",
+						"remote": "deleteShareLink"
+					},
+					{
+						"local": "listInboxUploads",
+						"remote": "listInboxUploads"
+					},
+					{
+						"local": "listFileRequests",
+						"remote": "listFileRequests"
+					},
+					{
+						"local": "createFileRequest",
+						"remote": "createFileRequest"
+					},
+					{
+						"local": "getFileRequest",
+						"remote": "getFileRequest"
+					},
+					{
+						"local": "updateFileRequest",
+						"remote": "updateFileRequest"
+					},
+					{
+						"local": "deleteFileRequest",
+						"remote": "deleteFileRequest"
+					},
+					{
+						"local": "listGalleries",
+						"remote": "listGalleries"
+					},
+					{
+						"local": "createGallery",
+						"remote": "createGallery"
+					},
+					{
+						"local": "getGallery",
+						"remote": "getGallery"
+					},
+					{
+						"local": "updateGallery",
+						"remote": "updateGallery"
+					},
+					{
+						"local": "deleteGallery",
+						"remote": "deleteGallery"
+					},
+					{
+						"local": "listEmbeds",
+						"remote": "listEmbeds"
+					},
+					{
+						"local": "createEmbed",
+						"remote": "createEmbed"
+					},
+					{
+						"local": "getEmbed",
+						"remote": "getEmbed"
+					},
+					{
+						"local": "updateEmbed",
+						"remote": "updateEmbed"
+					},
+					{
+						"local": "deleteEmbed",
+						"remote": "deleteEmbed"
+					},
+					{
+						"local": "pauseAutomationRule",
+						"remote": "pauseAutomationRule"
+					},
+					{
+						"local": "resumeAutomationRule",
+						"remote": "resumeAutomationRule"
+					},
+					{
+						"local": "listAutomationRules",
+						"remote": "listAutomationRules"
+					},
+					{
+						"local": "createAutomationRule",
+						"remote": "createAutomationRule"
+					},
+					{
+						"local": "getAutomationRule",
+						"remote": "getAutomationRule"
+					},
+					{
+						"local": "updateAutomationRule",
+						"remote": "updateAutomationRule"
+					},
+					{
+						"local": "deleteAutomationRule",
+						"remote": "deleteAutomationRule"
+					},
+					{
+						"local": "listActivity",
+						"remote": "listActivity"
+					},
+					{
+						"local": "getAccount",
+						"remote": "getAccount"
+					},
+					{
+						"local": "listBuckets",
+						"remote": "listBuckets"
+					},
+					{
+						"local": "makeApiCall",
+						"remote": "makeApiCall"
+					}
+				],
+				"rpc": [
+					{
+						"local": "listBuckets",
+						"remote": "listBuckets"
+					},
+					{
+						"local": "listInboxes",
+						"remote": "listInboxes"
+					},
+					{
+						"local": "listLabels",
+						"remote": "listLabels"
+					},
+					{
+						"local": "listLabelGroups",
+						"remote": "listLabelGroups"
+					},
+					{
+						"local": "listProjects",
+						"remote": "listProjects"
+					},
+					{
+						"local": "listLinks",
+						"remote": "listLinks"
+					},
+					{
+						"local": "listGalleries",
+						"remote": "listGalleries"
+					},
+					{
+						"local": "listEmbeds",
+						"remote": "listEmbeds"
+					},
+					{
+						"local": "listAutomations",
+						"remote": "listAutomations"
+					}
+				],
+				"function": []
+			}
 		}
 	]
 }
