@@ -44,7 +44,11 @@ jobs:
           fi
 
       - name: Use an npm with trusted publishing
-        run: npm install -g npm@^11.5.1
+        run: |
+          if ! npx -y semver@7 -r '>=11.5.1' "$(npm -v)" >/dev/null; then
+            npm install -g npm@^11.5.1
+          fi
+          npm -v
 
       - run: npm ci
 
