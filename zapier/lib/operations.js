@@ -1,0 +1,36 @@
+'use strict';
+
+const { idempotencyKeyOf, nubboRequest } = require('./client');
+const { duplicateGuardField } = require('./fields');
+
+const createAction = ({
+  key,
+  noun,
+  label,
+  description,
+  inputFields,
+  sample,
+  request,
+  after,
+  idempotent = false,
+}) => ({
+  key,
+  noun,
+  display: { label, description },
+  operation: {
+    inputFields: idempotent ? [...inputFields, duplicateGuardField] : inputFields,
+    perform: async (z, bundle) => {
+      const { method = 'POST', path, body } = request(bundle);
+      const result = await nubboRequest(z, bundle, {
+        method,
+        path,
+        body,
+        idempotencyKey: idempotent ? idempotencyKeyOf(z, bundle, key) : undefined,
+      });
+      return after ? after(z, bundle, result) : result;
+    },
+    sample,
+  },
+});
+
+module.exports = { createAction };

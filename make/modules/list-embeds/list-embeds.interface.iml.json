@@ -1,0 +1,102 @@
+[
+	{
+		"name": "id",
+		"label": "ID",
+		"type": "text"
+	},
+	{
+		"name": "kind",
+		"label": "Kind",
+		"type": "text"
+	},
+	{
+		"name": "name",
+		"label": "Name",
+		"type": "text"
+	},
+	{
+		"name": "status",
+		"label": "Status",
+		"type": "text"
+	},
+	{
+		"name": "inboxId",
+		"label": "Inbox ID",
+		"type": "text"
+	},
+	{
+		"name": "linkId",
+		"label": "Link ID",
+		"type": "text"
+	},
+	{
+		"name": "bucketId",
+		"label": "Bucket ID",
+		"type": "text"
+	},
+	{
+		"name": "path",
+		"label": "Path",
+		"type": "text"
+	},
+	{
+		"name": "allowedDomains",
+		"label": "Allowed sites",
+		"type": "array",
+		"spec": {
+			"type": "text"
+		}
+	},
+	{
+		"name": "hasPassword",
+		"label": "Has password",
+		"type": "boolean"
+	},
+	{
+		"name": "config",
+		"label": "Configuration",
+		"type": "any"
+	},
+	{
+		"name": "snippet",
+		"label": "Snippet",
+		"type": "collection",
+		"spec": [
+			{
+				"name": "html",
+				"label": "Html",
+				"type": "text"
+			},
+			{
+				"name": "react",
+				"label": "React",
+				"type": "text"
+			},
+			{
+				"name": "url",
+				"label": "Url",
+				"type": "text"
+			}
+		]
+	},
+	{
+		"name": "impressionCount",
+		"label": "Impression count",
+		"type": "number"
+	},
+	{
+		"name": "expiresAt",
+		"label": "Expires at",
+		"type": "date"
+	},
+	{
+		"name": "createdAt",
+		"label": "Created at",
+		"type": "date"
+	},
+	{
+		"name": "updatedAt",
+		"label": "Updated at",
+		"type": "date"
+	}
+]

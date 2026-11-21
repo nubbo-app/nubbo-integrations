@@ -1,0 +1,37 @@
+[
+	{
+		"name": "id",
+		"label": "ID",
+		"type": "text"
+	},
+	{
+		"name": "name",
+		"label": "Name",
+		"type": "text"
+	},
+	{
+		"name": "color",
+		"label": "Color",
+		"type": "text"
+	},
+	{
+		"name": "archived",
+		"label": "Archived",
+		"type": "boolean"
+	},
+	{
+		"name": "folderCount",
+		"label": "Folder count",
+		"type": "number"
+	},
+	{
+		"name": "createdAt",
+		"label": "Created at",
+		"type": "date"
+	},
+	{
+		"name": "lastActivityAt",
+		"label": "Last activity at",
+		"type": "date"
+	}
+]

@@ -1,0 +1,108 @@
+[
+	{
+		"name": "galleryId",
+		"required": true,
+		"type": "select",
+		"label": "Gallery",
+		"options": "rpc://listGalleries"
+	},
+	{
+		"name": "title",
+		"type": "text",
+		"label": "Title"
+	},
+	{
+		"name": "description",
+		"type": "text",
+		"label": "Description"
+	},
+	{
+		"name": "layout",
+		"type": "select",
+		"label": "Layout",
+		"options": [
+			{
+				"label": "Masonry",
+				"value": "masonry"
+			},
+			{
+				"label": "Grid",
+				"value": "grid"
+			},
+			{
+				"label": "Slideshow",
+				"value": "slideshow"
+			}
+		]
+	},
+	{
+		"name": "coverFileId",
+		"type": "text",
+		"label": "Cover file ID",
+		"help": "A file inside the gallery folder; null removes the cover"
+	},
+	{
+		"name": "individualDownloads",
+		"type": "boolean",
+		"label": "Allow single downloads",
+		"help": "Visitors can download single files"
+	},
+	{
+		"name": "zipDownload",
+		"type": "boolean",
+		"label": "Allow ZIP download",
+		"help": "Visitors can download everything as a ZIP"
+	},
+	{
+		"name": "password",
+		"type": "password",
+		"label": "Password",
+		"help": "null removes the password"
+	},
+	{
+		"name": "expiresAt",
+		"type": "date",
+		"label": "Expires at"
+	},
+	{
+		"name": "watermarkText",
+		"type": "text",
+		"label": "Watermark text",
+		"help": "A text watermark on the photos; null removes it"
+	},
+	{
+		"name": "active",
+		"type": "boolean",
+		"label": "Active",
+		"help": "false pauses the gallery"
+	},
+	{
+		"name": "clear",
+		"type": "select",
+		"label": "Fields to clear",
+		"multiple": true,
+		"options": [
+			{
+				"label": "Description",
+				"value": "description"
+			},
+			{
+				"label": "Cover file ID",
+				"value": "coverFileId"
+			},
+			{
+				"label": "Password",
+				"value": "password"
+			},
+			{
+				"label": "Expires at",
+				"value": "expiresAt"
+			},
+			{
+				"label": "Watermark text",
+				"value": "watermarkText"
+			}
+		],
+		"help": "The fields to empty. A field left blank above keeps its current value."
+	}
+]

@@ -1,0 +1,22 @@
+{
+	"url": "/inboxes",
+	"method": "POST",
+	"headers": {
+		"Authorization": "Bearer {{connection.apiKey}}"
+	},
+	"body": {
+		"bucketId": "{{ifempty(parameters.bucketId, undefined)}}",
+		"path": "{{ifempty(parameters.path, emptystring)}}",
+		"name": "{{ifempty(parameters.name, undefined)}}",
+		"description": "{{ifempty(parameters.description, undefined)}}",
+		"password": "{{ifempty(parameters.password, undefined)}}",
+		"expiresAt": "{{if(parameters.expiresAt, formatDate(parameters.expiresAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), undefined)}}",
+		"maxFileSize": "{{ifempty(parameters.maxFileSize, undefined)}}",
+		"allowedFileTypes": "{{ifempty(parameters.allowedFileTypes, undefined)}}",
+		"maxUploads": "{{ifempty(parameters.maxUploads, undefined)}}",
+		"visitorIdentity": "{{ifempty(parameters.visitorIdentity, undefined)}}"
+	},
+	"response": {
+		"output": "{{body}}"
+	}
+}

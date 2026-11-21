@@ -1,0 +1,16 @@
+{
+	"url": "/links",
+	"method": "POST",
+	"headers": {
+		"Authorization": "Bearer {{connection.apiKey}}"
+	},
+	"body": {
+		"fileId": "{{ifempty(parameters.fileId, undefined)}}",
+		"password": "{{ifempty(parameters.password, undefined)}}",
+		"expiresAt": "{{if(parameters.expiresAt, formatDate(parameters.expiresAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), undefined)}}",
+		"maxDownloads": "{{ifempty(parameters.maxDownloads, undefined)}}"
+	},
+	"response": {
+		"output": "{{body}}"
+	}
+}

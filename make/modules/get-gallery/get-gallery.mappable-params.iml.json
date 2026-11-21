@@ -1,0 +1,9 @@
+[
+	{
+		"name": "galleryId",
+		"required": true,
+		"type": "select",
+		"label": "Gallery",
+		"options": "rpc://listGalleries"
+	}
+]

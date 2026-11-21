@@ -1,0 +1,17 @@
+[
+	{
+		"name": "bucketId",
+		"type": "select",
+		"label": "Bucket",
+		"options": "rpc://listBuckets",
+		"help": "Trash of one bucket only"
+	},
+	{
+		"name": "limit",
+		"type": "uinteger",
+		"label": "Limit",
+		"default": 10,
+		"required": true,
+		"help": "The most results to return in one execution cycle."
+	}
+]

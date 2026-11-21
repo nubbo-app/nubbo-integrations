@@ -1,0 +1,76 @@
+[
+	{
+		"name": "bucketId",
+		"type": "select",
+		"label": "Bucket",
+		"options": "rpc://listBuckets",
+		"required": true
+	},
+	{
+		"name": "path",
+		"type": "text",
+		"label": "Path",
+		"help": "The folder uploads land in; empty for the root of the bucket"
+	},
+	{
+		"name": "name",
+		"type": "text",
+		"label": "Name",
+		"required": true
+	},
+	{
+		"name": "description",
+		"type": "text",
+		"label": "Description"
+	},
+	{
+		"name": "password",
+		"type": "password",
+		"label": "Password"
+	},
+	{
+		"name": "expiresAt",
+		"type": "date",
+		"label": "Expires at"
+	},
+	{
+		"name": "maxFileSize",
+		"type": "uinteger",
+		"label": "Maximum file size (bytes)",
+		"help": "Bytes per file"
+	},
+	{
+		"name": "allowedFileTypes",
+		"type": "array",
+		"label": "Allowed file extensions",
+		"spec": {
+			"type": "text",
+			"label": "Allowed file extension"
+		},
+		"help": "File extensions accepted; empty accepts every type"
+	},
+	{
+		"name": "maxUploads",
+		"type": "uinteger",
+		"label": "Maximum uploads"
+	},
+	{
+		"name": "visitorIdentity",
+		"type": "select",
+		"label": "Ask senders who they are",
+		"options": [
+			{
+				"label": "Required",
+				"value": "required"
+			},
+			{
+				"label": "Optional",
+				"value": "optional"
+			},
+			{
+				"label": "None",
+				"value": "none"
+			}
+		]
+	}
+]

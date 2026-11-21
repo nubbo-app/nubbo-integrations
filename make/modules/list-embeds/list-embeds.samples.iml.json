@@ -1,0 +1,27 @@
+{
+	"id": "0193a1b2-c3d4-7e5f-8a9b-0c1d2e3f4ab0",
+	"kind": "inbox",
+	"name": "Upload box",
+	"status": "active",
+	"inboxId": "0193a1b2-c3d4-7e5f-8a9b-0c1d2e3f4a61",
+	"linkId": null,
+	"bucketId": null,
+	"path": null,
+	"allowedDomains": [
+		"example.com"
+	],
+	"hasPassword": false,
+	"config": {
+		"presentation": "dropzone",
+		"locale": "auto"
+	},
+	"snippet": {
+		"html": "<iframe src=\"https://app.nubbo.app/e/Zt4\" …></iframe>",
+		"react": "<iframe src=\"https://app.nubbo.app/e/Zt4\" … />",
+		"url": "https://app.nubbo.app/e/Zt4"
+	},
+	"impressionCount": 42,
+	"expiresAt": null,
+	"createdAt": "2026-11-14T09:00:00.000Z",
+	"updatedAt": "2026-11-14T09:00:00.000Z"
+}

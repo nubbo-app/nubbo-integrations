@@ -1,0 +1,14 @@
+{
+	"url": "/projects/{{parameters.projectId}}/items",
+	"method": "DELETE",
+	"headers": {
+		"Authorization": "Bearer {{connection.apiKey}}"
+	},
+	"body": {
+		"folders": "{{ifempty(parameters.folders, undefined)}}",
+		"resources": "{{ifempty(parameters.resources, undefined)}}"
+	},
+	"response": {
+		"output": "{{body}}"
+	}
+}

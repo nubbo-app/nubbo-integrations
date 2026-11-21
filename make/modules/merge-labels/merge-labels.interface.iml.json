@@ -1,0 +1,59 @@
+[
+	{
+		"name": "label",
+		"label": "Label",
+		"type": "collection",
+		"spec": [
+			{
+				"name": "id",
+				"label": "ID",
+				"type": "text"
+			},
+			{
+				"name": "encrypted",
+				"label": "Encrypted",
+				"type": "boolean"
+			},
+			{
+				"name": "name",
+				"label": "Name",
+				"type": "text"
+			},
+			{
+				"name": "color",
+				"label": "Color",
+				"type": "text"
+			},
+			{
+				"name": "description",
+				"label": "Description",
+				"type": "text"
+			},
+			{
+				"name": "groupId",
+				"label": "Group ID",
+				"type": "text"
+			},
+			{
+				"name": "createdAt",
+				"label": "Created at",
+				"type": "date"
+			},
+			{
+				"name": "updatedAt",
+				"label": "Updated at",
+				"type": "date"
+			}
+		]
+	},
+	{
+		"name": "merged",
+		"label": "Merged",
+		"type": "number"
+	},
+	{
+		"name": "files",
+		"label": "Files",
+		"type": "number"
+	}
+]

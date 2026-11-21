@@ -1,0 +1,13 @@
+{
+	"url": "/files/{{parameters.fileId}}/download-link",
+	"method": "POST",
+	"headers": {
+		"Authorization": "Bearer {{connection.apiKey}}"
+	},
+	"body": {
+		"expiresIn": "{{ifempty(parameters.expiresIn, undefined)}}"
+	},
+	"response": {
+		"output": "{{body}}"
+	}
+}

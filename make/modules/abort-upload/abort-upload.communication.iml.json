@@ -1,0 +1,13 @@
+{
+	"url": "/uploads/{{parameters.uploadId}}",
+	"method": "DELETE",
+	"headers": {
+		"Authorization": "Bearer {{connection.apiKey}}"
+	},
+	"response": {
+		"output": {
+			"id": "{{parameters.uploadId}}",
+			"deleted": true
+		}
+	}
+}

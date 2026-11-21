@@ -1,0 +1,20 @@
+{
+	"url": "/activity",
+	"method": "GET",
+	"headers": {
+		"Authorization": "Bearer {{connection.apiKey}}"
+	},
+	"qs": {
+		"types": "FILE_UPLOADED,FILE_REQUEST_RECEIVED,EMBED_FILE_UPLOADED",
+		"bucketId": "{{ifempty(parameters.bucketId, undefined)}}",
+		"limit": 50
+	},
+	"response": {
+		"iterate": "{{body.data}}",
+		"output": {
+			"date": "{{item.occurredAt}}",
+			"label": "{{formatDate(item.occurredAt, 'YYYY-MM-DD HH:mm')}} · {{ifempty(item.file.path, item.type)}}"
+		},
+		"limit": 50
+	}
+}

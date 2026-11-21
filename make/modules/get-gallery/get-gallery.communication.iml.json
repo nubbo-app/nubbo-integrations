@@ -1,0 +1,10 @@
+{
+	"url": "/galleries/{{parameters.galleryId}}",
+	"method": "GET",
+	"headers": {
+		"Authorization": "Bearer {{connection.apiKey}}"
+	},
+	"response": {
+		"output": "{{body}}"
+	}
+}

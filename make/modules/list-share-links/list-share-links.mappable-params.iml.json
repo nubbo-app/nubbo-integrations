@@ -1,0 +1,41 @@
+[
+	{
+		"name": "fileId",
+		"type": "text",
+		"label": "File or folder ID",
+		"help": "Only the links of this file or folder"
+	},
+	{
+		"name": "bucketId",
+		"type": "select",
+		"label": "Bucket",
+		"options": "rpc://listBuckets"
+	},
+	{
+		"name": "status",
+		"type": "select",
+		"label": "Status",
+		"options": [
+			{
+				"label": "Active",
+				"value": "active"
+			},
+			{
+				"label": "Paused",
+				"value": "paused"
+			},
+			{
+				"label": "Expired",
+				"value": "expired"
+			}
+		]
+	},
+	{
+		"name": "limit",
+		"type": "uinteger",
+		"label": "Limit",
+		"default": 10,
+		"required": true,
+		"help": "The most results to return in one execution cycle."
+	}
+]

@@ -1,0 +1,47 @@
+[
+	{
+		"name": "uploadId",
+		"label": "Upload ID",
+		"type": "text"
+	},
+	{
+		"name": "bucketId",
+		"label": "Bucket ID",
+		"type": "text"
+	},
+	{
+		"name": "path",
+		"label": "Path",
+		"type": "text"
+	},
+	{
+		"name": "multipart",
+		"label": "Multipart upload",
+		"type": "boolean"
+	},
+	{
+		"name": "method",
+		"label": "Method",
+		"type": "text"
+	},
+	{
+		"name": "url",
+		"label": "Url",
+		"type": "text"
+	},
+	{
+		"name": "partSize",
+		"label": "Part size",
+		"type": "number"
+	},
+	{
+		"name": "totalParts",
+		"label": "Total parts",
+		"type": "number"
+	},
+	{
+		"name": "expiresAt",
+		"label": "Expires at",
+		"type": "date"
+	}
+]

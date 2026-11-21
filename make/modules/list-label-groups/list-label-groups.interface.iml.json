@@ -1,0 +1,27 @@
+[
+	{
+		"name": "id",
+		"label": "ID",
+		"type": "text"
+	},
+	{
+		"name": "encrypted",
+		"label": "Encrypted",
+		"type": "boolean"
+	},
+	{
+		"name": "name",
+		"label": "Name",
+		"type": "text"
+	},
+	{
+		"name": "createdAt",
+		"label": "Created at",
+		"type": "date"
+	},
+	{
+		"name": "updatedAt",
+		"label": "Updated at",
+		"type": "date"
+	}
+]

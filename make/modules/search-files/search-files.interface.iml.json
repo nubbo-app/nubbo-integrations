@@ -1,0 +1,70 @@
+[
+	{
+		"name": "id",
+		"label": "ID",
+		"type": "text"
+	},
+	{
+		"name": "bucketId",
+		"label": "Bucket ID",
+		"type": "text"
+	},
+	{
+		"name": "kind",
+		"label": "Kind",
+		"type": "text"
+	},
+	{
+		"name": "encrypted",
+		"label": "Encrypted",
+		"type": "boolean"
+	},
+	{
+		"name": "name",
+		"label": "Name",
+		"type": "text"
+	},
+	{
+		"name": "path",
+		"label": "Path",
+		"type": "text"
+	},
+	{
+		"name": "size",
+		"label": "Size (bytes)",
+		"type": "number"
+	},
+	{
+		"name": "mimeType",
+		"label": "Mime type",
+		"type": "text"
+	},
+	{
+		"name": "labelIds",
+		"label": "Labels",
+		"type": "array",
+		"spec": {
+			"type": "text"
+		}
+	},
+	{
+		"name": "hidden",
+		"label": "Hidden",
+		"type": "boolean"
+	},
+	{
+		"name": "navigation",
+		"label": "Navigation",
+		"type": "boolean"
+	},
+	{
+		"name": "modifiedAt",
+		"label": "Modified at",
+		"type": "date"
+	},
+	{
+		"name": "trashedAt",
+		"label": "Trashed at",
+		"type": "date"
+	}
+]

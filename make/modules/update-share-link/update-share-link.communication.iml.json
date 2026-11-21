@@ -1,0 +1,16 @@
+{
+	"url": "/links/{{parameters.linkId}}",
+	"method": "PATCH",
+	"headers": {
+		"Authorization": "Bearer {{connection.apiKey}}"
+	},
+	"body": {
+		"active": "{{parameters.active}}",
+		"password": "{{if(contains(ifempty(parameters.clear, emptyarray), 'password'), null, ifempty(parameters.password, undefined))}}",
+		"expiresAt": "{{if(contains(ifempty(parameters.clear, emptyarray), 'expiresAt'), null, if(parameters.expiresAt, formatDate(parameters.expiresAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), undefined))}}",
+		"maxDownloads": "{{if(contains(ifempty(parameters.clear, emptyarray), 'maxDownloads'), null, ifempty(parameters.maxDownloads, undefined))}}"
+	},
+	"response": {
+		"output": "{{body}}"
+	}
+}

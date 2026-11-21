@@ -1,0 +1,10 @@
+{
+	"url": "/projects/{{parameters.projectId}}",
+	"method": "GET",
+	"headers": {
+		"Authorization": "Bearer {{connection.apiKey}}"
+	},
+	"response": {
+		"output": "{{body}}"
+	}
+}

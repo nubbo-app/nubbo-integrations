@@ -1,0 +1,10 @@
+{
+	"url": "/files/{{parameters.fileId}}/labels/{{parameters.labelId}}",
+	"method": "DELETE",
+	"headers": {
+		"Authorization": "Bearer {{connection.apiKey}}"
+	},
+	"response": {
+		"output": "{{body}}"
+	}
+}

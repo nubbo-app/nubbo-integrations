@@ -1,0 +1,10 @@
+{
+	"id": "0193a1b2-c3d4-7e5f-8a9b-0c1d2e3f4a62",
+	"encrypted": false,
+	"name": "Paid",
+	"color": "#22c55e",
+	"description": "Invoices already paid",
+	"groupId": null,
+	"createdAt": "2026-10-01T10:00:00.000Z",
+	"updatedAt": "2026-11-01T10:00:00.000Z"
+}

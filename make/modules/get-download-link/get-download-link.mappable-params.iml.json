@@ -1,0 +1,15 @@
+[
+	{
+		"name": "fileId",
+		"required": true,
+		"type": "text",
+		"label": "File or folder ID",
+		"help": "The ID of the file or folder, from a search, a list or a trigger."
+	},
+	{
+		"name": "expiresIn",
+		"type": "uinteger",
+		"label": "Expires in (seconds)",
+		"help": "Seconds the link works, from 60 to 7 days"
+	}
+]

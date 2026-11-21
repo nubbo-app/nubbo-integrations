@@ -1,0 +1,14 @@
+{
+	"url": "/files/{{parameters.fileId}}",
+	"method": "PATCH",
+	"headers": {
+		"Authorization": "Bearer {{connection.apiKey}}"
+	},
+	"body": {
+		"name": "{{ifempty(parameters.name, undefined)}}",
+		"conflict": "{{ifempty(parameters.conflict, undefined)}}"
+	},
+	"response": {
+		"output": "{{body}}"
+	}
+}

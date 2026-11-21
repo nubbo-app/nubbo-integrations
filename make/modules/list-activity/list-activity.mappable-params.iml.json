@@ -1,0 +1,479 @@
+[
+	{
+		"name": "types",
+		"type": "select",
+		"label": "Activity types",
+		"multiple": true,
+		"options": [
+			{
+				"label": "File uploaded",
+				"value": "FILE_UPLOADED"
+			},
+			{
+				"label": "Folder created",
+				"value": "FOLDER_CREATED"
+			},
+			{
+				"label": "File renamed",
+				"value": "FILE_RENAMED"
+			},
+			{
+				"label": "Files moved",
+				"value": "FILES_MOVED"
+			},
+			{
+				"label": "File edited",
+				"value": "FILE_EDITED"
+			},
+			{
+				"label": "Transfer completed",
+				"value": "TRANSFER_COMPLETED"
+			},
+			{
+				"label": "Transfer failed",
+				"value": "TRANSFER_FAILED"
+			},
+			{
+				"label": "Transfer cancelled",
+				"value": "TRANSFER_CANCELLED"
+			},
+			{
+				"label": "Transfer paused",
+				"value": "TRANSFER_PAUSED"
+			},
+			{
+				"label": "Transfer resumed",
+				"value": "TRANSFER_RESUMED"
+			},
+			{
+				"label": "File operation failed",
+				"value": "FILE_OPERATION_FAILED"
+			},
+			{
+				"label": "Folder sync requested",
+				"value": "FOLDER_SYNC_REQUESTED"
+			},
+			{
+				"label": "Ai document created",
+				"value": "AI_DOCUMENT_CREATED"
+			},
+			{
+				"label": "File downloaded",
+				"value": "FILE_DOWNLOADED"
+			},
+			{
+				"label": "Files downloaded",
+				"value": "FILES_DOWNLOADED"
+			},
+			{
+				"label": "Favorite added",
+				"value": "FAVORITE_ADDED"
+			},
+			{
+				"label": "Favorite removed",
+				"value": "FAVORITE_REMOVED"
+			},
+			{
+				"label": "Files hidden",
+				"value": "FILES_HIDDEN"
+			},
+			{
+				"label": "Files unhidden",
+				"value": "FILES_UNHIDDEN"
+			},
+			{
+				"label": "Labels assigned",
+				"value": "LABELS_ASSIGNED"
+			},
+			{
+				"label": "Labels unassigned",
+				"value": "LABELS_UNASSIGNED"
+			},
+			{
+				"label": "Label created",
+				"value": "LABEL_CREATED"
+			},
+			{
+				"label": "Label edited",
+				"value": "LABEL_EDITED"
+			},
+			{
+				"label": "Label renamed",
+				"value": "LABEL_RENAMED"
+			},
+			{
+				"label": "Label deleted",
+				"value": "LABEL_DELETED"
+			},
+			{
+				"label": "Labels merged",
+				"value": "LABELS_MERGED"
+			},
+			{
+				"label": "Label group created",
+				"value": "LABEL_GROUP_CREATED"
+			},
+			{
+				"label": "Label group edited",
+				"value": "LABEL_GROUP_EDITED"
+			},
+			{
+				"label": "Label group renamed",
+				"value": "LABEL_GROUP_RENAMED"
+			},
+			{
+				"label": "Label group deleted",
+				"value": "LABEL_GROUP_DELETED"
+			},
+			{
+				"label": "Bucket group created",
+				"value": "BUCKET_GROUP_CREATED"
+			},
+			{
+				"label": "Bucket group edited",
+				"value": "BUCKET_GROUP_EDITED"
+			},
+			{
+				"label": "Bucket group renamed",
+				"value": "BUCKET_GROUP_RENAMED"
+			},
+			{
+				"label": "Bucket group deleted",
+				"value": "BUCKET_GROUP_DELETED"
+			},
+			{
+				"label": "Bucket moved to group",
+				"value": "BUCKET_MOVED_TO_GROUP"
+			},
+			{
+				"label": "Project created",
+				"value": "PROJECT_CREATED"
+			},
+			{
+				"label": "Project renamed",
+				"value": "PROJECT_RENAMED"
+			},
+			{
+				"label": "Project edited",
+				"value": "PROJECT_EDITED"
+			},
+			{
+				"label": "Project archived",
+				"value": "PROJECT_ARCHIVED"
+			},
+			{
+				"label": "Project unarchived",
+				"value": "PROJECT_UNARCHIVED"
+			},
+			{
+				"label": "Project deleted",
+				"value": "PROJECT_DELETED"
+			},
+			{
+				"label": "Project items added",
+				"value": "PROJECT_ITEMS_ADDED"
+			},
+			{
+				"label": "Project items removed",
+				"value": "PROJECT_ITEMS_REMOVED"
+			},
+			{
+				"label": "Saved search created",
+				"value": "SAVED_SEARCH_CREATED"
+			},
+			{
+				"label": "Saved search renamed",
+				"value": "SAVED_SEARCH_RENAMED"
+			},
+			{
+				"label": "Saved search deleted",
+				"value": "SAVED_SEARCH_DELETED"
+			},
+			{
+				"label": "Trash sent",
+				"value": "TRASH_SENT"
+			},
+			{
+				"label": "Trash restored",
+				"value": "TRASH_RESTORED"
+			},
+			{
+				"label": "Trash deleted",
+				"value": "TRASH_DELETED"
+			},
+			{
+				"label": "Trash purged",
+				"value": "TRASH_PURGED"
+			},
+			{
+				"label": "Share created",
+				"value": "SHARE_CREATED"
+			},
+			{
+				"label": "Share edited",
+				"value": "SHARE_EDITED"
+			},
+			{
+				"label": "Share revoked",
+				"value": "SHARE_REVOKED"
+			},
+			{
+				"label": "Share expired",
+				"value": "SHARE_EXPIRED"
+			},
+			{
+				"label": "Share first visit",
+				"value": "SHARE_FIRST_VISIT"
+			},
+			{
+				"label": "Share download claimed",
+				"value": "SHARE_DOWNLOAD_CLAIMED"
+			},
+			{
+				"label": "Share zk converted",
+				"value": "SHARE_ZK_CONVERTED"
+			},
+			{
+				"label": "Invite created",
+				"value": "INVITE_CREATED"
+			},
+			{
+				"label": "Invite edited",
+				"value": "INVITE_EDITED"
+			},
+			{
+				"label": "Invite revoked",
+				"value": "INVITE_REVOKED"
+			},
+			{
+				"label": "Invite accepted",
+				"value": "INVITE_ACCEPTED"
+			},
+			{
+				"label": "Invite expired",
+				"value": "INVITE_EXPIRED"
+			},
+			{
+				"label": "Invite first access",
+				"value": "INVITE_FIRST_ACCESS"
+			},
+			{
+				"label": "Invite received",
+				"value": "INVITE_RECEIVED"
+			},
+			{
+				"label": "Invite download",
+				"value": "INVITE_DOWNLOAD"
+			},
+			{
+				"label": "Invite left",
+				"value": "INVITE_LEFT"
+			},
+			{
+				"label": "File request created",
+				"value": "FILE_REQUEST_CREATED"
+			},
+			{
+				"label": "File request edited",
+				"value": "FILE_REQUEST_EDITED"
+			},
+			{
+				"label": "File request deleted",
+				"value": "FILE_REQUEST_DELETED"
+			},
+			{
+				"label": "File request expired",
+				"value": "FILE_REQUEST_EXPIRED"
+			},
+			{
+				"label": "File request first visit",
+				"value": "FILE_REQUEST_FIRST_VISIT"
+			},
+			{
+				"label": "File request visitor registered",
+				"value": "FILE_REQUEST_VISITOR_REGISTERED"
+			},
+			{
+				"label": "File request received",
+				"value": "FILE_REQUEST_RECEIVED"
+			},
+			{
+				"label": "File request zk adopted",
+				"value": "FILE_REQUEST_ZK_ADOPTED"
+			},
+			{
+				"label": "File request zk converted",
+				"value": "FILE_REQUEST_ZK_CONVERTED"
+			},
+			{
+				"label": "Gallery created",
+				"value": "GALLERY_CREATED"
+			},
+			{
+				"label": "Gallery edited",
+				"value": "GALLERY_EDITED"
+			},
+			{
+				"label": "Gallery deleted",
+				"value": "GALLERY_DELETED"
+			},
+			{
+				"label": "Gallery expired",
+				"value": "GALLERY_EXPIRED"
+			},
+			{
+				"label": "Gallery first visit",
+				"value": "GALLERY_FIRST_VISIT"
+			},
+			{
+				"label": "Gallery visitor registered",
+				"value": "GALLERY_VISITOR_REGISTERED"
+			},
+			{
+				"label": "Gallery photo liked",
+				"value": "GALLERY_PHOTO_LIKED"
+			},
+			{
+				"label": "Gallery download claimed",
+				"value": "GALLERY_DOWNLOAD_CLAIMED"
+			},
+			{
+				"label": "Gallery zip downloaded",
+				"value": "GALLERY_ZIP_DOWNLOADED"
+			},
+			{
+				"label": "Gallery zk converted",
+				"value": "GALLERY_ZK_CONVERTED"
+			},
+			{
+				"label": "Gallery commented",
+				"value": "GALLERY_COMMENTED"
+			},
+			{
+				"label": "Gallery client invited",
+				"value": "GALLERY_CLIENT_INVITED"
+			},
+			{
+				"label": "Gallery delivery sent",
+				"value": "GALLERY_DELIVERY_SENT"
+			},
+			{
+				"label": "Gallery curated",
+				"value": "GALLERY_CURATED"
+			},
+			{
+				"label": "Gallery indexed",
+				"value": "GALLERY_INDEXED"
+			},
+			{
+				"label": "Automation rule created",
+				"value": "AUTOMATION_RULE_CREATED"
+			},
+			{
+				"label": "Automation rule edited",
+				"value": "AUTOMATION_RULE_EDITED"
+			},
+			{
+				"label": "Automation rule deleted",
+				"value": "AUTOMATION_RULE_DELETED"
+			},
+			{
+				"label": "Automation rule paused",
+				"value": "AUTOMATION_RULE_PAUSED"
+			},
+			{
+				"label": "Automation rule resumed",
+				"value": "AUTOMATION_RULE_RESUMED"
+			},
+			{
+				"label": "Automation executed",
+				"value": "AUTOMATION_EXECUTED"
+			},
+			{
+				"label": "Rule reassigned",
+				"value": "RULE_REASSIGNED"
+			},
+			{
+				"label": "Rule paused creator removed",
+				"value": "RULE_PAUSED_CREATOR_REMOVED"
+			},
+			{
+				"label": "Embed created",
+				"value": "EMBED_CREATED"
+			},
+			{
+				"label": "Embed edited",
+				"value": "EMBED_EDITED"
+			},
+			{
+				"label": "Embed duplicated",
+				"value": "EMBED_DUPLICATED"
+			},
+			{
+				"label": "Embed paused",
+				"value": "EMBED_PAUSED"
+			},
+			{
+				"label": "Embed resumed",
+				"value": "EMBED_RESUMED"
+			},
+			{
+				"label": "Embed token rotated",
+				"value": "EMBED_TOKEN_ROTATED"
+			},
+			{
+				"label": "Embed deleted",
+				"value": "EMBED_DELETED"
+			},
+			{
+				"label": "Embed first visit",
+				"value": "EMBED_FIRST_VISIT"
+			},
+			{
+				"label": "Embed expired",
+				"value": "EMBED_EXPIRED"
+			},
+			{
+				"label": "Embed file uploaded",
+				"value": "EMBED_FILE_UPLOADED"
+			},
+			{
+				"label": "Embed folder created",
+				"value": "EMBED_FOLDER_CREATED"
+			},
+			{
+				"label": "Embed file deleted",
+				"value": "EMBED_FILE_DELETED"
+			},
+			{
+				"label": "Embeds plan paused",
+				"value": "EMBEDS_PLAN_PAUSED"
+			},
+			{
+				"label": "Embeds plan resumed",
+				"value": "EMBEDS_PLAN_RESUMED"
+			}
+		],
+		"help": "Comma-separated activity types; all public types when absent"
+	},
+	{
+		"name": "bucketId",
+		"type": "select",
+		"label": "Bucket",
+		"options": "rpc://listBuckets"
+	},
+	{
+		"name": "apiKeyId",
+		"type": "text",
+		"label": "API key ID",
+		"help": "Only what this API key did"
+	},
+	{
+		"name": "limit",
+		"type": "uinteger",
+		"label": "Limit",
+		"default": 10,
+		"required": true,
+		"help": "The most results to return in one execution cycle."
+	}
+]

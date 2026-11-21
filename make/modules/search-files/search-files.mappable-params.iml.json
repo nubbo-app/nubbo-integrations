@@ -1,0 +1,150 @@
+[
+	{
+		"name": "q",
+		"type": "text",
+		"label": "Search text",
+		"help": "Words of the name; each word matches a part of it"
+	},
+	{
+		"name": "bucketId",
+		"type": "select",
+		"label": "Bucket",
+		"options": "rpc://listBuckets",
+		"help": "Search one bucket only"
+	},
+	{
+		"name": "prefix",
+		"type": "text",
+		"label": "Folder",
+		"help": "Search inside this folder and its subfolders; needs bucketId"
+	},
+	{
+		"name": "kind",
+		"type": "select",
+		"label": "Kind",
+		"multiple": true,
+		"options": [
+			{
+				"label": "Folders",
+				"value": "folders"
+			},
+			{
+				"label": "Images",
+				"value": "images"
+			},
+			{
+				"label": "Videos",
+				"value": "videos"
+			},
+			{
+				"label": "Audio",
+				"value": "audio"
+			},
+			{
+				"label": "Documents",
+				"value": "documents"
+			},
+			{
+				"label": "Code",
+				"value": "code"
+			},
+			{
+				"label": "Archives",
+				"value": "archives"
+			},
+			{
+				"label": "Others",
+				"value": "others"
+			}
+		],
+		"help": "Comma separated kinds"
+	},
+	{
+		"name": "extension",
+		"type": "array",
+		"label": "Extensions",
+		"spec": {
+			"type": "text",
+			"label": "Extension"
+		},
+		"help": "Comma separated file extensions, without the dot"
+	},
+	{
+		"name": "labelIds",
+		"type": "select",
+		"label": "Labels",
+		"multiple": true,
+		"options": "rpc://listLabels",
+		"help": "Comma separated label ids; files with every one of them"
+	},
+	{
+		"name": "sizeMin",
+		"type": "uinteger",
+		"label": "Minimum size (bytes)",
+		"help": "Minimum size in bytes"
+	},
+	{
+		"name": "sizeMax",
+		"type": "uinteger",
+		"label": "Maximum size (bytes)",
+		"help": "Maximum size in bytes"
+	},
+	{
+		"name": "modifiedFrom",
+		"type": "date",
+		"label": "Modified from",
+		"help": "Modified at or after"
+	},
+	{
+		"name": "modifiedTo",
+		"type": "date",
+		"label": "Modified to",
+		"help": "Modified at or before"
+	},
+	{
+		"name": "sort",
+		"type": "select",
+		"label": "Sort by",
+		"options": [
+			{
+				"label": "Name",
+				"value": "name"
+			},
+			{
+				"label": "Modified",
+				"value": "modified"
+			}
+		],
+		"help": "With q, better matches come first and this orders each group"
+	},
+	{
+		"name": "order",
+		"type": "select",
+		"label": "Order",
+		"options": [
+			{
+				"label": "Asc",
+				"value": "asc"
+			},
+			{
+				"label": "Desc",
+				"value": "desc"
+			}
+		],
+		"help": "asc by default for name, desc for modified"
+	},
+	{
+		"name": "includeHidden",
+		"type": "boolean",
+		"label": "Include hidden items",
+		"help": "Include items hidden in Nubbo"
+	},
+	{
+		"name": "limit",
+		"type": "uinteger",
+		"label": "Limit",
+		"default": 10,
+		"required": true,
+		"help": "The most results to return in one execution cycle."
+	}
+]

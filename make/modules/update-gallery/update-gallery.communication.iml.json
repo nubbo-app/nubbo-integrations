@@ -1,0 +1,22 @@
+{
+	"url": "/galleries/{{parameters.galleryId}}",
+	"method": "PATCH",
+	"headers": {
+		"Authorization": "Bearer {{connection.apiKey}}"
+	},
+	"body": {
+		"title": "{{ifempty(parameters.title, undefined)}}",
+		"description": "{{if(contains(ifempty(parameters.clear, emptyarray), 'description'), null, ifempty(parameters.description, undefined))}}",
+		"layout": "{{ifempty(parameters.layout, undefined)}}",
+		"coverFileId": "{{if(contains(ifempty(parameters.clear, emptyarray), 'coverFileId'), null, ifempty(parameters.coverFileId, undefined))}}",
+		"individualDownloads": "{{parameters.individualDownloads}}",
+		"zipDownload": "{{parameters.zipDownload}}",
+		"password": "{{if(contains(ifempty(parameters.clear, emptyarray), 'password'), null, ifempty(parameters.password, undefined))}}",
+		"expiresAt": "{{if(contains(ifempty(parameters.clear, emptyarray), 'expiresAt'), null, if(parameters.expiresAt, formatDate(parameters.expiresAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), undefined))}}",
+		"watermarkText": "{{if(contains(ifempty(parameters.clear, emptyarray), 'watermarkText'), null, ifempty(parameters.watermarkText, undefined))}}",
+		"active": "{{parameters.active}}"
+	},
+	"response": {
+		"output": "{{body}}"
+	}
+}

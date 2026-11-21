@@ -1,0 +1,39 @@
+[
+	{
+		"name": "fileName",
+		"type": "filename",
+		"label": "File name",
+		"semantic": "file:name"
+	},
+	{
+		"name": "data",
+		"type": "buffer",
+		"label": "Data",
+		"semantic": "file:data"
+	},
+	{
+		"name": "id",
+		"type": "text",
+		"label": "ID"
+	},
+	{
+		"name": "bucketId",
+		"type": "text",
+		"label": "Bucket ID"
+	},
+	{
+		"name": "path",
+		"type": "text",
+		"label": "Path"
+	},
+	{
+		"name": "size",
+		"type": "number",
+		"label": "Size"
+	},
+	{
+		"name": "mimeType",
+		"type": "text",
+		"label": "MIME type"
+	}
+]
