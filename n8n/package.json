@@ -1,6 +1,6 @@
 {
 	"name": "n8n-nodes-nubbo",
-	"version": "0.2.0",
+	"version": "0.2.1",
 	"description": "One workspace for all your S3 storage. Automate it from n8n.",
 	"license": "MIT",
 	"homepage": "https://github.com/nubbo-app/nubbo-integrations/tree/main/n8n#readme",

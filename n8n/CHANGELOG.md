@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.1
+
+- Published from GitHub Actions with npm trusted publishing; no code changes.
+
 ## 0.2.0
 
 - First release on npm.
