@@ -18,7 +18,8 @@
 			"Authorization": "Bearer {{connection.apiKey}}"
 		},
 		"body": {
-			"expiresIn": 300
+			"expiresIn": 300,
+			"fileNameInLink": false
 		},
 		"response": {
 			"temp": {
@@ -40,6 +41,29 @@
 				"path": "{{temp.file.path}}",
 				"size": "{{temp.file.size}}",
 				"mimeType": "{{temp.file.mimeType}}"
+			},
+			"error": {
+				"message": "[{{statusCode}}] The storage provider refused the download: {{toString(body)}}",
+				"400": {
+					"type": "DataError",
+					"message": "[400] The storage provider refused the download: {{toString(body)}}"
+				},
+				"401": {
+					"type": "DataError",
+					"message": "[401] The storage provider refused the download: {{toString(body)}}"
+				},
+				"403": {
+					"type": "DataError",
+					"message": "[403] The storage provider refused the download: {{toString(body)}}"
+				},
+				"404": {
+					"type": "DataError",
+					"message": "[404] The storage provider refused the download: {{toString(body)}}"
+				},
+				"429": {
+					"type": "RateLimitError",
+					"message": "[429] The storage provider refused the download: {{toString(body)}}"
+				}
 			}
 		}
 	}

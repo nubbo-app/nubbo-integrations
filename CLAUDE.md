@@ -18,7 +18,7 @@ Each integration is its own package with its own lockfile; there is no root pack
 
 - Commits are authored and committed by «Nubbo <info@nubbo.app>» (set in the repo config). Conventional Commits, English.
 - Branch from `develop`, PR to `develop`; `main` only through a release PR.
-- Nothing is published from a laptop. npm releases go through the manual workflow `Publish n8n node` on `main`, with provenance.
+- Nothing is published from a laptop. npm releases go through the manual workflow `Publish n8n node` on `main`, with npm trusted publishing (OIDC, no token) and provenance.
 
 ## n8n package (`n8n/`)
 
