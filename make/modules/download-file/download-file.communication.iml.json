@@ -48,6 +48,10 @@
 					"type": "DataError",
 					"message": "[400] The storage provider refused the download: {{toString(body)}}"
 				},
+				"401": {
+					"type": "DataError",
+					"message": "[401] The storage provider refused the download: {{toString(body)}}"
+				},
 				"403": {
 					"type": "DataError",
 					"message": "[403] The storage provider refused the download: {{toString(body)}}"
@@ -55,6 +59,10 @@
 				"404": {
 					"type": "DataError",
 					"message": "[404] The storage provider refused the download: {{toString(body)}}"
+				},
+				"429": {
+					"type": "RateLimitError",
+					"message": "[429] The storage provider refused the download: {{toString(body)}}"
 				}
 			}
 		}
