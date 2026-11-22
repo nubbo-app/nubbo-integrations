@@ -170,7 +170,7 @@
 								"required": true
 							}
 						],
-						"help": "Leave it empty to keep the current categories, or map `erase` to remove them."
+						"help": "AI puts each file in the folder of the category that fits it. Up to 10 categories. Leave it empty to keep the current categories."
 					},
 					{
 						"name": "routeFallbackFolder",
@@ -198,7 +198,7 @@
 						"name": "trashOlderThanDays",
 						"type": "uinteger",
 						"label": "Trash files older than (days)",
-						"help": "Only files older than this many days. Works with the Schedule trigger only."
+						"help": "Only files older than this many days. Works with the \"Schedule\" trigger only."
 					},
 					{
 						"name": "namePattern",
@@ -275,7 +275,7 @@
 								"value": "move"
 							}
 						],
-						"help": "Copy keeps the files in the source; Move removes them from it."
+						"help": "\"Copy\" keeps the files in the source; \"Move\" removes them from it."
 					}
 				]
 			},

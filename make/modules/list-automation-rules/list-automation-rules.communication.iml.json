@@ -9,7 +9,7 @@
 		"output": {
 			"{{...}}": "{{omit(item, 'lastRunAt', 'createdAt')}}",
 			"lastRunAt": "{{if(item.lastRunAt, parseDate(item.lastRunAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), item.lastRunAt)}}",
-			"createdAt": "{{parseDate(item.createdAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ')}}"
+			"createdAt": "{{if(item.createdAt, parseDate(item.createdAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), item.createdAt)}}"
 		},
 		"limit": "{{parameters.limit}}"
 	},

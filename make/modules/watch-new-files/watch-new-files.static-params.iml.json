@@ -4,7 +4,7 @@
 		"type": "select",
 		"label": "Bucket",
 		"options": "rpc://listBuckets",
-		"help": "Leave it empty to watch every bucket the key reaches."
+		"help": "Leave it empty to watch every bucket the API key can access."
 	},
 	{
 		"name": "prefix",

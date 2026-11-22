@@ -8,7 +8,7 @@
 		"output": {
 			"{{...}}": "{{omit(body, 'lastRunAt', 'createdAt')}}",
 			"lastRunAt": "{{if(body.lastRunAt, parseDate(body.lastRunAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), body.lastRunAt)}}",
-			"createdAt": "{{parseDate(body.createdAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ')}}"
+			"createdAt": "{{if(body.createdAt, parseDate(body.createdAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), body.createdAt)}}"
 		}
 	}
 }

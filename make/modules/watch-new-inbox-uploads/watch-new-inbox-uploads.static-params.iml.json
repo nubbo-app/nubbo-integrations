@@ -4,7 +4,7 @@
 		"type": "select",
 		"label": "File request",
 		"options": "rpc://listInboxes",
-		"help": "Leave it empty to watch every file request the key reaches."
+		"help": "Leave it empty to watch every file request the API key can access."
 	},
 	{
 		"name": "limit",

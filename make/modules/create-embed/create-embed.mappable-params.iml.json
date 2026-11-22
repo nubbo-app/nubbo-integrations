@@ -64,7 +64,8 @@
 	{
 		"name": "name",
 		"type": "text",
-		"label": "Name"
+		"label": "Name",
+		"required": true
 	},
 	{
 		"name": "allowedDomains",
@@ -91,6 +92,6 @@
 		"name": "config",
 		"type": "any",
 		"label": "Configuration",
-		"help": "The look and behavior of the embed, as the builder in Nubbo saves it, for example the output of a JSON parser. Settings left out keep the default of the kind, and a partial collection is merged over it."
+		"help": "The look and behavior of the embed, as the builder in Nubbo saves it, for example the output of the Parse JSON module. Settings left out keep the defaults of the embed kind."
 	}
 ]

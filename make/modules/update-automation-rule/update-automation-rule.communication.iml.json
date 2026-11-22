@@ -2,7 +2,7 @@
 	"url": "/automations/{{parameters.ruleId}}",
 	"method": "PATCH",
 	"body": {
-		"{{...}}": "{{omit(parameters, 'ruleId', 'name', 'fileRequestId', 'folderPrefix', 'interval', 'destinationFolder', 'routeFallbackFolder', 'trashOlderThanDays', 'compressDestinationFolder', 'prompt', 'promptOutput', 'copyDestBucketId', 'copyDestinationFolder', 'copyMode', 'shareExpiresInDays', 'shareMaxDownloads', 'thresholdGb', 'inactivityDays', 'routeCategories', 'namePattern', 'sharePassword', 'ruleTrigger', 'ruleAction')}}",
+		"{{...}}": "{{omit(parameters, 'clear', 'ruleId', 'name', 'fileRequestId', 'folderPrefix', 'interval', 'destinationFolder', 'routeFallbackFolder', 'trashOlderThanDays', 'compressDestinationFolder', 'prompt', 'promptOutput', 'copyDestBucketId', 'copyDestinationFolder', 'copyMode', 'shareExpiresInDays', 'shareMaxDownloads', 'thresholdGb', 'inactivityDays', 'routeCategories', 'namePattern', 'sharePassword', 'ruleTrigger', 'ruleAction')}}",
 		"name": "{{ifempty(parameters.name, undefined)}}",
 		"fileRequestId": "{{ifempty(parameters.fileRequestId, undefined)}}",
 		"folderPrefix": "{{ifempty(parameters.folderPrefix, undefined)}}",
@@ -20,7 +20,7 @@
 		"shareMaxDownloads": "{{ifempty(parameters.shareMaxDownloads, undefined)}}",
 		"thresholdGb": "{{ifempty(parameters.thresholdGb, undefined)}}",
 		"inactivityDays": "{{ifempty(parameters.inactivityDays, undefined)}}",
-		"routeCategories": "{{if(contains(keys(parameters), 'routeCategories'), ifempty(parameters.routeCategories, emptyarray), undefined)}}",
+		"routeCategories": "{{ifempty(parameters.routeCategories, undefined)}}",
 		"namePattern": "{{if(contains(keys(parameters), 'namePattern'), ifempty(parameters.namePattern, emptystring), undefined)}}",
 		"sharePassword": "{{if(contains(keys(parameters), 'sharePassword'), ifempty(parameters.sharePassword, emptystring), undefined)}}"
 	},
@@ -28,7 +28,7 @@
 		"output": {
 			"{{...}}": "{{omit(body, 'lastRunAt', 'createdAt')}}",
 			"lastRunAt": "{{if(body.lastRunAt, parseDate(body.lastRunAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), body.lastRunAt)}}",
-			"createdAt": "{{parseDate(body.createdAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ')}}"
+			"createdAt": "{{if(body.createdAt, parseDate(body.createdAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), body.createdAt)}}"
 		}
 	}
 }

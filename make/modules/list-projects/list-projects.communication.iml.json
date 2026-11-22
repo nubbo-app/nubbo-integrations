@@ -9,7 +9,7 @@
 		"iterate": "{{body.data}}",
 		"output": {
 			"{{...}}": "{{omit(item, 'createdAt', 'lastActivityAt')}}",
-			"createdAt": "{{parseDate(item.createdAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ')}}",
+			"createdAt": "{{if(item.createdAt, parseDate(item.createdAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), item.createdAt)}}",
 			"lastActivityAt": "{{if(item.lastActivityAt, parseDate(item.lastActivityAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), item.lastActivityAt)}}"
 		},
 		"limit": "{{parameters.limit}}"

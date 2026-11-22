@@ -31,7 +31,7 @@
 				"{{...}}": "{{omit(temp.file, 'name', 'modifiedAt', 'trashedAt')}}",
 				"fileName": "{{temp.file.name}}",
 				"data": "{{body}}",
-				"modifiedAt": "{{parseDate(temp.file.modifiedAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ')}}",
+				"modifiedAt": "{{if(temp.file.modifiedAt, parseDate(temp.file.modifiedAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), temp.file.modifiedAt)}}",
 				"trashedAt": "{{if(temp.file.trashedAt, parseDate(temp.file.trashedAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), temp.file.trashedAt)}}"
 			},
 			"error": {

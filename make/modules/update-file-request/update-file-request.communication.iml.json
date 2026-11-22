@@ -2,7 +2,7 @@
 	"url": "/inboxes/{{parameters.inboxId}}",
 	"method": "PATCH",
 	"body": {
-		"{{...}}": "{{omit(parameters, 'inboxId', 'name', 'path', 'visitorIdentity', 'allowedFileTypes')}}",
+		"{{...}}": "{{omit(parameters, 'clear', 'inboxId', 'name', 'path', 'visitorIdentity', 'allowedFileTypes')}}",
 		"name": "{{ifempty(parameters.name, undefined)}}",
 		"path": "{{ifempty(parameters.path, undefined)}}",
 		"visitorIdentity": "{{ifempty(parameters.visitorIdentity, undefined)}}",
@@ -12,8 +12,8 @@
 		"output": {
 			"{{...}}": "{{omit(body, 'expiresAt', 'createdAt', 'updatedAt')}}",
 			"expiresAt": "{{if(body.expiresAt, parseDate(body.expiresAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), body.expiresAt)}}",
-			"createdAt": "{{parseDate(body.createdAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ')}}",
-			"updatedAt": "{{parseDate(body.updatedAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ')}}"
+			"createdAt": "{{if(body.createdAt, parseDate(body.createdAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), body.createdAt)}}",
+			"updatedAt": "{{if(body.updatedAt, parseDate(body.updatedAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), body.updatedAt)}}"
 		}
 	}
 }

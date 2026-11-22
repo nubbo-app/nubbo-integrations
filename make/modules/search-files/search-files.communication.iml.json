@@ -21,7 +21,7 @@
 		"iterate": "{{body.data}}",
 		"output": {
 			"{{...}}": "{{omit(item, 'modifiedAt', 'trashedAt')}}",
-			"modifiedAt": "{{parseDate(item.modifiedAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ')}}",
+			"modifiedAt": "{{if(item.modifiedAt, parseDate(item.modifiedAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), item.modifiedAt)}}",
 			"trashedAt": "{{if(item.trashedAt, parseDate(item.trashedAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), item.trashedAt)}}"
 		},
 		"limit": "{{parameters.limit}}"

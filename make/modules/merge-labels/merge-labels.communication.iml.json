@@ -9,8 +9,8 @@
 			"{{...}}": "{{omit(body, 'label')}}",
 			"label": {
 				"{{...}}": "{{omit(body.label, 'createdAt', 'updatedAt')}}",
-				"createdAt": "{{parseDate(body.label.createdAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ')}}",
-				"updatedAt": "{{parseDate(body.label.updatedAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ')}}"
+				"createdAt": "{{if(body.label.createdAt, parseDate(body.label.createdAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), body.label.createdAt)}}",
+				"updatedAt": "{{if(body.label.updatedAt, parseDate(body.label.updatedAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), body.label.updatedAt)}}"
 			}
 		}
 	}

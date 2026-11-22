@@ -11,7 +11,7 @@
 		"iterate": "{{body.data}}",
 		"output": {
 			"{{...}}": "{{omit(item, 'occurredAt')}}",
-			"occurredAt": "{{parseDate(item.occurredAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ')}}"
+			"occurredAt": "{{if(item.occurredAt, parseDate(item.occurredAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), item.occurredAt)}}"
 		},
 		"limit": "{{parameters.limit}}"
 	},

@@ -3,7 +3,7 @@
 		"name": "q",
 		"type": "text",
 		"label": "Search text",
-		"help": "Words of the name. Each word matches part of it."
+		"help": "Words to find in the name. Each word can match any part of the name."
 	},
 	{
 		"name": "bucketId",
@@ -53,7 +53,7 @@
 				"value": "archives"
 			},
 			{
-				"label": "Others",
+				"label": "Other",
 				"value": "others"
 			}
 		],

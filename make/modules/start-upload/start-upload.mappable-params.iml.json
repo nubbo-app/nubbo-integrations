@@ -23,8 +23,8 @@
 	{
 		"name": "contentType",
 		"type": "text",
-		"label": "Content type",
-		"help": "For example `video/mp4`."
+		"label": "MIME type",
+		"help": "The MIME type, for example `application/pdf`. Leave it empty and the storage provider stores a generic type."
 	},
 	{
 		"name": "conflict",

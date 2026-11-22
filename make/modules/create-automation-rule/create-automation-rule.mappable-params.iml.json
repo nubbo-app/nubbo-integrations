@@ -133,7 +133,7 @@
 			}
 		],
 		"required": true,
-		"help": "What starts the rule. Storage threshold and Folder inactivity work with the Notify action only."
+		"help": "What starts the rule. \"Storage threshold\" and \"Folder inactivity\" work with the \"Notify\" action only."
 	},
 	{
 		"name": "action",
@@ -215,7 +215,7 @@
 						"name": "trashOlderThanDays",
 						"type": "uinteger",
 						"label": "Trash files older than (days)",
-						"help": "Only files older than this many days. Works with the Schedule trigger only."
+						"help": "Only files older than this many days. Works with the \"Schedule\" trigger only."
 					},
 					{
 						"name": "namePattern",
@@ -294,7 +294,7 @@
 								"value": "move"
 							}
 						],
-						"help": "Copy keeps the files in the source; Move removes them from it."
+						"help": "\"Copy\" keeps the files in the source; \"Move\" removes them from it."
 					}
 				]
 			},
@@ -383,6 +383,6 @@
 			}
 		],
 		"required": true,
-		"help": "What the rule does. Compress to ZIP and Keep a mirror on another bucket work with the Schedule trigger only."
+		"help": "What the rule does. \"Compress to ZIP\" and \"Keep a mirror on another bucket\" work with the \"Schedule\" trigger only."
 	}
 ]

@@ -5,8 +5,9 @@
 		"label": "File and folder IDs",
 		"spec": {
 			"type": "text",
-			"label": "File and folder ID"
+			"label": "File or folder ID"
 		},
-		"required": true
+		"required": true,
+		"help": "The IDs of the files and folders, from a search, a list or a trigger."
 	}
 ]

@@ -21,8 +21,9 @@
 			{
 				"name": "path",
 				"type": "text",
-				"label": "Path",
-				"help": "A folder of the bucket. Leave it empty for the whole bucket."
+				"label": "Folder",
+				"help": "The folder, for example `clients/acme/`. Enter `/` for the whole bucket.",
+				"required": true
 			}
 		],
 		"help": "The folders to remove."

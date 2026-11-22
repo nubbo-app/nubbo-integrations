@@ -2,7 +2,7 @@
 	"url": "/embeds/{{parameters.embedId}}",
 	"method": "PATCH",
 	"body": {
-		"{{...}}": "{{omit(parameters, 'embedId', 'name', 'config', 'allowedDomains')}}",
+		"{{...}}": "{{omit(parameters, 'clear', 'embedId', 'name', 'config', 'allowedDomains')}}",
 		"name": "{{ifempty(parameters.name, undefined)}}",
 		"config": "{{ifempty(parameters.config, undefined)}}",
 		"allowedDomains": "{{if(contains(keys(parameters), 'allowedDomains'), ifempty(parameters.allowedDomains, emptyarray), undefined)}}"
@@ -11,8 +11,8 @@
 		"output": {
 			"{{...}}": "{{omit(body, 'expiresAt', 'createdAt', 'updatedAt')}}",
 			"expiresAt": "{{if(body.expiresAt, parseDate(body.expiresAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), body.expiresAt)}}",
-			"createdAt": "{{parseDate(body.createdAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ')}}",
-			"updatedAt": "{{parseDate(body.updatedAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ')}}"
+			"createdAt": "{{if(body.createdAt, parseDate(body.createdAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), body.createdAt)}}",
+			"updatedAt": "{{if(body.updatedAt, parseDate(body.updatedAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), body.updatedAt)}}"
 		}
 	}
 }

@@ -2,6 +2,6 @@
 	{
 		"name": "id",
 		"type": "text",
-		"label": "ID"
+		"label": "Upload ID"
 	}
 ]

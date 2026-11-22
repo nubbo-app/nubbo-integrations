@@ -4,7 +4,7 @@
 	"response": {
 		"output": {
 			"{{...}}": "{{omit(body, 'createdAt', 'startedAt', 'finishedAt')}}",
-			"createdAt": "{{parseDate(body.createdAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ')}}",
+			"createdAt": "{{if(body.createdAt, parseDate(body.createdAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), body.createdAt)}}",
 			"startedAt": "{{if(body.startedAt, parseDate(body.startedAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), body.startedAt)}}",
 			"finishedAt": "{{if(body.finishedAt, parseDate(body.finishedAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), body.finishedAt)}}"
 		}

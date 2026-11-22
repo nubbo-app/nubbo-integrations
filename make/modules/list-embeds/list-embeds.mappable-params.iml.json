@@ -5,15 +5,15 @@
 		"label": "Kind",
 		"options": [
 			{
-				"label": "Inbox",
+				"label": "File request",
 				"value": "inbox"
 			},
 			{
-				"label": "Explorer",
+				"label": "Bucket explorer",
 				"value": "explorer"
 			},
 			{
-				"label": "Shared",
+				"label": "Share link",
 				"value": "shared"
 			}
 		]

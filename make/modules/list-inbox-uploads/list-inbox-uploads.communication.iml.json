@@ -8,7 +8,7 @@
 		"iterate": "{{body.data}}",
 		"output": {
 			"{{...}}": "{{omit(item, 'uploadedAt')}}",
-			"uploadedAt": "{{parseDate(item.uploadedAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ')}}"
+			"uploadedAt": "{{if(item.uploadedAt, parseDate(item.uploadedAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), item.uploadedAt)}}"
 		},
 		"limit": "{{parameters.limit}}"
 	},

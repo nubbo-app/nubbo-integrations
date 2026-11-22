@@ -15,7 +15,7 @@
 		"name": "color",
 		"type": "text",
 		"label": "Color",
-		"help": "A hex color, for example `#1f6feb`."
+		"help": "A hex color, for example `#1f6feb`. Leave it empty to keep the current color."
 	},
 	{
 		"name": "description",

@@ -66,5 +66,10 @@
 		"name": "trashedAt",
 		"label": "Trashed at",
 		"type": "date"
+	},
+	{
+		"name": "operationId",
+		"label": "Operation ID",
+		"type": "text"
 	}
 ]

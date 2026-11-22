@@ -22,7 +22,7 @@
 		"module": {
 			"watchNewFiles": {
 				"label": "Watch new files",
-				"description": "Triggers when a file is uploaded to Nubbo, through the app, a file request, an embed or the API.",
+				"description": "Triggers when a file is uploaded to a bucket through Nubbo: the app, a file request, an embed or the API.",
 				"moduleType": "trigger",
 				"connection": "nubbo",
 				"altConnection": null,
@@ -54,7 +54,7 @@
 			},
 			"watchNewActivity": {
 				"label": "Watch new activity",
-				"description": "Triggers when something happens in the space: files, folders, trash, labels, share links, file requests, galleries, embeds and automation rules.",
+				"description": "Triggers when something happens in the space, such as changes to files, folders, labels, projects, share links, file requests, galleries, embeds or automation rules.",
 				"moduleType": "trigger",
 				"connection": "nubbo",
 				"altConnection": null,
@@ -260,7 +260,7 @@
 			},
 			"startUpload": {
 				"label": "Start an upload",
-				"description": "Starts an upload for files above what Upload a file can send, or for bytes another tool sends. Returns a presigned URL, or the part size and number of parts of a multipart upload. Send the bytes to those URLs with the HTTP module, then use Complete an upload.",
+				"description": "Starts an upload for files too large for \"Upload a file\", or for bytes that another tool sends. Returns one presigned URL, or the part size and number of parts of a multipart upload. Send the bytes to the presigned URL with a PUT request of the HTTP module, or get the part URLs with \"Sign upload parts\". Then use \"Complete an upload\".",
 				"moduleType": "action",
 				"actionCrud": "create",
 				"connection": "nubbo",
@@ -276,7 +276,7 @@
 			},
 			"signUploadParts": {
 				"label": "Sign upload parts",
-				"description": "Returns presigned URLs for parts of a multipart upload. Send each part to its URL with a PUT request of the HTTP module, then use Complete an upload.",
+				"description": "Returns presigned URLs for parts of a multipart upload. Send each part to its URL with the HTTP module (one PUT request per part), then use \"Complete an upload\".",
 				"moduleType": "action",
 				"actionCrud": "create",
 				"connection": "nubbo",
@@ -308,7 +308,7 @@
 			},
 			"abortUpload": {
 				"label": "Abort a multipart upload",
-				"description": "Aborts a multipart upload and frees its parts at the provider.",
+				"description": "Aborts a multipart upload and frees its parts at the storage provider.",
 				"moduleType": "action",
 				"actionCrud": "delete",
 				"connection": "nubbo",
@@ -386,7 +386,7 @@
 			},
 			"createLabel": {
 				"label": "Create a label",
-				"description": "Creates a label. Needs a key that reaches the whole space with read and write access.",
+				"description": "Creates a label. Requires an API key with read and write access to the whole space.",
 				"moduleType": "action",
 				"actionCrud": "create",
 				"connection": "nubbo",
@@ -402,7 +402,7 @@
 			},
 			"updateLabel": {
 				"label": "Update a label",
-				"description": "Changes the name, color, description or group of a label.",
+				"description": "Changes the name, color, description or group of a label. Requires an API key with read and write access to the whole space.",
 				"moduleType": "action",
 				"actionCrud": "update",
 				"connection": "nubbo",
@@ -418,7 +418,7 @@
 			},
 			"mergeLabels": {
 				"label": "Merge labels",
-				"description": "Merges a label into another one: its files get the other label, and it is deleted.",
+				"description": "Merges a label into another one: its files get the other label, and it is deleted. Requires an API key with read and write access to the whole space.",
 				"moduleType": "action",
 				"actionCrud": "update",
 				"connection": "nubbo",
@@ -434,7 +434,7 @@
 			},
 			"deleteLabel": {
 				"label": "Delete a label",
-				"description": "Deletes a label and takes it off every file.",
+				"description": "Deletes a label and takes it off every file. Requires an API key with read and write access to the whole space.",
 				"moduleType": "action",
 				"actionCrud": "delete",
 				"connection": "nubbo",
@@ -465,7 +465,7 @@
 			},
 			"listProjects": {
 				"label": "List projects",
-				"description": "Lists the projects the key reaches.",
+				"description": "Lists the projects the API key can access.",
 				"moduleType": "search",
 				"connection": "nubbo",
 				"altConnection": null,
@@ -512,7 +512,7 @@
 			},
 			"removeProjectItems": {
 				"label": "Remove items from a project",
-				"description": "Removes folders and resources from a project.",
+				"description": "Removes folders, share links, file requests, galleries, embeds and automation rules from a project.",
 				"moduleType": "action",
 				"actionCrud": "update",
 				"connection": "nubbo",
@@ -528,7 +528,7 @@
 			},
 			"listShareLinks": {
 				"label": "List share links",
-				"description": "Lists the share links the key reaches.",
+				"description": "Lists the share links the API key can access.",
 				"moduleType": "search",
 				"connection": "nubbo",
 				"altConnection": null,
@@ -622,7 +622,7 @@
 			},
 			"listFileRequests": {
 				"label": "List file requests",
-				"description": "Lists the file requests the key reaches.",
+				"description": "Lists the file requests the API key can access.",
 				"moduleType": "search",
 				"connection": "nubbo",
 				"altConnection": null,
@@ -701,7 +701,7 @@
 			},
 			"listGalleries": {
 				"label": "List galleries",
-				"description": "Lists the galleries the key reaches.",
+				"description": "Lists the galleries the API key can access.",
 				"moduleType": "search",
 				"connection": "nubbo",
 				"altConnection": null,
@@ -780,7 +780,7 @@
 			},
 			"listEmbeds": {
 				"label": "List embeds",
-				"description": "Lists the embeds the key reaches.",
+				"description": "Lists the embeds the API key can access.",
 				"moduleType": "search",
 				"connection": "nubbo",
 				"altConnection": null,
@@ -891,7 +891,7 @@
 			},
 			"listAutomationRules": {
 				"label": "List automation rules",
-				"description": "Lists the automation rules the key reaches.",
+				"description": "Lists the automation rules the API key can access.",
 				"moduleType": "search",
 				"connection": "nubbo",
 				"altConnection": null,
@@ -1001,7 +1001,7 @@
 			},
 			"listBuckets": {
 				"label": "List buckets",
-				"description": "Lists the buckets the key reaches.",
+				"description": "Lists the buckets the API key can access.",
 				"moduleType": "search",
 				"connection": "nubbo",
 				"altConnection": null,

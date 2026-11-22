@@ -10,8 +10,8 @@
 			},
 			"quota": {
 				"{{...}}": "{{omit(body.quota, 'periodStart', 'periodEnd')}}",
-				"periodStart": "{{parseDate(body.quota.periodStart, 'YYYY-MM-DDTHH:mm:ss.SSSZ')}}",
-				"periodEnd": "{{parseDate(body.quota.periodEnd, 'YYYY-MM-DDTHH:mm:ss.SSSZ')}}"
+				"periodStart": "{{if(body.quota.periodStart, parseDate(body.quota.periodStart, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), body.quota.periodStart)}}",
+				"periodEnd": "{{if(body.quota.periodEnd, parseDate(body.quota.periodEnd, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), body.quota.periodEnd)}}"
 			}
 		}
 	}

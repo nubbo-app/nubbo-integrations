@@ -8,7 +8,8 @@ The source of the Nubbo app for [Make](https://www.make.com). It runs on the Nub
 |---|---|
 | Connection | `nubbo`: an API key (`nbk_…`) for `api.nubbo.app`. Verified with `GET /v1/me`; the connection shows the space and the key name. |
 | Triggers (polling) | Watch new files, Watch new file request uploads, Watch new activity |
-| Account and buckets | Get the API key and quota, List buckets |
+| Account | Get the API key and quota |
+| Buckets | List buckets |
 | Files and folders | List files in a folder, Search files, Get a file or folder, Create a folder, Rename a file or folder, Move files and folders, Get an operation, Get a download link, Add a label to a file, Remove a label from a file |
 | Uploads and downloads | Upload a file, Download a file, Start an upload, Sign upload parts, Complete an upload, Abort a multipart upload |
 | Trash | Move files to the trash, Restore files from the trash, List the trash |
@@ -44,10 +45,10 @@ scripts/deploy.mjs      deploys the source to Make through its API
 - **Limit** on triggers (default 2, up to 100) is the most items one run emits. Scenarios saved before it existed keep 100.
 - `X-Nubbo-Flow: make:{{scenario.id}}` gives each scenario its own position and once-a-minute floor when several scenarios share a key and filter.
 - Every item carries `madeByThisKey` (true when the action was made with the key of this connection). Add a filter on it to ignore the scenario's own uploads; the trigger never hides items itself, because a hidden item would stop the cursor.
-- The «Choose where to start» list reads `GET /v1/activity`, not the trigger, so opening it does not take the poll slot.
+- The "Choose where to start" list reads `GET /v1/activity`, not the trigger, so opening it does not take the poll slot.
 - Upload a file always gets one presigned PUT: `/v1` answers multipart only when the file is above 5 GB (`singleMax`) or when `multipart: true` is sent, which the module never sends, and Make's largest file size (1000 MB on Enterprise plans) is far below 5 GB. Start an upload, Sign upload parts, Complete an upload and Abort a multipart upload cover files above that size or bytes that another tool sends: Nubbo only signs the URLs, and the bytes go to them with Make's HTTP module (one PUT per part).
-- Create and update modules send the filled-in parameters as they are (`omit(parameters, …)` without the path parameters), so mapping `erase` sends `null` and removes a password, an expiry date, a limit, a cover or a label group. Lists and texts that the API empties with an empty value instead of `null` (allowed file extensions, allowed sites, route categories, label description, name pattern, link password of a rule) turn `erase` into that empty value. Fields the API cannot empty (names, paths, layouts, rule settings) ignore `erase`.
-- Writes do not send `Idempotency-Key`, because Make offers no value that stays the same across its retries. Make an API Call can send one.
+- Create and update modules send the filled-in parameters as they are (`omit(parameters, …)` without the path parameters), so mapping `erase` sends `null` and removes a password, an expiry date, a limit, a cover or a label group. Lists and texts that the API empties with an empty value instead of `null` (allowed file extensions, allowed sites, label description, name pattern and link password of a rule) turn `erase` into that empty value. Fields the API cannot empty (names, paths, layouts, route categories and other rule settings) ignore `erase`.
+- Writes do not send `Idempotency-Key`, because Make offers no value that stays the same across its retries. Make an API call can send one.
 - Errors map to Make error types: 400, 404, 409, 422 `DataError`; 401 `InvalidAccessTokenError` (missing, wrong, revoked or expired key); 403 `InvalidConfigurationError` only when the key or the space cannot work at all (`ACCOUNT_SUSPENDED`, `WORKSPACE_SUSPENDED`, `WORKSPACE_READ_ONLY`, `API_PLAN_REQUIRED`, `API_KEY_MCP_ONLY`, `API_KEY_READ_ONLY`, `API_KEY_WHOLE_SPACE_REQUIRED`) and `DataError` for the rest (plan limits, one bucket or item refused); 410 `InvalidConfigurationError` (`ACCOUNT_SCHEDULED_FOR_DELETION`, the only 410 of `/v1`: the key's owner account is in its deletion grace period); 429 `RateLimitError`. A storage provider refusing a presigned upload or download is a `DataError` (429 `RateLimitError`). Messages show the Nubbo code, for example `[404] API_FILE_NOT_FOUND: …`.
 
 ## Deploy to Make
@@ -74,17 +75,17 @@ The app in `makecomapp.json` is `nubbo-fepsab` on `eu1.make.com`, already paired
 Use a Nubbo account with Pro, and a key from **Settings › API** on `app.nubbo.app`.
 
 1. Create a connection and paste the key. The connection name shows `<space> · <key name>`. Try a wrong key once: it must fail with `API_KEY_INVALID`.
-2. Scenario A (actions, one chain): Create a Folder > Upload a File (map a file from an HTTP «Get a file» module) > Get a File or Folder > Download a File > Get a Download Link > Rename a File or Folder > Create a Label > Add a Label to a File > Create a Share Link > Update a share link (map `erase` to the password) > Create a File Request > Create a Gallery > Create an Embed > Create an Automation Rule > Pause and Resume it > Move Files and Folders > Move Files to the Trash > Restore Files from the Trash > Delete modules for what was created > Make an API call (`GET`, URL `/v1/buckets`).
-3. Scenario B (searches): List Buckets, List Files in a Folder, Search Files, List Share Links, List File Requests, List Galleries, List Embeds, List Automation Rules, List Labels, List Projects, List Activity, each with a limit above 100 on a folder with more than 100 files once, so the log shows a second page.
+2. Scenario A (actions, one chain): Create a folder > Upload a file (map a file from an HTTP "Get a file" module) > Get a file or folder > Download a file > Get a download link > Rename a file or folder > Create a label > Add a label to a file > Create a share link > Update a share link (map `erase` to the password) > Create a file request > Create a gallery > Create an embed > Create an automation rule > Pause and resume it > Move files and folders > Move files to the trash > Restore files from the trash > Delete modules for what was created > Make an API call (`GET`, URL `/v1/buckets`).
+3. Scenario B (searches): List buckets, List files in a folder, Search files, List share links, List file requests, List galleries, List embeds, List automation rules, List labels, List projects, List activity, each with a limit above 100 on a folder with more than 100 files once, so the log shows a second page.
 4. Scenario C (triggers), one per trigger, scheduled every minute (or 15 minutes on a free Make plan):
    - Turn it on with **From now on** and Limit 2, upload 5 files in Nubbo, run it three times a minute apart: 2, 2 and 1 bundles, oldest first, nothing older, nothing skipped or repeated.
    - Open the execution log of two runs in a row. Check that the request header `X-Nubbo-Flow` reads `make:<scenario id>` (not just `make:`), and that the `since` of a run equals the `cursor` of the last bundle the run before emitted. If `since` is never sent, the trigger still works but only with the latest 50 items per run: tell the developer.
-   - Upload a file with Upload a File in the same scenario and check that its bundle has `madeByThisKey: true`.
+   - Upload a file with Upload a file in the same scenario and check that its bundle has `madeByThisKey: true`.
    - Two scenarios with the same key and filter must both get every file.
-   - Watch New File Request Uploads: upload through a file request link in a private window.
-   - Watch New Activity: pick `LABEL_CREATED`, create a label in Nubbo.
+   - Watch new file request uploads: upload through a file request link in a private window.
+   - Watch new activity: pick `LABEL_CREATED`, create a label in Nubbo.
    - **Run once** twice within a minute answers `API_TRIGGER_TOO_FREQUENT` as a rate limit error: that is expected.
-5. Scenario D (errors): Get a File or Folder with an ID that does not exist (`[404] API_FILE_NOT_FOUND`), and Create a Folder with a read-only key (`[403] API_KEY_READ_ONLY`).
+5. Scenario D (errors): Get a file or folder with an ID that does not exist (`[404] API_FILE_NOT_FOUND`), and Create a folder with a read-only key (`[403] API_KEY_READ_ONLY`).
 
 ## Invite link and review
 
@@ -102,5 +103,5 @@ After approval, Make gives the app a development version: deploy changes there f
 
 - Polling only: Nubbo sends no webhooks, so there are no instant triggers. The shortest interval is one minute.
 - The first poll after turning a scenario on reads at most the latest 50 items.
-- Upload a file does one presigned PUT, which covers every file Make can hold. Files above 5 GB need the multipart modules and another tool to send the parts.
+- Upload a file does one presigned PUT, which covers every file Make can hold. Files above 5 GB need the multipart modules; the parts go to the presigned URLs with the HTTP module or another tool.
 - Embed `config` takes a collection (for example the output of Parse JSON); anything left out keeps the default of the kind.
