@@ -23,7 +23,7 @@
 			"type": "date",
 			"order": "unordered",
 			"id": "{{substring(toString(if(temp.since, 100000 + indexOf(join(map(body.data, 'id'), ','), item.id), 199999 - indexOf(join(map(body.data, 'id'), ','), item.id))), 1, 6)}}|{{item.id}}|{{item.cursor}}",
-			"date": "{{if(temp.since, now, parseDate(item.occurredAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'))}}"
+			"date": "{{if(temp.since, addSeconds(now, indexOf(join(map(body.data, 'id'), ','), item.id) / 1000), parseDate(item.occurredAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'))}}"
 		}
 	}
 }
