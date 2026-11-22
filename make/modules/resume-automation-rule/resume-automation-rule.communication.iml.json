@@ -1,11 +1,12 @@
 {
 	"url": "/automations/{{parameters.ruleId}}/resume",
 	"method": "POST",
-	"headers": {
-		"Authorization": "Bearer {{connection.apiKey}}"
-	},
 	"body": {},
 	"response": {
-		"output": "{{body}}"
+		"output": {
+			"{{...}}": "{{omit(body, 'lastRunAt', 'createdAt')}}",
+			"lastRunAt": "{{if(body.lastRunAt, parseDate(body.lastRunAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), body.lastRunAt)}}",
+			"createdAt": "{{parseDate(body.createdAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ')}}"
+		}
 	}
 }

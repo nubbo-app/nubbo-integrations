@@ -1,16 +1,17 @@
 {
 	"url": "/labels/{{parameters.labelId}}",
 	"method": "PATCH",
-	"headers": {
-		"Authorization": "Bearer {{connection.apiKey}}"
-	},
 	"body": {
+		"{{...}}": "{{omit(parameters, 'labelId', 'name', 'color', 'description')}}",
 		"name": "{{ifempty(parameters.name, undefined)}}",
 		"color": "{{ifempty(parameters.color, undefined)}}",
-		"description": "{{if(contains(ifempty(parameters.clear, emptyarray), 'description'), emptystring, ifempty(parameters.description, undefined))}}",
-		"groupId": "{{if(contains(ifempty(parameters.clear, emptyarray), 'groupId'), null, ifempty(parameters.groupId, undefined))}}"
+		"description": "{{if(contains(keys(parameters), 'description'), ifempty(parameters.description, emptystring), undefined)}}"
 	},
 	"response": {
-		"output": "{{body}}"
+		"output": {
+			"{{...}}": "{{omit(body, 'createdAt', 'updatedAt')}}",
+			"createdAt": "{{parseDate(body.createdAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ')}}",
+			"updatedAt": "{{parseDate(body.updatedAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ')}}"
+		}
 	}
 }

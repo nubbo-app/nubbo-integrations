@@ -1,37 +1,34 @@
 {
 	"url": "/automations/{{parameters.ruleId}}",
 	"method": "PATCH",
-	"headers": {
-		"Authorization": "Bearer {{connection.apiKey}}"
-	},
 	"body": {
+		"{{...}}": "{{omit(parameters, 'ruleId', 'name', 'fileRequestId', 'folderPrefix', 'interval', 'destinationFolder', 'routeFallbackFolder', 'trashOlderThanDays', 'compressDestinationFolder', 'prompt', 'promptOutput', 'copyDestBucketId', 'copyDestinationFolder', 'copyMode', 'shareExpiresInDays', 'shareMaxDownloads', 'thresholdGb', 'inactivityDays', 'routeCategories', 'namePattern', 'sharePassword', 'ruleTrigger', 'ruleAction')}}",
 		"name": "{{ifempty(parameters.name, undefined)}}",
-		"isActive": "{{parameters.isActive}}",
-		"skipArrivals": "{{parameters.skipArrivals}}",
 		"fileRequestId": "{{ifempty(parameters.fileRequestId, undefined)}}",
 		"folderPrefix": "{{ifempty(parameters.folderPrefix, undefined)}}",
 		"interval": "{{ifempty(parameters.interval, undefined)}}",
 		"destinationFolder": "{{ifempty(parameters.destinationFolder, undefined)}}",
-		"routeCategories": "{{if(contains(ifempty(parameters.clear, emptyarray), 'routeCategories'), emptyarray, ifempty(parameters.routeCategories, undefined))}}",
 		"routeFallbackFolder": "{{ifempty(parameters.routeFallbackFolder, undefined)}}",
-		"routeRename": "{{parameters.routeRename}}",
-		"routeTag": "{{parameters.routeTag}}",
 		"trashOlderThanDays": "{{ifempty(parameters.trashOlderThanDays, undefined)}}",
 		"compressDestinationFolder": "{{ifempty(parameters.compressDestinationFolder, undefined)}}",
-		"namePattern": "{{ifempty(parameters.namePattern, undefined)}}",
 		"prompt": "{{ifempty(parameters.prompt, undefined)}}",
 		"promptOutput": "{{ifempty(parameters.promptOutput, undefined)}}",
 		"copyDestBucketId": "{{ifempty(parameters.copyDestBucketId, undefined)}}",
 		"copyDestinationFolder": "{{ifempty(parameters.copyDestinationFolder, undefined)}}",
 		"copyMode": "{{ifempty(parameters.copyMode, undefined)}}",
-		"mirrorTrashOrphans": "{{parameters.mirrorTrashOrphans}}",
 		"shareExpiresInDays": "{{ifempty(parameters.shareExpiresInDays, undefined)}}",
-		"sharePassword": "{{ifempty(parameters.sharePassword, undefined)}}",
 		"shareMaxDownloads": "{{ifempty(parameters.shareMaxDownloads, undefined)}}",
 		"thresholdGb": "{{ifempty(parameters.thresholdGb, undefined)}}",
-		"inactivityDays": "{{ifempty(parameters.inactivityDays, undefined)}}"
+		"inactivityDays": "{{ifempty(parameters.inactivityDays, undefined)}}",
+		"routeCategories": "{{if(contains(keys(parameters), 'routeCategories'), ifempty(parameters.routeCategories, emptyarray), undefined)}}",
+		"namePattern": "{{if(contains(keys(parameters), 'namePattern'), ifempty(parameters.namePattern, emptystring), undefined)}}",
+		"sharePassword": "{{if(contains(keys(parameters), 'sharePassword'), ifempty(parameters.sharePassword, emptystring), undefined)}}"
 	},
 	"response": {
-		"output": "{{body}}"
+		"output": {
+			"{{...}}": "{{omit(body, 'lastRunAt', 'createdAt')}}",
+			"lastRunAt": "{{if(body.lastRunAt, parseDate(body.lastRunAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), body.lastRunAt)}}",
+			"createdAt": "{{parseDate(body.createdAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ')}}"
+		}
 	}
 }

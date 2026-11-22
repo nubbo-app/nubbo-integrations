@@ -1,13 +1,13 @@
 {
 	"url": "/uploads/{{parameters.uploadId}}/parts",
 	"method": "POST",
-	"headers": {
-		"Authorization": "Bearer {{connection.apiKey}}"
-	},
 	"body": {
-		"partNumbers": "{{ifempty(parameters.partNumbers, undefined)}}"
+		"{{...}}": "{{omit(parameters, 'uploadId')}}"
 	},
 	"response": {
-		"output": "{{body}}"
+		"output": {
+			"{{...}}": "{{omit(body, 'expiresAt')}}",
+			"expiresAt": "{{if(body.expiresAt, parseDate(body.expiresAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), body.expiresAt)}}"
+		}
 	}
 }

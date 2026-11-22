@@ -1,20 +1,19 @@
 {
 	"url": "/inboxes/{{parameters.inboxId}}/uploads",
 	"method": "GET",
-	"headers": {
-		"Authorization": "Bearer {{connection.apiKey}}"
-	},
 	"qs": {
 		"limit": 100
 	},
 	"response": {
 		"iterate": "{{body.data}}",
-		"output": "{{item}}",
+		"output": {
+			"{{...}}": "{{omit(item, 'uploadedAt')}}",
+			"uploadedAt": "{{parseDate(item.uploadedAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ')}}"
+		},
 		"limit": "{{parameters.limit}}"
 	},
 	"pagination": {
 		"qs": {
-			"limit": 100,
 			"cursor": "{{body.nextCursor}}"
 		},
 		"condition": "{{body.nextCursor}}"

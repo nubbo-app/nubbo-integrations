@@ -24,7 +24,8 @@
 		"type": "buffer",
 		"label": "Data",
 		"required": true,
-		"semantic": "file:data"
+		"semantic": "file:data",
+		"help": "The content of the file, for example from an HTTP or a cloud storage module."
 	},
 	{
 		"name": "conflict",
@@ -44,12 +45,13 @@
 				"value": "replace"
 			}
 		],
-		"default": "fail"
+		"default": "fail",
+		"help": "What to do when a file with this name exists in the folder."
 	},
 	{
 		"name": "contentType",
 		"type": "text",
 		"label": "Content type",
-		"help": "For example `application/pdf`. Leave it empty and the provider stores a generic type."
+		"help": "The MIME type, for example `application/pdf`. Leave it empty and the storage provider stores a generic type."
 	}
 ]

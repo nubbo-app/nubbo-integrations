@@ -1,22 +1,21 @@
 {
 	"url": "/projects",
 	"method": "GET",
-	"headers": {
-		"Authorization": "Bearer {{connection.apiKey}}"
-	},
 	"qs": {
 		"status": "{{ifempty(parameters.status, undefined)}}",
 		"limit": 100
 	},
 	"response": {
 		"iterate": "{{body.data}}",
-		"output": "{{item}}",
+		"output": {
+			"{{...}}": "{{omit(item, 'createdAt', 'lastActivityAt')}}",
+			"createdAt": "{{parseDate(item.createdAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ')}}",
+			"lastActivityAt": "{{if(item.lastActivityAt, parseDate(item.lastActivityAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), item.lastActivityAt)}}"
+		},
 		"limit": "{{parameters.limit}}"
 	},
 	"pagination": {
 		"qs": {
-			"status": "{{ifempty(parameters.status, undefined)}}",
-			"limit": 100,
 			"cursor": "{{body.nextCursor}}"
 		},
 		"condition": "{{body.nextCursor}}"

@@ -1,10 +1,12 @@
 {
 	"url": "/operations/{{parameters.operationId}}",
 	"method": "GET",
-	"headers": {
-		"Authorization": "Bearer {{connection.apiKey}}"
-	},
 	"response": {
-		"output": "{{body}}"
+		"output": {
+			"{{...}}": "{{omit(body, 'createdAt', 'startedAt', 'finishedAt')}}",
+			"createdAt": "{{parseDate(body.createdAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ')}}",
+			"startedAt": "{{if(body.startedAt, parseDate(body.startedAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), body.startedAt)}}",
+			"finishedAt": "{{if(body.finishedAt, parseDate(body.finishedAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), body.finishedAt)}}"
+		}
 	}
 }

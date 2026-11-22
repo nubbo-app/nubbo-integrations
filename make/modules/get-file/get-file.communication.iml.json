@@ -1,10 +1,11 @@
 {
 	"url": "/files/{{parameters.fileId}}",
 	"method": "GET",
-	"headers": {
-		"Authorization": "Bearer {{connection.apiKey}}"
-	},
 	"response": {
-		"output": "{{body}}"
+		"output": {
+			"{{...}}": "{{omit(body, 'modifiedAt', 'trashedAt')}}",
+			"modifiedAt": "{{parseDate(body.modifiedAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ')}}",
+			"trashedAt": "{{if(body.trashedAt, parseDate(body.trashedAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), body.trashedAt)}}"
+		}
 	}
 }

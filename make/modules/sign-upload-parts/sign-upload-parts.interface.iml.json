@@ -16,7 +16,7 @@
 			},
 			{
 				"name": "url",
-				"label": "Url",
+				"label": "URL",
 				"type": "text"
 			}
 		]

@@ -19,50 +19,30 @@
 			"type": "text",
 			"label": "Allowed site"
 		},
-		"help": "Sites allowed to show the embed; empty allows any site"
+		"help": "The sites that can show the embed. Leave it empty to keep the current list, or map `erase` to allow any site."
 	},
 	{
 		"name": "expiresAt",
 		"type": "date",
-		"label": "Expires at"
+		"label": "Expires at",
+		"help": "Leave it empty to keep the current date, or map `erase` so that the embed never expires."
 	},
 	{
 		"name": "password",
 		"type": "password",
 		"label": "Password",
-		"help": "Explorer embeds only; null removes the password"
+		"help": "Bucket explorer embeds only. Leave it empty to keep the current password, or map `erase` to remove it."
 	},
 	{
 		"name": "paused",
 		"type": "boolean",
 		"label": "Paused",
-		"help": "true pauses the embed"
+		"help": "Turn it on to pause the embed, or off to resume it."
 	},
 	{
 		"name": "config",
 		"type": "any",
 		"label": "Configuration",
-		"help": "The look and behaviour of the embed, as the builder in Nubbo saves it. Optional: anything left out keeps the default of the kind, and a partial object is merged over it."
-	},
-	{
-		"name": "clear",
-		"type": "select",
-		"label": "Fields to clear",
-		"multiple": true,
-		"options": [
-			{
-				"label": "Allowed sites",
-				"value": "allowedDomains"
-			},
-			{
-				"label": "Expires at",
-				"value": "expiresAt"
-			},
-			{
-				"label": "Password",
-				"value": "password"
-			}
-		],
-		"help": "The fields to empty. A field left blank above keeps its current value."
+		"help": "The look and behavior of the embed, as the builder in Nubbo saves it, for example the output of a JSON parser. Settings left out keep the default of the kind, and a partial collection is merged over it."
 	}
 ]

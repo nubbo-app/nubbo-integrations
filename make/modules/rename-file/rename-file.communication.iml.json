@@ -1,14 +1,14 @@
 {
 	"url": "/files/{{parameters.fileId}}",
 	"method": "PATCH",
-	"headers": {
-		"Authorization": "Bearer {{connection.apiKey}}"
-	},
 	"body": {
-		"name": "{{ifempty(parameters.name, undefined)}}",
-		"conflict": "{{ifempty(parameters.conflict, undefined)}}"
+		"{{...}}": "{{omit(parameters, 'fileId')}}"
 	},
 	"response": {
-		"output": "{{body}}"
+		"output": {
+			"{{...}}": "{{omit(body, 'modifiedAt', 'trashedAt')}}",
+			"modifiedAt": "{{parseDate(body.modifiedAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ')}}",
+			"trashedAt": "{{if(body.trashedAt, parseDate(body.trashedAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), body.trashedAt)}}"
+		}
 	}
 }

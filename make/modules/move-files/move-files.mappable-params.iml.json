@@ -40,6 +40,6 @@
 				"value": "skip"
 			}
 		],
-		"help": "When an item with the same name is at the destination: fail answers API_NAME_TAKEN and moves nothing, rename moves it as «name (1)», skip leaves that item where it is"
+		"help": "What to do when an item with the same name is at the destination: \"Fail\" stops with an error and moves nothing, \"Rename\" moves it as \"name (1)\", and \"Skip\" leaves that item where it is."
 	}
 ]

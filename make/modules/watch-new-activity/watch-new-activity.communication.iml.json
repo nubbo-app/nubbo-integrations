@@ -1,26 +1,29 @@
 {
+	"temp": {
+		"since": "{{if(contains(ifempty(data.lastId, emptystring), '|'), last(split(data.lastId, '|')), undefined)}}"
+	},
 	"url": "/triggers/new-activity",
 	"method": "GET",
 	"headers": {
-		"Authorization": "Bearer {{connection.apiKey}}",
 		"X-Nubbo-Flow": "make:{{scenario.id}}"
 	},
 	"qs": {
 		"types": "{{ifempty(join(ifempty(parameters.types, emptyarray), ','), undefined)}}",
-		"since": "{{if(contains(ifempty(data.lastId, emptystring), '|'), last(split(data.lastId, '|')), undefined)}}"
+		"since": "{{temp.since}}"
 	},
 	"response": {
 		"iterate": "{{body.data}}",
 		"output": {
-			"{{...}}": "{{item}}",
+			"{{...}}": "{{omit(item, 'occurredAt')}}",
+			"occurredAt": "{{parseDate(item.occurredAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ')}}",
 			"madeByThisKey": "{{item.actor.apiKey.id == connection.keyId}}"
 		},
-		"limit": 100,
+		"limit": "{{ifempty(parameters.limit, 100)}}",
 		"trigger": {
 			"type": "date",
 			"order": "unordered",
-			"id": "{{item.id}}|{{body.nextCursor}}",
-			"date": "{{if(contains(ifempty(data.lastId, emptystring), '|'), now, item.occurredAt)}}"
+			"id": "{{substring(toString(if(temp.since, 100000 + indexOf(join(map(body.data, 'id'), ','), item.id), 199999 - indexOf(join(map(body.data, 'id'), ','), item.id))), 1, 6)}}|{{item.id}}|{{item.cursor}}",
+			"date": "{{if(temp.since, now, parseDate(item.occurredAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'))}}"
 		}
 	}
 }

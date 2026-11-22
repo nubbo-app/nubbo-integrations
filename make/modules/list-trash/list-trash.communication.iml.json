@@ -1,22 +1,21 @@
 {
 	"url": "/trash",
 	"method": "GET",
-	"headers": {
-		"Authorization": "Bearer {{connection.apiKey}}"
-	},
 	"qs": {
 		"bucketId": "{{ifempty(parameters.bucketId, undefined)}}",
 		"limit": 100
 	},
 	"response": {
 		"iterate": "{{body.data}}",
-		"output": "{{item}}",
+		"output": {
+			"{{...}}": "{{omit(item, 'modifiedAt', 'trashedAt')}}",
+			"modifiedAt": "{{parseDate(item.modifiedAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ')}}",
+			"trashedAt": "{{if(item.trashedAt, parseDate(item.trashedAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), item.trashedAt)}}"
+		},
 		"limit": "{{parameters.limit}}"
 	},
 	"pagination": {
 		"qs": {
-			"bucketId": "{{ifempty(parameters.bucketId, undefined)}}",
-			"limit": 100,
 			"cursor": "{{body.nextCursor}}"
 		},
 		"condition": "{{body.nextCursor}}"

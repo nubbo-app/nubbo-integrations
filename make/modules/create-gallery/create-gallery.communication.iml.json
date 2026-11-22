@@ -1,22 +1,15 @@
 {
 	"url": "/galleries",
 	"method": "POST",
-	"headers": {
-		"Authorization": "Bearer {{connection.apiKey}}"
-	},
 	"body": {
-		"fileId": "{{ifempty(parameters.fileId, undefined)}}",
-		"title": "{{ifempty(parameters.title, undefined)}}",
-		"description": "{{ifempty(parameters.description, undefined)}}",
-		"layout": "{{ifempty(parameters.layout, undefined)}}",
-		"coverFileId": "{{ifempty(parameters.coverFileId, undefined)}}",
-		"individualDownloads": "{{parameters.individualDownloads}}",
-		"zipDownload": "{{parameters.zipDownload}}",
-		"password": "{{ifempty(parameters.password, undefined)}}",
-		"expiresAt": "{{if(parameters.expiresAt, formatDate(parameters.expiresAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), undefined)}}",
-		"watermarkText": "{{ifempty(parameters.watermarkText, undefined)}}"
+		"{{...}}": "{{parameters}}"
 	},
 	"response": {
-		"output": "{{body}}"
+		"output": {
+			"{{...}}": "{{omit(body, 'expiresAt', 'createdAt', 'updatedAt')}}",
+			"expiresAt": "{{if(body.expiresAt, parseDate(body.expiresAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), body.expiresAt)}}",
+			"createdAt": "{{parseDate(body.createdAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ')}}",
+			"updatedAt": "{{parseDate(body.updatedAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ')}}"
+		}
 	}
 }

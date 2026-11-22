@@ -1,9 +1,6 @@
 {
 	"url": "/activity",
 	"method": "GET",
-	"headers": {
-		"Authorization": "Bearer {{connection.apiKey}}"
-	},
 	"qs": {
 		"types": "FILE_REQUEST_RECEIVED",
 		"limit": 50
@@ -11,7 +8,7 @@
 	"response": {
 		"iterate": "{{body.data}}",
 		"output": {
-			"date": "{{item.occurredAt}}",
+			"date": "{{parseDate(item.occurredAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ')}}",
 			"label": "{{formatDate(item.occurredAt, 'YYYY-MM-DD HH:mm')}} · {{ifempty(item.file.path, item.type)}}"
 		},
 		"limit": 50

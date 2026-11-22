@@ -1,13 +1,9 @@
 {
 	"url": "/links/{{parameters.linkId}}",
 	"method": "DELETE",
-	"headers": {
-		"Authorization": "Bearer {{connection.apiKey}}"
-	},
 	"response": {
 		"output": {
-			"id": "{{parameters.linkId}}",
-			"deleted": true
+			"id": "{{parameters.linkId}}"
 		}
 	}
 }

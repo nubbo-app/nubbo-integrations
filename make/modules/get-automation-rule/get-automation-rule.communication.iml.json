@@ -1,10 +1,11 @@
 {
 	"url": "/automations/{{parameters.ruleId}}",
 	"method": "GET",
-	"headers": {
-		"Authorization": "Bearer {{connection.apiKey}}"
-	},
 	"response": {
-		"output": "{{body}}"
+		"output": {
+			"{{...}}": "{{omit(body, 'lastRunAt', 'createdAt')}}",
+			"lastRunAt": "{{if(body.lastRunAt, parseDate(body.lastRunAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), body.lastRunAt)}}",
+			"createdAt": "{{parseDate(body.createdAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ')}}"
+		}
 	}
 }

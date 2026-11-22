@@ -14,184 +14,352 @@
 	{
 		"name": "isActive",
 		"type": "boolean",
-		"label": "Active"
+		"label": "Active",
+		"help": "Turn it off to pause the rule, or on to resume it."
 	},
 	{
 		"name": "skipArrivals",
 		"type": "boolean",
-		"label": "Skip files that arrive while paused"
+		"label": "Skip files that arrive while paused",
+		"help": "When the rule is resumed, skip the files that arrived while it was paused."
 	},
 	{
-		"name": "fileRequestId",
+		"name": "ruleTrigger",
 		"type": "select",
-		"label": "File request",
-		"options": "rpc://listInboxes"
-	},
-	{
-		"name": "folderPrefix",
-		"type": "text",
-		"label": "Folder"
-	},
-	{
-		"name": "interval",
-		"type": "select",
-		"label": "Interval",
+		"label": "Trigger settings",
+		"help": "Choose the trigger of the rule to change its settings. The trigger itself cannot change.",
 		"options": [
 			{
-				"label": "Daily",
-				"value": "DAILY"
+				"label": "Folder upload",
+				"value": "FOLDER_UPLOAD",
+				"nested": [
+					{
+						"name": "folderPrefix",
+						"type": "text",
+						"label": "Folder",
+						"help": "The folder the rule watches, for example `invoices/`. Leave it empty for the whole bucket."
+					}
+				]
 			},
 			{
-				"label": "Weekly",
-				"value": "WEEKLY"
+				"label": "File request upload",
+				"value": "INBOX_UPLOAD",
+				"nested": [
+					{
+						"name": "fileRequestId",
+						"type": "select",
+						"label": "File request",
+						"options": "rpc://listInboxes",
+						"help": "The file request whose uploads start the rule."
+					}
+				]
 			},
 			{
-				"label": "Monthly",
-				"value": "MONTHLY"
+				"label": "Schedule",
+				"value": "SCHEDULE",
+				"nested": [
+					{
+						"name": "folderPrefix",
+						"type": "text",
+						"label": "Folder",
+						"help": "The folder the rule watches, for example `invoices/`. Leave it empty for the whole bucket."
+					},
+					{
+						"name": "interval",
+						"type": "select",
+						"label": "Interval",
+						"options": [
+							{
+								"label": "Daily",
+								"value": "DAILY"
+							},
+							{
+								"label": "Weekly",
+								"value": "WEEKLY"
+							},
+							{
+								"label": "Monthly",
+								"value": "MONTHLY"
+							}
+						],
+						"help": "How often the rule runs."
+					}
+				]
+			},
+			{
+				"label": "Storage threshold",
+				"value": "THRESHOLD",
+				"nested": [
+					{
+						"name": "thresholdGb",
+						"type": "uinteger",
+						"label": "Threshold (GB)",
+						"help": "You get a notification when the used space of the bucket reaches this size."
+					}
+				]
+			},
+			{
+				"label": "Folder inactivity",
+				"value": "INACTIVITY",
+				"nested": [
+					{
+						"name": "folderPrefix",
+						"type": "text",
+						"label": "Folder",
+						"help": "The folder the rule watches, for example `invoices/`. Leave it empty for the whole bucket."
+					},
+					{
+						"name": "inactivityDays",
+						"type": "uinteger",
+						"label": "Inactivity (days)",
+						"help": "You get a notification when no file arrives for this many days."
+					}
+				]
 			}
 		]
 	},
 	{
-		"name": "destinationFolder",
-		"type": "text",
-		"label": "Destination folder"
-	},
-	{
-		"name": "routeCategories",
-		"type": "array",
-		"label": "Route categories",
-		"spec": [
+		"name": "ruleAction",
+		"type": "select",
+		"label": "Action settings",
+		"help": "Choose the action of the rule to change its settings. The action itself cannot change.",
+		"options": [
 			{
-				"name": "name",
-				"type": "text",
-				"label": "Name",
-				"required": true
+				"label": "Move",
+				"value": "MOVE",
+				"nested": [
+					{
+						"name": "destinationFolder",
+						"type": "text",
+						"label": "Destination folder",
+						"help": "The folder the files are moved to."
+					}
+				]
 			},
 			{
-				"name": "folder",
-				"type": "text",
-				"label": "Folder",
-				"required": true
-			}
-		]
-	},
-	{
-		"name": "routeFallbackFolder",
-		"type": "text",
-		"label": "Fallback folder"
-	},
-	{
-		"name": "routeRename",
-		"type": "boolean",
-		"label": "Rename routed files"
-	},
-	{
-		"name": "routeTag",
-		"type": "boolean",
-		"label": "Label routed files"
-	},
-	{
-		"name": "trashOlderThanDays",
-		"type": "uinteger",
-		"label": "Trash files older than (days)"
-	},
-	{
-		"name": "compressDestinationFolder",
-		"type": "text",
-		"label": "ZIP destination folder"
-	},
-	{
-		"name": "namePattern",
-		"type": "text",
-		"label": "Name pattern"
-	},
-	{
-		"name": "prompt",
-		"type": "text",
-		"label": "Prompt"
-	},
-	{
-		"name": "promptOutput",
-		"type": "select",
-		"label": "Prompt output",
-		"options": [
+				"label": "AI label",
+				"value": "TAG"
+			},
+			{
+				"label": "AI rename",
+				"value": "RENAME"
+			},
 			{
 				"label": "Notify",
 				"value": "NOTIFY"
 			},
 			{
-				"label": "Document",
-				"value": "DOCUMENT"
-			}
-		]
-	},
-	{
-		"name": "copyDestBucketId",
-		"type": "select",
-		"label": "Destination bucket",
-		"options": "rpc://listBuckets"
-	},
-	{
-		"name": "copyDestinationFolder",
-		"type": "text",
-		"label": "Destination folder in the other bucket"
-	},
-	{
-		"name": "copyMode",
-		"type": "select",
-		"label": "Copy mode",
-		"options": [
-			{
-				"label": "Copy",
-				"value": "copy"
+				"label": "AI route by category",
+				"value": "ROUTE",
+				"nested": [
+					{
+						"name": "routeCategories",
+						"type": "array",
+						"label": "Route categories",
+						"spec": [
+							{
+								"name": "name",
+								"type": "text",
+								"label": "Name",
+								"required": true
+							},
+							{
+								"name": "folder",
+								"type": "text",
+								"label": "Folder",
+								"required": true
+							}
+						],
+						"help": "Leave it empty to keep the current categories, or map `erase` to remove them."
+					},
+					{
+						"name": "routeFallbackFolder",
+						"type": "text",
+						"label": "Fallback folder",
+						"help": "Where the files that fit no category go."
+					},
+					{
+						"name": "routeRename",
+						"type": "boolean",
+						"label": "Rename routed files"
+					},
+					{
+						"name": "routeTag",
+						"type": "boolean",
+						"label": "Label routed files"
+					}
+				]
 			},
 			{
-				"label": "Move",
-				"value": "move"
+				"label": "Move to the trash",
+				"value": "TRASH",
+				"nested": [
+					{
+						"name": "trashOlderThanDays",
+						"type": "uinteger",
+						"label": "Trash files older than (days)",
+						"help": "Only files older than this many days. Works with the Schedule trigger only."
+					},
+					{
+						"name": "namePattern",
+						"type": "text",
+						"label": "Name pattern",
+						"help": "Only files whose name matches this pattern, for example `*.tmp`. Map `erase` to remove the pattern."
+					}
+				]
+			},
+			{
+				"label": "Compress to ZIP",
+				"value": "COMPRESS",
+				"nested": [
+					{
+						"name": "compressDestinationFolder",
+						"type": "text",
+						"label": "ZIP destination folder",
+						"help": "The folder the ZIP file is saved to."
+					}
+				]
+			},
+			{
+				"label": "Mark as favorite",
+				"value": "FAVORITE",
+				"nested": [
+					{
+						"name": "namePattern",
+						"type": "text",
+						"label": "Name pattern",
+						"help": "Only files whose name matches this pattern, for example `*.tmp`. Map `erase` to remove the pattern."
+					}
+				]
+			},
+			{
+				"label": "Hide",
+				"value": "HIDE",
+				"nested": [
+					{
+						"name": "namePattern",
+						"type": "text",
+						"label": "Name pattern",
+						"help": "Only files whose name matches this pattern, for example `*.tmp`. Map `erase` to remove the pattern."
+					}
+				]
+			},
+			{
+				"label": "Copy or move to another bucket",
+				"value": "COPY_TO_BUCKET",
+				"nested": [
+					{
+						"name": "copyDestBucketId",
+						"type": "select",
+						"label": "Destination bucket",
+						"options": "rpc://listBuckets",
+						"help": "The bucket the files go to."
+					},
+					{
+						"name": "copyDestinationFolder",
+						"type": "text",
+						"label": "Destination folder in the other bucket",
+						"help": "The folder in that bucket. Leave it empty for the root of the bucket."
+					},
+					{
+						"name": "copyMode",
+						"type": "select",
+						"label": "Copy mode",
+						"options": [
+							{
+								"label": "Copy",
+								"value": "copy"
+							},
+							{
+								"label": "Move",
+								"value": "move"
+							}
+						],
+						"help": "Copy keeps the files in the source; Move removes them from it."
+					}
+				]
+			},
+			{
+				"label": "Keep a mirror on another bucket",
+				"value": "MIRROR_TO_BUCKET",
+				"nested": [
+					{
+						"name": "copyDestBucketId",
+						"type": "select",
+						"label": "Destination bucket",
+						"options": "rpc://listBuckets",
+						"help": "The bucket the files go to."
+					},
+					{
+						"name": "copyDestinationFolder",
+						"type": "text",
+						"label": "Destination folder in the other bucket",
+						"help": "The folder in that bucket. Leave it empty for the root of the bucket."
+					},
+					{
+						"name": "mirrorTrashOrphans",
+						"type": "boolean",
+						"label": "Trash files removed from the source",
+						"help": "Move to the trash the files that were removed from the source."
+					}
+				]
+			},
+			{
+				"label": "Create a share link",
+				"value": "SHARE_LINK",
+				"nested": [
+					{
+						"name": "shareExpiresInDays",
+						"type": "uinteger",
+						"label": "Link expires in (days)",
+						"help": "The link stops working after this many days. Leave it empty for a link that never expires."
+					},
+					{
+						"name": "sharePassword",
+						"type": "password",
+						"label": "Link password",
+						"help": "Visitors need this password to open the link. Map `erase` to remove it."
+					},
+					{
+						"name": "shareMaxDownloads",
+						"type": "uinteger",
+						"label": "Link maximum downloads",
+						"help": "The link stops working after this many downloads."
+					}
+				]
+			},
+			{
+				"label": "AI sensitive data detection",
+				"value": "SENSITIVE_SCAN"
+			},
+			{
+				"label": "AI custom instruction",
+				"value": "AI_PROMPT",
+				"nested": [
+					{
+						"name": "prompt",
+						"type": "text",
+						"label": "Prompt",
+						"help": "What AI does with each file."
+					},
+					{
+						"name": "promptOutput",
+						"type": "select",
+						"label": "Prompt output",
+						"options": [
+							{
+								"label": "Send me a notification",
+								"value": "NOTIFY"
+							},
+							{
+								"label": "Save an .ai.md document next to the file",
+								"value": "DOCUMENT"
+							}
+						],
+						"help": "Where the answer goes."
+					}
+				]
 			}
 		]
-	},
-	{
-		"name": "mirrorTrashOrphans",
-		"type": "boolean",
-		"label": "Trash files removed from the source"
-	},
-	{
-		"name": "shareExpiresInDays",
-		"type": "uinteger",
-		"label": "Link expires in (days)"
-	},
-	{
-		"name": "sharePassword",
-		"type": "password",
-		"label": "Link password"
-	},
-	{
-		"name": "shareMaxDownloads",
-		"type": "uinteger",
-		"label": "Link maximum downloads"
-	},
-	{
-		"name": "thresholdGb",
-		"type": "uinteger",
-		"label": "Threshold (GB)"
-	},
-	{
-		"name": "inactivityDays",
-		"type": "uinteger",
-		"label": "Inactivity (days)"
-	},
-	{
-		"name": "clear",
-		"type": "select",
-		"label": "Fields to clear",
-		"multiple": true,
-		"options": [
-			{
-				"label": "Route categories",
-				"value": "routeCategories"
-			}
-		],
-		"help": "The fields to empty. A field left blank above keeps its current value."
 	}
 ]

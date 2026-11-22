@@ -90,7 +90,7 @@
 	},
 	{
 		"name": "usesAi",
-		"label": "Uses ai",
+		"label": "Uses AI",
 		"type": "boolean"
 	},
 	{

@@ -3,20 +3,20 @@
 		"name": "q",
 		"type": "text",
 		"label": "Search text",
-		"help": "Words of the name; each word matches a part of it"
+		"help": "Words of the name. Each word matches part of it."
 	},
 	{
 		"name": "bucketId",
 		"type": "select",
 		"label": "Bucket",
 		"options": "rpc://listBuckets",
-		"help": "Search one bucket only"
+		"help": "Search one bucket only."
 	},
 	{
 		"name": "prefix",
 		"type": "text",
 		"label": "Folder",
-		"help": "Search inside this folder and its subfolders; needs bucketId"
+		"help": "Search inside this folder and its subfolders. Choose a bucket first."
 	},
 	{
 		"name": "kind",
@@ -57,7 +57,7 @@
 				"value": "others"
 			}
 		],
-		"help": "Comma separated kinds"
+		"help": "Leave it empty for every kind."
 	},
 	{
 		"name": "extension",
@@ -67,7 +67,7 @@
 			"type": "text",
 			"label": "Extension"
 		},
-		"help": "Comma separated file extensions, without the dot"
+		"help": "File extensions without the dot, for example `pdf`."
 	},
 	{
 		"name": "labelIds",
@@ -75,31 +75,31 @@
 		"label": "Labels",
 		"multiple": true,
 		"options": "rpc://listLabels",
-		"help": "Comma separated label ids; files with every one of them"
+		"help": "Only files that have every one of these labels."
 	},
 	{
 		"name": "sizeMin",
 		"type": "uinteger",
 		"label": "Minimum size (bytes)",
-		"help": "Minimum size in bytes"
+		"help": "Only files of at least this size, in bytes."
 	},
 	{
 		"name": "sizeMax",
 		"type": "uinteger",
 		"label": "Maximum size (bytes)",
-		"help": "Maximum size in bytes"
+		"help": "Only files of at most this size, in bytes."
 	},
 	{
 		"name": "modifiedFrom",
 		"type": "date",
 		"label": "Modified from",
-		"help": "Modified at or after"
+		"help": "Only items modified on or after this date."
 	},
 	{
 		"name": "modifiedTo",
 		"type": "date",
 		"label": "Modified to",
-		"help": "Modified at or before"
+		"help": "Only items modified on or before this date."
 	},
 	{
 		"name": "sort",
@@ -115,7 +115,7 @@
 				"value": "modified"
 			}
 		],
-		"help": "With q, better matches come first and this orders each group"
+		"help": "With search text, better matches come first and this setting orders each group."
 	},
 	{
 		"name": "order",
@@ -123,28 +123,27 @@
 		"label": "Order",
 		"options": [
 			{
-				"label": "Asc",
+				"label": "Ascending",
 				"value": "asc"
 			},
 			{
-				"label": "Desc",
+				"label": "Descending",
 				"value": "desc"
 			}
 		],
-		"help": "asc by default for name, desc for modified"
+		"help": "Leave it empty to sort names from A to Z and dates from newest to oldest."
 	},
 	{
 		"name": "includeHidden",
 		"type": "boolean",
 		"label": "Include hidden items",
-		"help": "Include items hidden in Nubbo"
+		"help": "Also find items hidden in Nubbo."
 	},
 	{
 		"name": "limit",
 		"type": "uinteger",
 		"label": "Limit",
 		"default": 10,
-		"required": true,
-		"help": "The most results to return in one execution cycle."
+		"help": "The maximum number of results to be worked with during one execution cycle."
 	}
 ]

@@ -10,7 +10,7 @@
 		"name": "path",
 		"type": "text",
 		"label": "Path",
-		"help": "The folder uploads land in; empty for the root of the bucket"
+		"help": "The folder where uploads land. Leave it empty for the root of the bucket."
 	},
 	{
 		"name": "name",
@@ -26,7 +26,8 @@
 	{
 		"name": "password",
 		"type": "password",
-		"label": "Password"
+		"label": "Password",
+		"help": "Senders need this password to upload."
 	},
 	{
 		"name": "expiresAt",
@@ -37,7 +38,7 @@
 		"name": "maxFileSize",
 		"type": "uinteger",
 		"label": "Maximum file size (bytes)",
-		"help": "Bytes per file"
+		"help": "The largest file a sender can upload, in bytes."
 	},
 	{
 		"name": "allowedFileTypes",
@@ -47,12 +48,13 @@
 			"type": "text",
 			"label": "Allowed file extension"
 		},
-		"help": "File extensions accepted; empty accepts every type"
+		"help": "The file extensions senders can upload, for example `pdf`. Leave it empty to accept every type."
 	},
 	{
 		"name": "maxUploads",
 		"type": "uinteger",
-		"label": "Maximum uploads"
+		"label": "Maximum uploads",
+		"help": "The file request stops taking files after this many uploads."
 	},
 	{
 		"name": "visitorIdentity",
@@ -68,9 +70,10 @@
 				"value": "optional"
 			},
 			{
-				"label": "None",
+				"label": "Do not ask",
 				"value": "none"
 			}
-		]
+		],
+		"help": "Ask senders for their name and email."
 	}
 ]

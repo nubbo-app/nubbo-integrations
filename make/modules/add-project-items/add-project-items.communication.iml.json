@@ -1,14 +1,14 @@
 {
 	"url": "/projects/{{parameters.projectId}}/items",
 	"method": "POST",
-	"headers": {
-		"Authorization": "Bearer {{connection.apiKey}}"
-	},
 	"body": {
-		"folders": "{{ifempty(parameters.folders, undefined)}}",
-		"resources": "{{ifempty(parameters.resources, undefined)}}"
+		"{{...}}": "{{omit(parameters, 'projectId')}}"
 	},
 	"response": {
-		"output": "{{body}}"
+		"output": {
+			"{{...}}": "{{omit(body, 'createdAt', 'lastActivityAt')}}",
+			"createdAt": "{{parseDate(body.createdAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ')}}",
+			"lastActivityAt": "{{if(body.lastActivityAt, parseDate(body.lastActivityAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), body.lastActivityAt)}}"
+		}
 	}
 }

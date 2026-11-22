@@ -34,7 +34,7 @@
 				"value": "TRANSFER_FAILED"
 			},
 			{
-				"label": "Transfer cancelled",
+				"label": "Transfer canceled",
 				"value": "TRANSFER_CANCELLED"
 			},
 			{
@@ -54,7 +54,7 @@
 				"value": "FOLDER_SYNC_REQUESTED"
 			},
 			{
-				"label": "Ai document created",
+				"label": "AI document created",
 				"value": "AI_DOCUMENT_CREATED"
 			},
 			{
@@ -230,7 +230,7 @@
 				"value": "SHARE_DOWNLOAD_CLAIMED"
 			},
 			{
-				"label": "Share zk converted",
+				"label": "Share ZK converted",
 				"value": "SHARE_ZK_CONVERTED"
 			},
 			{
@@ -298,11 +298,11 @@
 				"value": "FILE_REQUEST_RECEIVED"
 			},
 			{
-				"label": "File request zk adopted",
+				"label": "File request ZK adopted",
 				"value": "FILE_REQUEST_ZK_ADOPTED"
 			},
 			{
-				"label": "File request zk converted",
+				"label": "File request ZK converted",
 				"value": "FILE_REQUEST_ZK_CONVERTED"
 			},
 			{
@@ -342,7 +342,7 @@
 				"value": "GALLERY_ZIP_DOWNLOADED"
 			},
 			{
-				"label": "Gallery zk converted",
+				"label": "Gallery ZK converted",
 				"value": "GALLERY_ZK_CONVERTED"
 			},
 			{
@@ -454,7 +454,7 @@
 				"value": "EMBEDS_PLAN_RESUMED"
 			}
 		],
-		"help": "Comma-separated activity types; all public types when absent"
+		"help": "Leave it empty to list every type."
 	},
 	{
 		"name": "bucketId",
@@ -466,14 +466,13 @@
 		"name": "apiKeyId",
 		"type": "text",
 		"label": "API key ID",
-		"help": "Only what this API key did"
+		"help": "Only what was done with this API key."
 	},
 	{
 		"name": "limit",
 		"type": "uinteger",
 		"label": "Limit",
 		"default": 10,
-		"required": true,
-		"help": "The most results to return in one execution cycle."
+		"help": "The maximum number of results to be worked with during one execution cycle."
 	}
 ]

@@ -11,7 +11,7 @@
 		"type": "text",
 		"label": "Name",
 		"required": true,
-		"help": "The new name, without a path; folders keep their place"
+		"help": "The new name, without a path. Folders keep their place."
 	},
 	{
 		"name": "conflict",
@@ -27,6 +27,6 @@
 				"value": "rename"
 			}
 		],
-		"help": "When the name is taken: fail answers API_NAME_TAKEN, rename uses «name (1)»"
+		"help": "What to do when the name is taken: \"Fail\" stops with an error, and \"Rename\" uses \"name (1)\"."
 	}
 ]

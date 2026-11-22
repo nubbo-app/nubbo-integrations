@@ -1,13 +1,9 @@
 {
 	"url": "/labels/{{parameters.labelId}}",
 	"method": "DELETE",
-	"headers": {
-		"Authorization": "Bearer {{connection.apiKey}}"
-	},
 	"response": {
 		"output": {
-			"id": "{{parameters.labelId}}",
-			"deleted": true
+			"id": "{{parameters.labelId}}"
 		}
 	}
 }

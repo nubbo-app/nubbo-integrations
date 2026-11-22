@@ -1,9 +1,6 @@
 {
 	"url": "/inboxes",
 	"method": "GET",
-	"headers": {
-		"Authorization": "Bearer {{connection.apiKey}}"
-	},
 	"qs": {
 		"bucketId": "{{ifempty(parameters.bucketId, undefined)}}",
 		"status": "{{ifempty(parameters.status, undefined)}}",
@@ -11,14 +8,16 @@
 	},
 	"response": {
 		"iterate": "{{body.data}}",
-		"output": "{{item}}",
+		"output": {
+			"{{...}}": "{{omit(item, 'expiresAt', 'createdAt', 'updatedAt')}}",
+			"expiresAt": "{{if(item.expiresAt, parseDate(item.expiresAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), item.expiresAt)}}",
+			"createdAt": "{{parseDate(item.createdAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ')}}",
+			"updatedAt": "{{parseDate(item.updatedAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ')}}"
+		},
 		"limit": "{{parameters.limit}}"
 	},
 	"pagination": {
 		"qs": {
-			"bucketId": "{{ifempty(parameters.bucketId, undefined)}}",
-			"status": "{{ifempty(parameters.status, undefined)}}",
-			"limit": 100,
 			"cursor": "{{body.nextCursor}}"
 		},
 		"condition": "{{body.nextCursor}}"

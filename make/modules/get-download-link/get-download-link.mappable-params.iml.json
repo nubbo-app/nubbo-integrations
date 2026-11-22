@@ -10,6 +10,6 @@
 		"name": "expiresIn",
 		"type": "uinteger",
 		"label": "Expires in (seconds)",
-		"help": "Seconds the link works, from 60 to 7 days"
+		"help": "How long the link works, in seconds, from 60 to 604800 (7 days)."
 	}
 ]

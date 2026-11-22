@@ -1,22 +1,17 @@
 {
 	"url": "/galleries/{{parameters.galleryId}}",
 	"method": "PATCH",
-	"headers": {
-		"Authorization": "Bearer {{connection.apiKey}}"
-	},
 	"body": {
+		"{{...}}": "{{omit(parameters, 'galleryId', 'title', 'layout')}}",
 		"title": "{{ifempty(parameters.title, undefined)}}",
-		"description": "{{if(contains(ifempty(parameters.clear, emptyarray), 'description'), null, ifempty(parameters.description, undefined))}}",
-		"layout": "{{ifempty(parameters.layout, undefined)}}",
-		"coverFileId": "{{if(contains(ifempty(parameters.clear, emptyarray), 'coverFileId'), null, ifempty(parameters.coverFileId, undefined))}}",
-		"individualDownloads": "{{parameters.individualDownloads}}",
-		"zipDownload": "{{parameters.zipDownload}}",
-		"password": "{{if(contains(ifempty(parameters.clear, emptyarray), 'password'), null, ifempty(parameters.password, undefined))}}",
-		"expiresAt": "{{if(contains(ifempty(parameters.clear, emptyarray), 'expiresAt'), null, if(parameters.expiresAt, formatDate(parameters.expiresAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), undefined))}}",
-		"watermarkText": "{{if(contains(ifempty(parameters.clear, emptyarray), 'watermarkText'), null, ifempty(parameters.watermarkText, undefined))}}",
-		"active": "{{parameters.active}}"
+		"layout": "{{ifempty(parameters.layout, undefined)}}"
 	},
 	"response": {
-		"output": "{{body}}"
+		"output": {
+			"{{...}}": "{{omit(body, 'expiresAt', 'createdAt', 'updatedAt')}}",
+			"expiresAt": "{{if(body.expiresAt, parseDate(body.expiresAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), body.expiresAt)}}",
+			"createdAt": "{{parseDate(body.createdAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ')}}",
+			"updatedAt": "{{parseDate(body.updatedAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ')}}"
+		}
 	}
 }

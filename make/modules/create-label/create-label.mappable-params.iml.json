@@ -9,7 +9,7 @@
 		"name": "color",
 		"type": "text",
 		"label": "Color",
-		"help": "Hex colour; a palette colour is picked when it is left out"
+		"help": "A hex color, for example `#1f6feb`. Leave it empty to get a color from the palette."
 	},
 	{
 		"name": "description",
@@ -21,6 +21,6 @@
 		"type": "select",
 		"label": "Label group",
 		"options": "rpc://listLabelGroups",
-		"help": "A label group of the space (GET /v1/label-groups)"
+		"help": "The label group the label belongs to."
 	}
 ]

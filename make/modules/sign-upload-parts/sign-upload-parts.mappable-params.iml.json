@@ -4,7 +4,7 @@
 		"required": true,
 		"type": "text",
 		"label": "Upload ID",
-		"help": "The upload ID that «Start an Upload» returned."
+		"help": "The upload ID that \"Start an upload\" returned."
 	},
 	{
 		"name": "partNumbers",
@@ -15,6 +15,6 @@
 			"label": "Part number"
 		},
 		"required": true,
-		"help": "Part numbers to sign, from 1 to totalParts"
+		"help": "The parts to sign, from 1 to the total number of parts that \"Start an upload\" returned."
 	}
 ]

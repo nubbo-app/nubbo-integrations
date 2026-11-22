@@ -11,19 +11,20 @@
 		"type": "text",
 		"label": "Path",
 		"required": true,
-		"help": "Where the file goes in the bucket, with its name"
+		"help": "Where the file goes in the bucket, with its name, for example `videos/launch.mp4`."
 	},
 	{
 		"name": "size",
 		"type": "uinteger",
 		"label": "Size (bytes)",
 		"required": true,
-		"help": "Bytes"
+		"help": "The size of the file in bytes."
 	},
 	{
 		"name": "contentType",
 		"type": "text",
-		"label": "Content type"
+		"label": "Content type",
+		"help": "For example `video/mp4`."
 	},
 	{
 		"name": "conflict",
@@ -43,12 +44,12 @@
 				"value": "replace"
 			}
 		],
-		"help": "When a file with this path exists: fail answers API_NAME_TAKEN, rename uploads as «name (1)», replace overwrites it at the provider as the Nubbo app does (the previous content is not kept by Nubbo and does not go to the trash; a bucket with versioning keeps it as an older version at the provider)"
+		"help": "What to do when a file with this path exists: \"Fail\" stops with an error, \"Rename\" uploads it as \"name (1)\", and \"Replace\" overwrites it at the storage provider. Nubbo keeps no copy of the old file; a bucket with versioning keeps it as an older version."
 	},
 	{
 		"name": "multipart",
 		"type": "boolean",
 		"label": "Multipart upload",
-		"help": "Upload in parts even below 5 GB (from 5 MiB). Above 5 GB uploads are always multipart"
+		"help": "Upload in parts even when the file is smaller than 5 GB (parts start at 5 MiB). Files above 5 GB always upload in parts."
 	}
 ]

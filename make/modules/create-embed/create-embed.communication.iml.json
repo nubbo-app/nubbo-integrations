@@ -1,23 +1,16 @@
 {
 	"url": "/embeds",
 	"method": "POST",
-	"headers": {
-		"Authorization": "Bearer {{connection.apiKey}}"
-	},
 	"body": {
-		"name": "{{ifempty(parameters.name, undefined)}}",
-		"allowedDomains": "{{ifempty(parameters.allowedDomains, undefined)}}",
-		"expiresAt": "{{if(parameters.expiresAt, formatDate(parameters.expiresAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), undefined)}}",
-		"password": "{{ifempty(parameters.password, undefined)}}",
-		"paused": "{{parameters.paused}}",
-		"config": "{{ifempty(parameters.config, undefined)}}",
-		"kind": "{{ifempty(parameters.kind, undefined)}}",
-		"inboxId": "{{ifempty(parameters.inboxId, undefined)}}",
-		"linkId": "{{ifempty(parameters.linkId, undefined)}}",
-		"bucketId": "{{ifempty(parameters.bucketId, undefined)}}",
+		"{{...}}": "{{omit(parameters, 'path')}}",
 		"path": "{{ifempty(parameters.path, emptystring)}}"
 	},
 	"response": {
-		"output": "{{body}}"
+		"output": {
+			"{{...}}": "{{omit(body, 'expiresAt', 'createdAt', 'updatedAt')}}",
+			"expiresAt": "{{if(body.expiresAt, parseDate(body.expiresAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), body.expiresAt)}}",
+			"createdAt": "{{parseDate(body.createdAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ')}}",
+			"updatedAt": "{{parseDate(body.updatedAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ')}}"
+		}
 	}
 }

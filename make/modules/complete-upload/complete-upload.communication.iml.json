@@ -1,11 +1,12 @@
 {
 	"url": "/uploads/{{parameters.uploadId}}/complete",
 	"method": "POST",
-	"headers": {
-		"Authorization": "Bearer {{connection.apiKey}}"
-	},
 	"body": {},
 	"response": {
-		"output": "{{body}}"
+		"output": {
+			"{{...}}": "{{omit(body, 'modifiedAt', 'trashedAt')}}",
+			"modifiedAt": "{{parseDate(body.modifiedAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ')}}",
+			"trashedAt": "{{if(body.trashedAt, parseDate(body.trashedAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), body.trashedAt)}}"
+		}
 	}
 }

@@ -1,17 +1,13 @@
 {
 	"url": "/buckets/{{parameters.bucketId}}/uploads",
 	"method": "POST",
-	"headers": {
-		"Authorization": "Bearer {{connection.apiKey}}"
-	},
 	"body": {
-		"path": "{{ifempty(parameters.path, undefined)}}",
-		"size": "{{ifempty(parameters.size, undefined)}}",
-		"contentType": "{{ifempty(parameters.contentType, undefined)}}",
-		"conflict": "{{ifempty(parameters.conflict, undefined)}}",
-		"multipart": "{{parameters.multipart}}"
+		"{{...}}": "{{omit(parameters, 'bucketId')}}"
 	},
 	"response": {
-		"output": "{{body}}"
+		"output": {
+			"{{...}}": "{{omit(body, 'expiresAt')}}",
+			"expiresAt": "{{if(body.expiresAt, parseDate(body.expiresAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), body.expiresAt)}}"
+		}
 	}
 }
