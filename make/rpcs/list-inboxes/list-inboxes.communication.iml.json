@@ -1,9 +1,6 @@
 {
 	"url": "/inboxes",
 	"method": "GET",
-	"headers": {
-		"Authorization": "Bearer {{connection.apiKey}}"
-	},
 	"qs": {
 		"limit": 100
 	},
@@ -17,7 +14,6 @@
 	},
 	"pagination": {
 		"qs": {
-			"limit": 100,
 			"cursor": "{{body.nextCursor}}"
 		},
 		"condition": "{{body.nextCursor}}"

@@ -4,14 +4,13 @@
 		"type": "select",
 		"label": "Bucket",
 		"options": "rpc://listBuckets",
-		"help": "Trash of one bucket only"
+		"help": "Only the trash of this bucket."
 	},
 	{
 		"name": "limit",
 		"type": "uinteger",
 		"label": "Limit",
 		"default": 10,
-		"required": true,
-		"help": "The most results to return in one execution cycle."
+		"help": "The maximum number of results to be worked with during one execution cycle."
 	}
 ]

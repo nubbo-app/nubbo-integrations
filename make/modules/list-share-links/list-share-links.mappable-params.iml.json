@@ -3,7 +3,7 @@
 		"name": "fileId",
 		"type": "text",
 		"label": "File or folder ID",
-		"help": "Only the links of this file or folder"
+		"help": "Only the links of this file or folder."
 	},
 	{
 		"name": "bucketId",
@@ -35,7 +35,6 @@
 		"type": "uinteger",
 		"label": "Limit",
 		"default": 10,
-		"required": true,
-		"help": "The most results to return in one execution cycle."
+		"help": "The maximum number of results to be worked with during one execution cycle."
 	}
 ]

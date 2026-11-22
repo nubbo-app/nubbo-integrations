@@ -1,13 +1,9 @@
 {
 	"url": "/inboxes/{{parameters.inboxId}}",
 	"method": "DELETE",
-	"headers": {
-		"Authorization": "Bearer {{connection.apiKey}}"
-	},
 	"response": {
 		"output": {
-			"id": "{{parameters.inboxId}}",
-			"deleted": true
+			"id": "{{parameters.inboxId}}"
 		}
 	}
 }

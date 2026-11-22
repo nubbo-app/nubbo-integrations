@@ -2,11 +2,6 @@
 	{
 		"name": "id",
 		"type": "text",
-		"label": "ID"
-	},
-	{
-		"name": "deleted",
-		"type": "boolean",
-		"label": "Deleted"
+		"label": "Upload ID"
 	}
 ]

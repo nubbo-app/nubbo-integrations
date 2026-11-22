@@ -4,6 +4,6 @@
 		"required": true,
 		"type": "text",
 		"label": "Upload ID",
-		"help": "The upload ID that «Start an Upload» returned."
+		"help": "The upload ID that \"Start an upload\" returned."
 	}
 ]

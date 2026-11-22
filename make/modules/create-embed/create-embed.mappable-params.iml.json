@@ -5,51 +5,67 @@
 		"label": "Kind",
 		"options": [
 			{
-				"label": "Inbox",
-				"value": "inbox"
+				"label": "File request",
+				"value": "inbox",
+				"nested": [
+					{
+						"name": "inboxId",
+						"type": "select",
+						"label": "File request",
+						"required": true,
+						"options": "rpc://listInboxes",
+						"help": "The file request the embed shows."
+					}
+				]
 			},
 			{
-				"label": "Explorer",
-				"value": "explorer"
+				"label": "Bucket explorer",
+				"value": "explorer",
+				"nested": [
+					{
+						"name": "bucketId",
+						"type": "select",
+						"label": "Bucket",
+						"required": true,
+						"options": "rpc://listBuckets"
+					},
+					{
+						"name": "path",
+						"type": "text",
+						"label": "Folder",
+						"help": "The folder the embed shows, for example `brand/`. Leave it empty for the whole bucket."
+					},
+					{
+						"name": "password",
+						"type": "password",
+						"label": "Password",
+						"help": "Visitors need this password to open the embed."
+					}
+				]
 			},
 			{
-				"label": "Shared",
-				"value": "shared"
+				"label": "Share link",
+				"value": "shared",
+				"nested": [
+					{
+						"name": "linkId",
+						"type": "select",
+						"label": "Share link",
+						"required": true,
+						"options": "rpc://listLinks",
+						"help": "The share link the embed shows."
+					}
+				]
 			}
 		],
-		"required": true
-	},
-	{
-		"name": "inboxId",
-		"type": "select",
-		"label": "File request",
-		"options": "rpc://listInboxes",
-		"help": "Inbox embeds: the file request"
-	},
-	{
-		"name": "linkId",
-		"type": "select",
-		"label": "Share link",
-		"options": "rpc://listLinks",
-		"help": "Shared embeds: the share link"
-	},
-	{
-		"name": "bucketId",
-		"type": "select",
-		"label": "Bucket",
-		"options": "rpc://listBuckets",
-		"help": "Explorer embeds: the bucket"
-	},
-	{
-		"name": "path",
-		"type": "text",
-		"label": "Path",
-		"help": "Explorer embeds: the folder shown. Leave it empty for the whole bucket."
+		"required": true,
+		"help": "What the embed shows on your site."
 	},
 	{
 		"name": "name",
 		"type": "text",
-		"label": "Name"
+		"label": "Name",
+		"required": true
 	},
 	{
 		"name": "allowedDomains",
@@ -59,7 +75,7 @@
 			"type": "text",
 			"label": "Allowed site"
 		},
-		"help": "Sites allowed to show the embed; empty allows any site"
+		"help": "The sites that can show the embed, for example `example.com`. Leave it empty to allow any site."
 	},
 	{
 		"name": "expiresAt",
@@ -67,21 +83,15 @@
 		"label": "Expires at"
 	},
 	{
-		"name": "password",
-		"type": "password",
-		"label": "Password",
-		"help": "Explorer embeds only; null removes the password"
-	},
-	{
 		"name": "paused",
 		"type": "boolean",
 		"label": "Paused",
-		"help": "true pauses the embed"
+		"help": "Create the embed paused."
 	},
 	{
 		"name": "config",
 		"type": "any",
 		"label": "Configuration",
-		"help": "The look and behaviour of the embed, as the builder in Nubbo saves it. Optional: anything left out keeps the default of the kind, and a partial object is merged over it."
+		"help": "The look and behavior of the embed, as the builder in Nubbo saves it, for example the output of the Parse JSON module. Settings left out keep the defaults of the embed kind."
 	}
 ]

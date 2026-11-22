@@ -10,7 +10,7 @@
 		"name": "prefix",
 		"type": "text",
 		"label": "Folder",
-		"help": "The folder to list; empty or absent lists the root of the bucket"
+		"help": "The folder to list, for example `invoices/2026/`. Leave it empty for the root of the bucket."
 	},
 	{
 		"name": "sort",
@@ -26,7 +26,7 @@
 				"value": "modified"
 			}
 		],
-		"help": "Folders always come first, and encrypted items follow the plain ones of their group"
+		"help": "Folders always come first. Encrypted items follow the plain ones of their group."
 	},
 	{
 		"name": "order",
@@ -34,28 +34,27 @@
 		"label": "Order",
 		"options": [
 			{
-				"label": "Asc",
+				"label": "Ascending",
 				"value": "asc"
 			},
 			{
-				"label": "Desc",
+				"label": "Descending",
 				"value": "desc"
 			}
 		],
-		"help": "asc by default for name, desc for modified"
+		"help": "Leave it empty to sort names from A to Z and dates from newest to oldest."
 	},
 	{
 		"name": "includeHidden",
 		"type": "boolean",
 		"label": "Include hidden items",
-		"help": "Include items hidden in Nubbo"
+		"help": "Also list items hidden in Nubbo."
 	},
 	{
 		"name": "limit",
 		"type": "uinteger",
 		"label": "Limit",
 		"default": 10,
-		"required": true,
-		"help": "The most results to return in one execution cycle."
+		"help": "The maximum number of results to be worked with during one execution cycle."
 	}
 ]

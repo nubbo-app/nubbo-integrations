@@ -24,7 +24,8 @@
 		"type": "buffer",
 		"label": "Data",
 		"required": true,
-		"semantic": "file:data"
+		"semantic": "file:data",
+		"help": "The content of the file, for example from an HTTP or a cloud storage module."
 	},
 	{
 		"name": "conflict",
@@ -36,20 +37,21 @@
 				"value": "fail"
 			},
 			{
-				"label": "Rename the new file",
+				"label": "Rename",
 				"value": "rename"
 			},
 			{
-				"label": "Replace the existing file",
+				"label": "Replace",
 				"value": "replace"
 			}
 		],
-		"default": "fail"
+		"default": "fail",
+		"help": "What to do when a file with this name exists in the folder: \"Fail\" stops with an error, \"Rename\" uploads it as \"name (1)\", and \"Replace\" overwrites it at the storage provider. Nubbo keeps no copy of the old file; a bucket with versioning keeps it as an older version."
 	},
 	{
 		"name": "contentType",
 		"type": "text",
-		"label": "Content type",
-		"help": "For example `application/pdf`. Leave it empty and the provider stores a generic type."
+		"label": "MIME type",
+		"help": "The MIME type, for example `application/pdf`. Leave it empty and the storage provider stores a generic type."
 	}
 ]

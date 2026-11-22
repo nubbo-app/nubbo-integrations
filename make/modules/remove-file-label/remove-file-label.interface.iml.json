@@ -6,7 +6,7 @@
 	},
 	{
 		"name": "labelIds",
-		"label": "Labels",
+		"label": "Label IDs",
 		"type": "array",
 		"spec": {
 			"type": "text"

@@ -4,6 +4,6 @@
 		"required": true,
 		"type": "text",
 		"label": "Operation ID",
-		"help": "The operation ID that a move or a rename returned."
+		"help": "The operation ID that \"Move files and folders\" or \"Rename a file or folder\" returned."
 	}
 ]

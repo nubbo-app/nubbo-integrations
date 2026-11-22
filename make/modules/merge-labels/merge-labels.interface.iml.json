@@ -31,7 +31,7 @@
 			},
 			{
 				"name": "groupId",
-				"label": "Group ID",
+				"label": "Label group ID",
 				"type": "text"
 			},
 			{

@@ -1,5 +1,17 @@
 [
 	{
+		"label": "Account",
+		"modules": [
+			"getAccount"
+		]
+	},
+	{
+		"label": "Buckets",
+		"modules": [
+			"listBuckets"
+		]
+	},
+	{
 		"label": "Files and folders",
 		"modules": [
 			"watchNewFiles",
@@ -118,8 +130,6 @@
 	{
 		"label": "Other",
 		"modules": [
-			"getAccount",
-			"listBuckets",
 			"makeApiCall"
 		]
 	}

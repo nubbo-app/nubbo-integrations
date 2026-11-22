@@ -21,10 +21,12 @@
 			{
 				"name": "path",
 				"type": "text",
-				"label": "Path",
-				"help": "A folder of the bucket; empty for the whole bucket"
+				"label": "Folder",
+				"help": "The folder, for example `clients/acme/`. Enter `/` for the whole bucket.",
+				"required": true
 			}
-		]
+		],
+		"help": "The folders to add."
 	},
 	{
 		"name": "resources",
@@ -37,35 +39,74 @@
 				"label": "Kind",
 				"options": [
 					{
-						"label": "Link",
-						"value": "link"
+						"label": "Share link",
+						"value": "link",
+						"nested": [
+							{
+								"name": "id",
+								"type": "select",
+								"label": "Share link",
+								"required": true,
+								"options": "rpc://listLinks"
+							}
+						]
 					},
 					{
-						"label": "Inbox",
-						"value": "inbox"
+						"label": "File request",
+						"value": "inbox",
+						"nested": [
+							{
+								"name": "id",
+								"type": "select",
+								"label": "File request",
+								"required": true,
+								"options": "rpc://listInboxes"
+							}
+						]
 					},
 					{
 						"label": "Gallery",
-						"value": "gallery"
+						"value": "gallery",
+						"nested": [
+							{
+								"name": "id",
+								"type": "select",
+								"label": "Gallery",
+								"required": true,
+								"options": "rpc://listGalleries"
+							}
+						]
 					},
 					{
 						"label": "Embed",
-						"value": "embed"
+						"value": "embed",
+						"nested": [
+							{
+								"name": "id",
+								"type": "select",
+								"label": "Embed",
+								"required": true,
+								"options": "rpc://listEmbeds"
+							}
+						]
 					},
 					{
-						"label": "Automation",
-						"value": "automation"
+						"label": "Automation rule",
+						"value": "automation",
+						"nested": [
+							{
+								"name": "id",
+								"type": "select",
+								"label": "Automation rule",
+								"required": true,
+								"options": "rpc://listAutomations"
+							}
+						]
 					}
 				],
 				"required": true
-			},
-			{
-				"name": "id",
-				"type": "text",
-				"label": "Id",
-				"required": true
 			}
 		],
-		"help": "Links, file requests (inbox), galleries, embeds and automation rules"
+		"help": "The share links, file requests, galleries, embeds and automation rules to add."
 	}
 ]

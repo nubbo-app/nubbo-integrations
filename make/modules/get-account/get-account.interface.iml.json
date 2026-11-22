@@ -1,7 +1,7 @@
 [
 	{
 		"name": "workspace",
-		"label": "Workspace",
+		"label": "Space",
 		"type": "collection",
 		"spec": [
 			{
@@ -28,7 +28,7 @@
 	},
 	{
 		"name": "key",
-		"label": "Key",
+		"label": "API key",
 		"type": "collection",
 		"spec": [
 			{
@@ -124,7 +124,7 @@
 			},
 			{
 				"name": "events",
-				"label": "Events",
+				"label": "Trigger events",
 				"type": "collection",
 				"spec": [
 					{

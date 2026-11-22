@@ -2,9 +2,9 @@
 	{
 		"name": "fileId",
 		"type": "text",
-		"label": "File or folder ID",
+		"label": "Folder ID",
 		"required": true,
-		"help": "The folder whose photos and videos the gallery shows"
+		"help": "The ID of the folder whose photos and videos the gallery shows."
 	},
 	{
 		"name": "title",
@@ -40,22 +40,25 @@
 		"name": "coverFileId",
 		"type": "text",
 		"label": "Cover file ID",
-		"help": "A file inside the gallery folder"
+		"help": "The ID of a file inside the gallery folder."
 	},
 	{
 		"name": "individualDownloads",
 		"type": "boolean",
-		"label": "Allow single downloads"
+		"label": "Allow single downloads",
+		"help": "Visitors can download single files."
 	},
 	{
 		"name": "zipDownload",
 		"type": "boolean",
-		"label": "Allow ZIP download"
+		"label": "Allow ZIP download",
+		"help": "Visitors can download everything as a ZIP file."
 	},
 	{
 		"name": "password",
 		"type": "password",
-		"label": "Password"
+		"label": "Password",
+		"help": "Visitors need this password to open the gallery."
 	},
 	{
 		"name": "expiresAt",
@@ -65,6 +68,7 @@
 	{
 		"name": "watermarkText",
 		"type": "text",
-		"label": "Watermark text"
+		"label": "Watermark text",
+		"help": "Text shown over the photos."
 	}
 ]

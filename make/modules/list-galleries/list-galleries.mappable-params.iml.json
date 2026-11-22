@@ -29,7 +29,6 @@
 		"type": "uinteger",
 		"label": "Limit",
 		"default": 10,
-		"required": true,
-		"help": "The most results to return in one execution cycle."
+		"help": "The maximum number of results to be worked with during one execution cycle."
 	}
 ]

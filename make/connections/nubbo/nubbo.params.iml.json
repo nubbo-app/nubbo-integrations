@@ -6,21 +6,5 @@
 		"required": true,
 		"editable": true,
 		"help": "Create a key in Nubbo under **Settings › API** (Pro plan) or **Team › API** (team owners and admins). It starts with `nbk_` and is shown once."
-	},
-	{
-		"name": "baseUrl",
-		"type": "select",
-		"label": "Environment",
-		"required": true,
-		"editable": true,
-		"advanced": true,
-		"default": "https://api.nubbo.app",
-		"options": [
-			{
-				"label": "Production (api.nubbo.app)",
-				"value": "https://api.nubbo.app"
-			}
-		],
-		"help": "The Nubbo API the connection uses."
 	}
 ]

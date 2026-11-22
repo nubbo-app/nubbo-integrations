@@ -1,5 +1,5 @@
 {
-	"url": "{{parameters.baseUrl}}/v1/me",
+	"url": "https://api.nubbo.app/v1/me",
 	"method": "GET",
 	"headers": {
 		"Authorization": "Bearer {{parameters.apiKey}}"
@@ -20,7 +20,7 @@
 				"message": "[401] {{body.code}}: {{body.message}}. Check the API key, or create a new one in Nubbo."
 			},
 			"403": {
-				"type": "InvalidConfigurationError",
+				"type": "{{if(contains(split('ACCOUNT_SUSPENDED,WORKSPACE_SUSPENDED,WORKSPACE_READ_ONLY,API_PLAN_REQUIRED,API_KEY_MCP_ONLY,API_KEY_READ_ONLY,API_KEY_WHOLE_SPACE_REQUIRED', ','), body.code), 'InvalidConfigurationError', 'DataError')}}",
 				"message": "[403] {{body.code}}: {{body.message}}"
 			},
 			"410": {
@@ -29,7 +29,7 @@
 			},
 			"429": {
 				"type": "RateLimitError",
-				"message": "[429] {{body.code}}: {{body.message}}"
+				"message": "[429] {{body.code}}: {{body.message}}. Retry after {{ifempty(headers.`retry-after`, 60)}} seconds."
 			},
 			"message": "[{{statusCode}}] {{ifempty(body.code, 'ERROR')}}: {{ifempty(body.message, 'Nubbo did not answer as expected.')}}"
 		}
