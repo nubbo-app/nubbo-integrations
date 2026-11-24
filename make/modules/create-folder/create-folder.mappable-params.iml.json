@@ -11,7 +11,7 @@
 		"type": "text",
 		"label": "Path",
 		"required": true,
-		"help": "The folder to create; missing parent folders are created with it"
+		"help": "The folder to create, for example `invoices/2026`. Missing parent folders are created with it."
 	},
 	{
 		"name": "conflict",
@@ -31,6 +31,6 @@
 				"value": "skip"
 			}
 		],
-		"help": "When the folder exists: fail answers API_NAME_TAKEN, rename creates «name (1)», skip returns the existing folder (also from the trash, with trashedAt set)"
+		"help": "What to do when the folder exists: \"Fail\" stops with an error, \"Rename\" creates \"name (1)\", and \"Skip\" returns the existing folder, even one in the trash."
 	}
 ]

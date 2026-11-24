@@ -21,12 +21,12 @@
 	},
 	{
 		"name": "inboxId",
-		"label": "Inbox ID",
+		"label": "File request ID",
 		"type": "text"
 	},
 	{
 		"name": "linkId",
-		"label": "Link ID",
+		"label": "Share link ID",
 		"type": "text"
 	},
 	{
@@ -64,7 +64,7 @@
 		"spec": [
 			{
 				"name": "html",
-				"label": "Html",
+				"label": "HTML",
 				"type": "text"
 			},
 			{
@@ -74,7 +74,7 @@
 			},
 			{
 				"name": "url",
-				"label": "Url",
+				"label": "URL",
 				"type": "text"
 			}
 		]

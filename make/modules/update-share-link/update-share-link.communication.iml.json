@@ -1,16 +1,15 @@
 {
 	"url": "/links/{{parameters.linkId}}",
 	"method": "PATCH",
-	"headers": {
-		"Authorization": "Bearer {{connection.apiKey}}"
-	},
 	"body": {
-		"active": "{{parameters.active}}",
-		"password": "{{if(contains(ifempty(parameters.clear, emptyarray), 'password'), null, ifempty(parameters.password, undefined))}}",
-		"expiresAt": "{{if(contains(ifempty(parameters.clear, emptyarray), 'expiresAt'), null, if(parameters.expiresAt, formatDate(parameters.expiresAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), undefined))}}",
-		"maxDownloads": "{{if(contains(ifempty(parameters.clear, emptyarray), 'maxDownloads'), null, ifempty(parameters.maxDownloads, undefined))}}"
+		"{{...}}": "{{omit(parameters, 'clear', 'linkId')}}"
 	},
 	"response": {
-		"output": "{{body}}"
+		"output": {
+			"{{...}}": "{{omit(body, 'expiresAt', 'createdAt', 'updatedAt')}}",
+			"expiresAt": "{{if(body.expiresAt, parseDate(body.expiresAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), body.expiresAt)}}",
+			"createdAt": "{{if(body.createdAt, parseDate(body.createdAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), body.createdAt)}}",
+			"updatedAt": "{{if(body.updatedAt, parseDate(body.updatedAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), body.updatedAt)}}"
+		}
 	}
 }

@@ -26,7 +26,7 @@
 			},
 			{
 				"name": "apiKey",
-				"label": "Api key",
+				"label": "API key",
 				"type": "collection",
 				"spec": [
 					{

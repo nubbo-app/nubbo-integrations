@@ -4,12 +4,13 @@
 		"type": "text",
 		"label": "File or folder ID",
 		"required": true,
-		"help": "The file or folder to share"
+		"help": "The ID of the file or folder to share."
 	},
 	{
 		"name": "password",
 		"type": "password",
-		"label": "Password"
+		"label": "Password",
+		"help": "Visitors need this password to open the link."
 	},
 	{
 		"name": "expiresAt",
@@ -19,6 +20,7 @@
 	{
 		"name": "maxDownloads",
 		"type": "uinteger",
-		"label": "Maximum downloads"
+		"label": "Maximum downloads",
+		"help": "The link stops working after this many downloads."
 	}
 ]

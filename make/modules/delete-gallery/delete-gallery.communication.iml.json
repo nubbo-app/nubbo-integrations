@@ -1,13 +1,9 @@
 {
 	"url": "/galleries/{{parameters.galleryId}}",
 	"method": "DELETE",
-	"headers": {
-		"Authorization": "Bearer {{connection.apiKey}}"
-	},
 	"response": {
 		"output": {
-			"id": "{{parameters.galleryId}}",
-			"deleted": true
+			"id": "{{parameters.galleryId}}"
 		}
 	}
 }

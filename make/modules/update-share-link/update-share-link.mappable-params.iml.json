@@ -10,45 +10,24 @@
 		"name": "active",
 		"type": "boolean",
 		"label": "Active",
-		"help": "false pauses the link"
+		"help": "Turn it off to pause the link, or on to reopen it."
 	},
 	{
 		"name": "password",
 		"type": "password",
 		"label": "Password",
-		"help": "null removes the password"
+		"help": "Leave it empty to keep the current password, or map `erase` to remove it."
 	},
 	{
 		"name": "expiresAt",
 		"type": "date",
 		"label": "Expires at",
-		"help": "null removes the expiry"
+		"help": "Leave it empty to keep the current date, or map `erase` so that the link never expires."
 	},
 	{
 		"name": "maxDownloads",
 		"type": "uinteger",
 		"label": "Maximum downloads",
-		"help": "null removes the limit"
-	},
-	{
-		"name": "clear",
-		"type": "select",
-		"label": "Fields to clear",
-		"multiple": true,
-		"options": [
-			{
-				"label": "Password",
-				"value": "password"
-			},
-			{
-				"label": "Expires at",
-				"value": "expiresAt"
-			},
-			{
-				"label": "Maximum downloads",
-				"value": "maxDownloads"
-			}
-		],
-		"help": "The fields to empty. A field left blank above keeps its current value."
+		"help": "Leave it empty to keep the current limit, or map `erase` to remove it."
 	}
 ]

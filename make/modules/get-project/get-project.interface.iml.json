@@ -78,12 +78,12 @@
 		"spec": [
 			{
 				"name": "links",
-				"label": "Links",
+				"label": "Share links",
 				"type": "number"
 			},
 			{
 				"name": "inboxes",
-				"label": "Inboxes",
+				"label": "File requests",
 				"type": "number"
 			},
 			{
@@ -98,7 +98,7 @@
 			},
 			{
 				"name": "automations",
-				"label": "Automations",
+				"label": "Automation rules",
 				"type": "number"
 			}
 		]

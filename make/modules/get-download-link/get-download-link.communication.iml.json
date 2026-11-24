@@ -1,13 +1,13 @@
 {
 	"url": "/files/{{parameters.fileId}}/download-link",
 	"method": "POST",
-	"headers": {
-		"Authorization": "Bearer {{connection.apiKey}}"
-	},
 	"body": {
-		"expiresIn": "{{ifempty(parameters.expiresIn, undefined)}}"
+		"{{...}}": "{{omit(parameters, 'fileId')}}"
 	},
 	"response": {
-		"output": "{{body}}"
+		"output": {
+			"{{...}}": "{{omit(body, 'expiresAt')}}",
+			"expiresAt": "{{if(body.expiresAt, parseDate(body.expiresAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), body.expiresAt)}}"
+		}
 	}
 }

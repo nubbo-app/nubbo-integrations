@@ -1,10 +1,18 @@
 {
 	"url": "/me",
 	"method": "GET",
-	"headers": {
-		"Authorization": "Bearer {{connection.apiKey}}"
-	},
 	"response": {
-		"output": "{{body}}"
+		"output": {
+			"{{...}}": "{{omit(body, 'key', 'quota')}}",
+			"key": {
+				"{{...}}": "{{omit(body.key, 'expiresAt')}}",
+				"expiresAt": "{{if(body.key.expiresAt, parseDate(body.key.expiresAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), body.key.expiresAt)}}"
+			},
+			"quota": {
+				"{{...}}": "{{omit(body.quota, 'periodStart', 'periodEnd')}}",
+				"periodStart": "{{if(body.quota.periodStart, parseDate(body.quota.periodStart, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), body.quota.periodStart)}}",
+				"periodEnd": "{{if(body.quota.periodEnd, parseDate(body.quota.periodEnd, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), body.quota.periodEnd)}}"
+			}
+		}
 	}
 }

@@ -5,15 +5,15 @@
 		"label": "Kind",
 		"options": [
 			{
-				"label": "Inbox",
+				"label": "File request",
 				"value": "inbox"
 			},
 			{
-				"label": "Explorer",
+				"label": "Bucket explorer",
 				"value": "explorer"
 			},
 			{
-				"label": "Shared",
+				"label": "Share link",
 				"value": "shared"
 			}
 		]
@@ -42,7 +42,6 @@
 		"type": "uinteger",
 		"label": "Limit",
 		"default": 10,
-		"required": true,
-		"help": "The most results to return in one execution cycle."
+		"help": "The maximum number of results to be worked with during one execution cycle."
 	}
 ]

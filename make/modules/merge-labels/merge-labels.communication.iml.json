@@ -1,13 +1,17 @@
 {
 	"url": "/labels/{{parameters.labelId}}/merge",
 	"method": "POST",
-	"headers": {
-		"Authorization": "Bearer {{connection.apiKey}}"
-	},
 	"body": {
-		"intoId": "{{ifempty(parameters.intoId, undefined)}}"
+		"{{...}}": "{{omit(parameters, 'labelId')}}"
 	},
 	"response": {
-		"output": "{{body}}"
+		"output": {
+			"{{...}}": "{{omit(body, 'label')}}",
+			"label": {
+				"{{...}}": "{{omit(body.label, 'createdAt', 'updatedAt')}}",
+				"createdAt": "{{if(body.label.createdAt, parseDate(body.label.createdAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), body.label.createdAt)}}",
+				"updatedAt": "{{if(body.label.updatedAt, parseDate(body.label.updatedAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), body.label.updatedAt)}}"
+			}
+		}
 	}
 }

@@ -1,38 +1,14 @@
 {
 	"url": "/automations",
 	"method": "POST",
-	"headers": {
-		"Authorization": "Bearer {{connection.apiKey}}"
-	},
 	"body": {
-		"name": "{{ifempty(parameters.name, undefined)}}",
-		"trigger": "{{ifempty(parameters.trigger, undefined)}}",
-		"bucketId": "{{ifempty(parameters.bucketId, undefined)}}",
-		"folderPrefix": "{{ifempty(parameters.folderPrefix, undefined)}}",
-		"fileRequestId": "{{ifempty(parameters.fileRequestId, undefined)}}",
-		"interval": "{{ifempty(parameters.interval, undefined)}}",
-		"action": "{{ifempty(parameters.action, undefined)}}",
-		"destinationFolder": "{{ifempty(parameters.destinationFolder, undefined)}}",
-		"routeCategories": "{{ifempty(parameters.routeCategories, undefined)}}",
-		"routeFallbackFolder": "{{ifempty(parameters.routeFallbackFolder, undefined)}}",
-		"routeRename": "{{parameters.routeRename}}",
-		"routeTag": "{{parameters.routeTag}}",
-		"trashOlderThanDays": "{{ifempty(parameters.trashOlderThanDays, undefined)}}",
-		"compressDestinationFolder": "{{ifempty(parameters.compressDestinationFolder, undefined)}}",
-		"namePattern": "{{ifempty(parameters.namePattern, undefined)}}",
-		"prompt": "{{ifempty(parameters.prompt, undefined)}}",
-		"promptOutput": "{{ifempty(parameters.promptOutput, undefined)}}",
-		"copyDestBucketId": "{{ifempty(parameters.copyDestBucketId, undefined)}}",
-		"copyDestinationFolder": "{{ifempty(parameters.copyDestinationFolder, undefined)}}",
-		"copyMode": "{{ifempty(parameters.copyMode, undefined)}}",
-		"mirrorTrashOrphans": "{{parameters.mirrorTrashOrphans}}",
-		"shareExpiresInDays": "{{ifempty(parameters.shareExpiresInDays, undefined)}}",
-		"sharePassword": "{{ifempty(parameters.sharePassword, undefined)}}",
-		"shareMaxDownloads": "{{ifempty(parameters.shareMaxDownloads, undefined)}}",
-		"thresholdGb": "{{ifempty(parameters.thresholdGb, undefined)}}",
-		"inactivityDays": "{{ifempty(parameters.inactivityDays, undefined)}}"
+		"{{...}}": "{{parameters}}"
 	},
 	"response": {
-		"output": "{{body}}"
+		"output": {
+			"{{...}}": "{{omit(body, 'lastRunAt', 'createdAt')}}",
+			"lastRunAt": "{{if(body.lastRunAt, parseDate(body.lastRunAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), body.lastRunAt)}}",
+			"createdAt": "{{if(body.createdAt, parseDate(body.createdAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), body.createdAt)}}"
+		}
 	}
 }

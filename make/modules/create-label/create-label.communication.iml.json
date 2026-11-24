@@ -1,16 +1,14 @@
 {
 	"url": "/labels",
 	"method": "POST",
-	"headers": {
-		"Authorization": "Bearer {{connection.apiKey}}"
-	},
 	"body": {
-		"name": "{{ifempty(parameters.name, undefined)}}",
-		"color": "{{ifempty(parameters.color, undefined)}}",
-		"description": "{{ifempty(parameters.description, undefined)}}",
-		"groupId": "{{ifempty(parameters.groupId, undefined)}}"
+		"{{...}}": "{{parameters}}"
 	},
 	"response": {
-		"output": "{{body}}"
+		"output": {
+			"{{...}}": "{{omit(body, 'createdAt', 'updatedAt')}}",
+			"createdAt": "{{if(body.createdAt, parseDate(body.createdAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), body.createdAt)}}",
+			"updatedAt": "{{if(body.updatedAt, parseDate(body.updatedAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), body.updatedAt)}}"
+		}
 	}
 }

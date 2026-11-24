@@ -1,9 +1,6 @@
 {
 	"url": "/embeds",
 	"method": "GET",
-	"headers": {
-		"Authorization": "Bearer {{connection.apiKey}}"
-	},
 	"qs": {
 		"kind": "{{ifempty(parameters.kind, undefined)}}",
 		"status": "{{ifempty(parameters.status, undefined)}}",
@@ -11,14 +8,16 @@
 	},
 	"response": {
 		"iterate": "{{body.data}}",
-		"output": "{{item}}",
+		"output": {
+			"{{...}}": "{{omit(item, 'expiresAt', 'createdAt', 'updatedAt')}}",
+			"expiresAt": "{{if(item.expiresAt, parseDate(item.expiresAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), item.expiresAt)}}",
+			"createdAt": "{{if(item.createdAt, parseDate(item.createdAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), item.createdAt)}}",
+			"updatedAt": "{{if(item.updatedAt, parseDate(item.updatedAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), item.updatedAt)}}"
+		},
 		"limit": "{{parameters.limit}}"
 	},
 	"pagination": {
 		"qs": {
-			"kind": "{{ifempty(parameters.kind, undefined)}}",
-			"status": "{{ifempty(parameters.status, undefined)}}",
-			"limit": 100,
 			"cursor": "{{body.nextCursor}}"
 		},
 		"condition": "{{body.nextCursor}}"

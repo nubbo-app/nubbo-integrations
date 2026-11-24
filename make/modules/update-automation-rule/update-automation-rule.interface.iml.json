@@ -51,7 +51,7 @@
 	},
 	{
 		"name": "routeConfig",
-		"label": "Route config",
+		"label": "Route settings",
 		"type": "collection",
 		"spec": [
 			{
@@ -78,19 +78,19 @@
 			},
 			{
 				"name": "rename",
-				"label": "Rename",
+				"label": "Rename routed files",
 				"type": "boolean"
 			},
 			{
 				"name": "tag",
-				"label": "Tag",
+				"label": "Label routed files",
 				"type": "boolean"
 			}
 		]
 	},
 	{
 		"name": "usesAi",
-		"label": "Uses ai",
+		"label": "Uses AI",
 		"type": "boolean"
 	},
 	{

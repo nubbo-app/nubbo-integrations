@@ -1,20 +1,20 @@
 {
 	"url": "/label-groups",
 	"method": "GET",
-	"headers": {
-		"Authorization": "Bearer {{connection.apiKey}}"
-	},
 	"qs": {
 		"limit": 100
 	},
 	"response": {
 		"iterate": "{{body.data}}",
-		"output": "{{item}}",
+		"output": {
+			"{{...}}": "{{omit(item, 'createdAt', 'updatedAt')}}",
+			"createdAt": "{{if(item.createdAt, parseDate(item.createdAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), item.createdAt)}}",
+			"updatedAt": "{{if(item.updatedAt, parseDate(item.updatedAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), item.updatedAt)}}"
+		},
 		"limit": "{{parameters.limit}}"
 	},
 	"pagination": {
 		"qs": {
-			"limit": 100,
 			"cursor": "{{body.nextCursor}}"
 		},
 		"condition": "{{body.nextCursor}}"

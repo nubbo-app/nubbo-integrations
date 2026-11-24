@@ -2,9 +2,6 @@
 	{
 		"url": "/buckets/{{parameters.bucketId}}/uploads",
 		"method": "POST",
-		"headers": {
-			"Authorization": "Bearer {{connection.apiKey}}"
-		},
 		"body": {
 			"path": "{{if(parameters.folder, replace(parameters.folder, '/^\\/+|\\/+$/g', emptystring) + '/', emptystring)}}{{parameters.fileName}}",
 			"size": "{{length(parameters.data)}}",
@@ -25,19 +22,46 @@
 		"method": "{{temp.method}}",
 		"type": "binary",
 		"headers": {
+			"Authorization": "{{undefined}}",
 			"Content-Type": "{{ifempty(parameters.contentType, 'application/octet-stream')}}"
 		},
-		"body": "{{parameters.data}}"
+		"body": "{{parameters.data}}",
+		"response": {
+			"error": {
+				"message": "[{{statusCode}}] The storage provider refused the upload: {{toString(body)}}",
+				"400": {
+					"type": "DataError",
+					"message": "[400] The storage provider refused the upload: {{toString(body)}}"
+				},
+				"401": {
+					"type": "DataError",
+					"message": "[401] The storage provider refused the upload: {{toString(body)}}"
+				},
+				"403": {
+					"type": "DataError",
+					"message": "[403] The storage provider refused the upload: {{toString(body)}}"
+				},
+				"404": {
+					"type": "DataError",
+					"message": "[404] The storage provider refused the upload: {{toString(body)}}"
+				},
+				"429": {
+					"type": "RateLimitError",
+					"message": "[429] The storage provider refused the upload: {{toString(body)}}"
+				}
+			}
+		}
 	},
 	{
 		"url": "/uploads/{{temp.uploadId}}/complete",
 		"method": "POST",
-		"headers": {
-			"Authorization": "Bearer {{connection.apiKey}}"
-		},
 		"body": {},
 		"response": {
-			"output": "{{body}}"
+			"output": {
+				"{{...}}": "{{omit(body, 'modifiedAt', 'trashedAt')}}",
+				"modifiedAt": "{{if(body.modifiedAt, parseDate(body.modifiedAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), body.modifiedAt)}}",
+				"trashedAt": "{{if(body.trashedAt, parseDate(body.trashedAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), body.trashedAt)}}"
+			}
 		}
 	}
 ]

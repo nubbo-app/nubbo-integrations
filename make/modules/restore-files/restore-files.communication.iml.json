@@ -1,11 +1,8 @@
 {
 	"url": "/trash/restore",
 	"method": "POST",
-	"headers": {
-		"Authorization": "Bearer {{connection.apiKey}}"
-	},
 	"body": {
-		"fileIds": "{{ifempty(parameters.fileIds, undefined)}}"
+		"{{...}}": "{{parameters}}"
 	},
 	"response": {
 		"output": "{{body}}"

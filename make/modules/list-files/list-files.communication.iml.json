@@ -1,9 +1,6 @@
 {
 	"url": "/buckets/{{parameters.bucketId}}/files",
 	"method": "GET",
-	"headers": {
-		"Authorization": "Bearer {{connection.apiKey}}"
-	},
 	"qs": {
 		"prefix": "{{ifempty(parameters.prefix, undefined)}}",
 		"sort": "{{ifempty(parameters.sort, undefined)}}",
@@ -13,16 +10,15 @@
 	},
 	"response": {
 		"iterate": "{{body.data}}",
-		"output": "{{item}}",
+		"output": {
+			"{{...}}": "{{omit(item, 'modifiedAt', 'trashedAt')}}",
+			"modifiedAt": "{{if(item.modifiedAt, parseDate(item.modifiedAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), item.modifiedAt)}}",
+			"trashedAt": "{{if(item.trashedAt, parseDate(item.trashedAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), item.trashedAt)}}"
+		},
 		"limit": "{{parameters.limit}}"
 	},
 	"pagination": {
 		"qs": {
-			"prefix": "{{ifempty(parameters.prefix, undefined)}}",
-			"sort": "{{ifempty(parameters.sort, undefined)}}",
-			"order": "{{ifempty(parameters.order, undefined)}}",
-			"includeHidden": "{{parameters.includeHidden}}",
-			"limit": 100,
 			"cursor": "{{body.nextCursor}}"
 		},
 		"condition": "{{body.nextCursor}}"

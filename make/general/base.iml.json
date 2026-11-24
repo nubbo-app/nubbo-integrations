@@ -1,5 +1,8 @@
 {
-	"baseUrl": "{{connection.baseUrl}}/v1",
+	"baseUrl": "https://api.nubbo.app/v1",
+	"headers": {
+		"Authorization": "Bearer {{connection.apiKey}}"
+	},
 	"response": {
 		"error": {
 			"400": {
@@ -11,7 +14,7 @@
 				"message": "[401] {{body.code}}: {{body.message}}"
 			},
 			"403": {
-				"type": "InvalidConfigurationError",
+				"type": "{{if(contains(split('ACCOUNT_SUSPENDED,WORKSPACE_SUSPENDED,WORKSPACE_READ_ONLY,API_PLAN_REQUIRED,API_KEY_MCP_ONLY,API_KEY_READ_ONLY,API_KEY_WHOLE_SPACE_REQUIRED', ','), body.code), 'InvalidConfigurationError', 'DataError')}}",
 				"message": "[403] {{body.code}}: {{body.message}}"
 			},
 			"404": {
@@ -32,7 +35,7 @@
 			},
 			"429": {
 				"type": "RateLimitError",
-				"message": "[429] {{body.code}}: {{body.message}}. Retry after {{ifempty(headers.retry-after, 60)}} seconds."
+				"message": "[429] {{body.code}}: {{body.message}}. Retry after {{ifempty(headers.`retry-after`, 60)}} seconds."
 			},
 			"message": "[{{statusCode}}] {{ifempty(body.code, 'ERROR')}}: {{ifempty(body.message, 'Nubbo or the storage provider did not answer as expected.')}}"
 		}

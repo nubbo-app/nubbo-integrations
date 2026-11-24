@@ -82,7 +82,7 @@ export class NubboTrigger implements INodeType {
 		group: ['trigger'],
 		version: 1,
 		subtitle: '={{$parameter["event"]}}',
-		description: 'Starts the workflow when something happens in your Nubbo workspace',
+		description: 'One workspace for all your S3 storage. Automate it from n8n.',
 		defaults: { name: 'Nubbo Trigger' },
 		polling: true,
 		inputs: [],

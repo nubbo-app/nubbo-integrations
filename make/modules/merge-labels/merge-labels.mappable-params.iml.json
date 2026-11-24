@@ -3,7 +3,7 @@
 		"name": "labelId",
 		"required": true,
 		"type": "select",
-		"label": "Label",
+		"label": "Label to merge",
 		"options": "rpc://listLabels"
 	},
 	{
@@ -12,6 +12,6 @@
 		"label": "Merge into",
 		"options": "rpc://listLabels",
 		"required": true,
-		"help": "The label that stays; files with this label get it, and this label is deleted"
+		"help": "The label that stays. Files with the label to merge get this one, and the label to merge is deleted."
 	}
 ]

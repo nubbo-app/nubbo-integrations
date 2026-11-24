@@ -4,7 +4,7 @@
 		"type": "text",
 		"label": "URL",
 		"required": true,
-		"help": "The path after `https://api.nubbo.app/v1/`, without a leading slash. For example `buckets` or `files/search`. See the [API reference](https://api.nubbo.app/v1/docs)."
+		"help": "Enter a path relative to `https://api.nubbo.app`, for example `/v1/buckets`. See the [API reference](https://api.nubbo.app/v1/docs)."
 	},
 	{
 		"name": "method",
@@ -41,7 +41,7 @@
 				"value": "application/json"
 			}
 		],
-		"help": "You do not need the authorization header: the app adds it. Add `Idempotency-Key` to make a retried create safe.",
+		"help": "The app adds the authorization header. Add `Idempotency-Key` so that a retried create runs only once.",
 		"spec": [
 			{
 				"name": "key",

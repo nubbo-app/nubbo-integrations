@@ -1,22 +1,19 @@
 {
 	"url": "/inboxes/{{parameters.inboxId}}",
 	"method": "PATCH",
-	"headers": {
-		"Authorization": "Bearer {{connection.apiKey}}"
-	},
 	"body": {
+		"{{...}}": "{{omit(parameters, 'clear', 'inboxId', 'name', 'path', 'visitorIdentity', 'allowedFileTypes')}}",
 		"name": "{{ifempty(parameters.name, undefined)}}",
-		"description": "{{if(contains(ifempty(parameters.clear, emptyarray), 'description'), null, ifempty(parameters.description, undefined))}}",
 		"path": "{{ifempty(parameters.path, undefined)}}",
-		"password": "{{if(contains(ifempty(parameters.clear, emptyarray), 'password'), null, ifempty(parameters.password, undefined))}}",
-		"expiresAt": "{{if(contains(ifempty(parameters.clear, emptyarray), 'expiresAt'), null, if(parameters.expiresAt, formatDate(parameters.expiresAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), undefined))}}",
-		"maxFileSize": "{{if(contains(ifempty(parameters.clear, emptyarray), 'maxFileSize'), null, ifempty(parameters.maxFileSize, undefined))}}",
-		"allowedFileTypes": "{{if(contains(ifempty(parameters.clear, emptyarray), 'allowedFileTypes'), emptyarray, ifempty(parameters.allowedFileTypes, undefined))}}",
-		"maxUploads": "{{if(contains(ifempty(parameters.clear, emptyarray), 'maxUploads'), null, ifempty(parameters.maxUploads, undefined))}}",
 		"visitorIdentity": "{{ifempty(parameters.visitorIdentity, undefined)}}",
-		"active": "{{parameters.active}}"
+		"allowedFileTypes": "{{if(contains(keys(parameters), 'allowedFileTypes'), ifempty(parameters.allowedFileTypes, emptyarray), undefined)}}"
 	},
 	"response": {
-		"output": "{{body}}"
+		"output": {
+			"{{...}}": "{{omit(body, 'expiresAt', 'createdAt', 'updatedAt')}}",
+			"expiresAt": "{{if(body.expiresAt, parseDate(body.expiresAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), body.expiresAt)}}",
+			"createdAt": "{{if(body.createdAt, parseDate(body.createdAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), body.createdAt)}}",
+			"updatedAt": "{{if(body.updatedAt, parseDate(body.updatedAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), body.updatedAt)}}"
+		}
 	}
 }

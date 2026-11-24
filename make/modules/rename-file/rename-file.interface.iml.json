@@ -36,12 +36,12 @@
 	},
 	{
 		"name": "mimeType",
-		"label": "Mime type",
+		"label": "MIME type",
 		"type": "text"
 	},
 	{
 		"name": "labelIds",
-		"label": "Labels",
+		"label": "Label IDs",
 		"type": "array",
 		"spec": {
 			"type": "text"
@@ -66,5 +66,10 @@
 		"name": "trashedAt",
 		"label": "Trashed at",
 		"type": "date"
+	},
+	{
+		"name": "operationId",
+		"label": "Operation ID",
+		"type": "text"
 	}
 ]

@@ -1,18 +1,18 @@
 {
 	"url": "/embeds/{{parameters.embedId}}",
 	"method": "PATCH",
-	"headers": {
-		"Authorization": "Bearer {{connection.apiKey}}"
-	},
 	"body": {
+		"{{...}}": "{{omit(parameters, 'clear', 'embedId', 'name', 'config', 'allowedDomains')}}",
 		"name": "{{ifempty(parameters.name, undefined)}}",
-		"allowedDomains": "{{if(contains(ifempty(parameters.clear, emptyarray), 'allowedDomains'), emptyarray, ifempty(parameters.allowedDomains, undefined))}}",
-		"expiresAt": "{{if(contains(ifempty(parameters.clear, emptyarray), 'expiresAt'), null, if(parameters.expiresAt, formatDate(parameters.expiresAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), undefined))}}",
-		"password": "{{if(contains(ifempty(parameters.clear, emptyarray), 'password'), null, ifempty(parameters.password, undefined))}}",
-		"paused": "{{parameters.paused}}",
-		"config": "{{ifempty(parameters.config, undefined)}}"
+		"config": "{{ifempty(parameters.config, undefined)}}",
+		"allowedDomains": "{{if(contains(keys(parameters), 'allowedDomains'), ifempty(parameters.allowedDomains, emptyarray), undefined)}}"
 	},
 	"response": {
-		"output": "{{body}}"
+		"output": {
+			"{{...}}": "{{omit(body, 'expiresAt', 'createdAt', 'updatedAt')}}",
+			"expiresAt": "{{if(body.expiresAt, parseDate(body.expiresAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), body.expiresAt)}}",
+			"createdAt": "{{if(body.createdAt, parseDate(body.createdAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), body.createdAt)}}",
+			"updatedAt": "{{if(body.updatedAt, parseDate(body.updatedAt, 'YYYY-MM-DDTHH:mm:ss.SSSZ'), body.updatedAt)}}"
+		}
 	}
 }
