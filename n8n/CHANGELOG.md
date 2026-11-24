@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.2
+
+- The Nubbo Trigger node carries the same description as the Nubbo node. n8n merges both into one entry in the nodes panel and shows the trigger's description there, so the entry now reads «One workspace for all your S3 storage. Automate it from n8n.» instead of the trigger text.
+
 ## 0.2.1
 
 - Published from GitHub Actions with npm trusted publishing; no code changes.
