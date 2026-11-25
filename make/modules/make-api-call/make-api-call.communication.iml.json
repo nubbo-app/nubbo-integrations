@@ -1,5 +1,5 @@
 {
-	"url": "https://api.nubbo.app/{{replace(replace(parameters.url, '/^\\/+/', emptystring), '/^(?!v1(\\/|$))/', 'v1/')}}",
+	"url": "https://api.nubbo.app/{{parameters.url}}",
 	"method": "{{parameters.method}}",
 	"headers": {
 		"{{...}}": "{{toCollection(ifempty(parameters.headers, emptyarray), 'key', 'value')}}"
